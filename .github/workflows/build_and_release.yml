@@ -8,7 +8,7 @@ on:
       - closed
 
 jobs:
-  <job id>:
+  build:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-20.04
     steps:
