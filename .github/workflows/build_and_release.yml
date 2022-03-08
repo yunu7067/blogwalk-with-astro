@@ -1,15 +1,13 @@
 name: Build and Release
 
 on:
-  push:
-    branches:
-      - main # Set a branch to deploy
+  pull_request_target:
     types:
       - closed
-  pull_request:
 
 jobs:
-  deploy:
+  if_merged:
+    if: github.event.pull_request_target.merged == true
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
