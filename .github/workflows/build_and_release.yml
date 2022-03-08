@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main # Set a branch to deploy
+    types:
+      - closed
   pull_request:
 
 jobs:
