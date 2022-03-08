@@ -1,10 +1,10 @@
+import React, {useLayoutEffect} from 'react';
 import type {NextPage} from 'next';
 import Head from 'next/head';
-import {useLayoutEffect} from 'react';
-import {styled} from '../../stitches.config';
-import {Button} from '../components/atoms';
-import StitchesLogo from '../components/atoms/StitchesLogo';
-import {globalStyles} from '../styles';
+
+import {Button} from '@com/atoms';
+import StitchesLogo from '@com/atoms/StitchesLogo';
+import {styled} from '@style/createStyles';
 
 const Box = styled('div', {});
 

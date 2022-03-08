@@ -1,8 +1,5 @@
-import {globalCss} from '@stitches/react';
+import {globalCss} from './createStyles';
 import {reset} from './reset.css';
-
-const Pretendard =
-  "Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;";
 
 export default globalCss({
   ...reset,
@@ -15,6 +12,7 @@ export default globalCss({
   },
   '*': {
     boxSizing: 'border-box',
+    fontFamily: '$fonts$pretendard',
   },
   img: {
     display: 'block',
@@ -22,9 +20,7 @@ export default globalCss({
   'html, body': {
     padding: 0,
     margin: 0,
-    fontFamily: Pretendard,
-  },
-  button: {
-    fontFamily: Pretendard,
+    background: '$colors$background',
+    color: '$colors$foreground',
   },
 });

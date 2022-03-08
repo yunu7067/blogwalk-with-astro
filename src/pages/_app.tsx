@@ -1,6 +1,6 @@
 import type {AppProps} from 'next/app';
 import {useLayoutEffect, useState} from 'react';
-import {globalStyles} from '../styles';
+import globalStyles from '@style/globalStyles';
 
 export default function MyApp({Component, pageProps}: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,5 +10,9 @@ export default function MyApp({Component, pageProps}: AppProps) {
     setIsLoading(false);
   }, []);
 
-  return isLoading ? <></> : <Component {...pageProps} />;
+  if (isLoading) {
+    return <></>;
+  }
+
+  return <Component {...pageProps} />;
 }

@@ -1,5 +1,8 @@
 import {createStitches} from '@stitches/react';
 
+const Pretendard =
+  "Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;";
+
 export const {config, createTheme, css, getCssText, globalCss, styled, theme} = createStitches({
   theme: {
     colors: {
@@ -45,24 +48,23 @@ export const {config, createTheme, css, getCssText, globalCss, styled, theme} = 
       6: '21px',
     },
     fonts: {
-      pretendard:
-        "Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;",
+      pretendard: Pretendard,
     },
   },
   utils: {
-    marginX: value => ({
+    marginX: (value: unknown) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    marginY: value => ({
+    marginY: (value: unknown) => ({
       marginTop: value,
       marginBottom: value,
     }),
-    paddingX: value => ({
+    paddingX: (value: unknown) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    paddingY: value => ({
+    paddingY: (value: unknown) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
