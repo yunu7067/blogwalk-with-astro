@@ -6,7 +6,7 @@ on:
       - closed
 
 jobs:
-  if_merged:
+  build:
     if: github.event.pull_request_target.merged == true
     runs-on: ubuntu-20.04
     steps:
