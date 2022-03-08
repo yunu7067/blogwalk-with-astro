@@ -1,13 +1,15 @@
 name: Build and Release
 
 on:
-  pull_request_target:
+  pull_request:
+    branches:
+      - main
     types:
       - closed
 
 jobs:
-  build:
-    if: github.event.pull_request_target.merged == true
+  <job id>:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
