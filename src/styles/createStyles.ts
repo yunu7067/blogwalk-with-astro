@@ -6,6 +6,8 @@ const Pretendard =
 export const {config, createTheme, css, getCssText, globalCss, styled, theme} = createStitches({
   theme: {
     colors: {
+      foreground: '#24292f',
+      background: '#ffffff',
       hiContrast: 'hsl(206,10%,5%)',
       loContrast: 'white',
 
@@ -23,6 +25,9 @@ export const {config, createTheme, css, getCssText, globalCss, styled, theme} = 
       purple500: 'hsl(252,78%,60%)',
       purple600: 'hsl(252,80%,53%)',
     },
+    border: {
+      default: '#d0d7de',
+    },
     space: {
       1: '5px',
       2: '10px',
@@ -30,6 +35,9 @@ export const {config, createTheme, css, getCssText, globalCss, styled, theme} = 
       4: '20px',
       5: '25px',
       6: '35px',
+      7: '45px',
+      8: '65px',
+      9: '80px',
     },
     sizes: {
       1: '5px',
@@ -38,6 +46,9 @@ export const {config, createTheme, css, getCssText, globalCss, styled, theme} = 
       4: '20px',
       5: '25px',
       6: '35px',
+      7: '45px',
+      8: '65px',
+      9: '80px',
     },
     fontSizes: {
       1: '12px',
@@ -46,6 +57,9 @@ export const {config, createTheme, css, getCssText, globalCss, styled, theme} = 
       4: '17px',
       5: '19px',
       6: '21px',
+      7: '27px',
+      8: '35px',
+      9: '59px',
     },
     fonts: {
       pretendard: Pretendard,

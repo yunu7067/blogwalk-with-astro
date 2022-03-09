@@ -14,13 +14,19 @@ export default globalCss({
     boxSizing: 'border-box',
     fontFamily: '$fonts$pretendard',
   },
+  a: {
+    color: 'inherit',
+    textDecoration: 'none',
+  },
   img: {
     display: 'block',
   },
   'html, body': {
     padding: 0,
     margin: 0,
-    background: '$colors$background',
+  },
+  '[data-color-mode]': {
     color: '$colors$foreground',
+    background: '$colors$background',
   },
 });
