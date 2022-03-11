@@ -3,12 +3,12 @@ import type {GetStaticProps, InferGetStaticPropsType, NextPage} from 'next';
 import Head from 'next/head';
 
 import {Button} from '@com/atoms';
-import StitchesLogo from '@com/atoms/StitchesLogo';
 import {styled} from '@style/createStyles';
 import Layout from '@com/Layout';
 import {getAllPosts} from 'src/libs/api';
 import Link from 'next/link';
 import {getConfig} from '@libs';
+import {TwitterLogoIcon} from '@radix-ui/react-icons';
 
 const Box = styled('div', {});
 
@@ -47,7 +47,7 @@ function Home({config, posts}: InferGetStaticPropsType<typeof getStaticProps>) {
 
       <Box css={{paddingY: '$6'}}>
         <Container size={{'@initial': '1', '@bp1': '2'}}>
-          <StitchesLogo />
+          <TwitterLogoIcon />
           <Text as='h1'>Hello, from Stitches.</Text>
           <Text>
             For full documentation, visit <Link href='https://stitches.dev'>stitches.dev</Link>.

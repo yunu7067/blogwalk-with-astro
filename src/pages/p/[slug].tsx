@@ -17,7 +17,7 @@ function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticP
         {post.img && <p>{post.img}</p>}
         {post.title && <p>{post.title}</p>}
         {post.date && <p>{post.date}</p>}
-        {(post.tags as unknown as string[]).map(tag => (
+        {(post.tags as unknown as string[])?.map(tag => (
           <Label key={tag} href='/'>
             {tag}
           </Label>
