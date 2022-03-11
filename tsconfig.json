@@ -26,6 +26,15 @@
       "@style/*": [
         "./src/styles/*",
       ],
+      "@util/*": [
+        "./src/utils/*",
+      ],
+      "@libs": [
+        "./src/libs/index.ts"
+      ],
+      "@types": [
+        "./src/types/index.ts"
+      ]
     }
   },
   "include": [
