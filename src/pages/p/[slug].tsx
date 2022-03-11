@@ -5,6 +5,7 @@ import Layout from '@com/Layout';
 import {getAllPosts, getPostBySlug} from 'src/libs/api';
 import {Label} from '@com/atoms';
 import {getConfig, markdownToHtml} from '@libs';
+import Commnets from '@com/organisms/Commnet';
 
 function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -23,6 +24,7 @@ function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticP
           </Label>
         ))}
         <div dangerouslySetInnerHTML={{__html: content}} />
+        <Commnets {...config.comments} />
       </article>
     </Layout>
   );
