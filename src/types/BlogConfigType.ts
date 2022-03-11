@@ -1,3 +1,11 @@
+type SocialIdentifiers = 'github' | 'twitter' | 'discord' | 'notion' | 'instagram' | 'linkedin';
+
+interface SocialConfigType {
+  identifier: SocialIdentifiers;
+  name: string;
+  url: string;
+}
+
 interface AvatarConfigType {
   enabled: boolean;
   src: string;
@@ -5,8 +13,10 @@ interface AvatarConfigType {
 
 interface BlogConfigType {
   title: string;
+  subtitle?: string;
   baseurl: string;
   avatar: AvatarConfigType;
+  social?: SocialConfigType[];
 }
 
-export type {BlogConfigType};
+export type {BlogConfigType, SocialConfigType, SocialIdentifiers};

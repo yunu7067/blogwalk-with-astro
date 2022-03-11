@@ -4,7 +4,7 @@
 const nextConfig = {
   compiler: {
     styledComponents: false,
-    removeConsole: true,
+    removeConsole: false,
   },
   swcMinify: true,
   reactStrictMode: true,
