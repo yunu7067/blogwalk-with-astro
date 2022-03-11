@@ -1,14 +1,15 @@
-import React, {useLayoutEffect} from 'react';
-import type {GetStaticProps, InferGetStaticPropsType, NextPage} from 'next';
+import React from 'react';
+import type {InferGetStaticPropsType, NextPage} from 'next';
 import Head from 'next/head';
 
-import {Button} from '@com/atoms';
 import {styled} from '@style/createStyles';
 import Layout from '@com/Layout';
 import {getAllPosts} from 'src/libs/api';
 import Link from 'next/link';
 import {getConfig} from '@libs';
-import {GitHubLogoIcon, InstagramLogoIcon, TwitterLogoIcon} from '@radix-ui/react-icons';
+import {SocialButtonCollection} from '@com/organisms';
+import {Button} from '@com/atoms';
+import {ArrowLeftIcon, ArrowRightIcon} from '@radix-ui/react-icons';
 
 const Box = styled('div', {});
 
@@ -47,19 +48,9 @@ function Home({config, posts}: InferGetStaticPropsType<typeof getStaticProps>) {
 
       <Box css={{paddingY: '$6'}}>
         <Container size={{'@initial': '1', '@bp1': '2'}}>
-          <TwitterLogoIcon />
-          <GitHubLogoIcon />
-          <InstagramLogoIcon />
-          <Text as='h1'>Hello, from Stitches.</Text>
-          <Text>
-            For full documentation, visit <Link href='https://stitches.dev'>stitches.dev</Link>.
-          </Text>
-          <Button>
-            테스트
-            <svg viewBox='0 0 32 32' fill='none' stroke='currentcolor' strokeWidth='2'>
-              <path d='M22 6 L30 16 22 26 M30 16 L2 16'></path>
-            </svg>
-          </Button>
+          <Text as='h1'>{config.title || ''}</Text>
+          <Text>{config.subtitle}</Text>
+          <SocialButtonCollection social={config.social} />
 
           <section>
             <h2>Blog</h2>
@@ -77,6 +68,14 @@ function Home({config, posts}: InferGetStaticPropsType<typeof getStaticProps>) {
               ))}
             </ul>
           </section>
+          <Button>
+            <ArrowLeftIcon />
+            Prev
+          </Button>
+          <Button>
+            Next
+            <ArrowRightIcon />
+          </Button>
         </Container>
       </Box>
     </Layout>

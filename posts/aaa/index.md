@@ -5,6 +5,7 @@ date: '2020-01-01'
 image:
 draft: false
 slug: 'test'
+series: 'test'
 tags: ['테스트', 'Next.js']
 ---
 

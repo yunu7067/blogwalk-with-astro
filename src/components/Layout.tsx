@@ -11,7 +11,7 @@ function Layout({children, config}: LayoutProps) {
   console.log(config);
   return (
     <>
-      {config.avatar.enabled && <img src={`/${config.avatar.src}`} alt='avatar' width='64' />}
+      {config.avatar?.enabled && <img src={`/${config.avatar.src}`} alt='avatar' width='64' />}
       <main>{children}</main>
     </>
   );
