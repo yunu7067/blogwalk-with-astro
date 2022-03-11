@@ -12,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-icons": "^1.1.0",
     "@stitches/react": "^1.2.7",
     "next": "12.1.0",
     "react": "17.0.2",
