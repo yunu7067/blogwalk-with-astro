@@ -1,4 +1,4 @@
-import {CommentsType} from 'src/types/CommentsType';
+import {CommentsType} from './CommentsConfigType';
 
 type SocialIdentifiers = 'github' | 'twitter' | 'discord' | 'notion' | 'instagram' | 'linkedin';
 
