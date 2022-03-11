@@ -30,3 +30,7 @@ Features that require a Node.js server, or dynamic logic that cannot be computed
 - [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration)
 - [fallback: true](https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-true)
 - [getServerSideProps](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
+
+## Licences
+
+- [Radix Icons - designed by the @modulz team](https://icons.modulz.app/)
