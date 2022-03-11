@@ -1,3 +1,4 @@
+import {PostType} from '@types';
 import {readdirSync, readFileSync} from 'fs';
 import matter from 'gray-matter';
 import {join} from 'path';
@@ -62,8 +63,9 @@ function getPostBySlug(slug: string, fields: string[] = []) {
 
 function getAllPosts(fields: string[] = []): Items[] {
   const slugs = getPostDirs();
-  const posts = slugs.map(slug => getPostBySlug(slug, fields)).filter(post => post !== undefined) as Items[];
-  // .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+  const posts = (slugs.map(slug => getPostBySlug(slug, fields)).filter(post => post !== undefined) as Items[]).sort(
+    (post1: Items, post2: Items) => (post1.date > post2.date ? -1 : 1),
+  );
 
   return posts;
 }

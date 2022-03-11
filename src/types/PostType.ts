@@ -1,9 +1,21 @@
-interface PostType {
+export interface PostDataProps {
+  title: string;
+  description?: string;
+  date: string;
+  image?: string;
+  draft?: boolean;
+  slug?: string;
+  series?: string;
+  tags?: string[];
+}
+export interface PostContentProps {
+  content: string;
+}
+export type Post = PostDataProps & PostContentProps;
+export interface PostType {
   id: string;
   title: string;
   date: string;
   content?: string;
   rest?: unknown[];
 }
-
-export type {PostType};

@@ -1,19 +1,16 @@
 import {CommentsType} from './CommentsConfigType';
 
-type SocialIdentifiers = 'github' | 'twitter' | 'discord' | 'notion' | 'instagram' | 'linkedin';
-
-interface SocialConfigType {
+export type SocialIdentifiers = 'github' | 'twitter' | 'discord' | 'notion' | 'instagram' | 'linkedin';
+export interface SocialConfigType {
   identifier: SocialIdentifiers;
   name: string;
   url: string;
 }
-
-interface AvatarConfigType {
+export interface AvatarConfigType {
   enabled: boolean;
   src: string;
 }
-
-interface BlogConfigType {
+export interface BlogConfigType {
   title: string;
   subtitle?: string;
   baseurl: string;
@@ -21,5 +18,3 @@ interface BlogConfigType {
   social?: SocialConfigType[];
   comments: CommentsType;
 }
-
-export type {BlogConfigType, SocialConfigType, SocialIdentifiers};
