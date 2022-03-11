@@ -1,3 +1,5 @@
+# Next.js Static Blog
+
 ## NextJS Static HTML Export
 
 [**Documents**](https://nextjs.org/docs/advanced-features/static-html-export)
