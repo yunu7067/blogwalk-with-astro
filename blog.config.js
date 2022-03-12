@@ -2,9 +2,12 @@
 
 /** @type {import('@types').BlogConfigType} */
 const blogConfig = {
-  baseurl: 'http://example.com',
+  baseurl: 'http://example.com/',
   title: 'new blog',
   subtitle: '새로운 블로그',
+  locale: {
+    languageCode: 'ko-KR',
+  },
   avatar: {
     enabled: false,
     src: 'img/avatar.png',

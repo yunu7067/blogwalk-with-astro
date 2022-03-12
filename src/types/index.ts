@@ -2,14 +2,16 @@ import type {BlogConfigType, SocialIdentifiers, SocialConfigType} from './BlogCo
 import type {PostType} from './PostType';
 import type {CommentsType, CommentsProvider, GiscusConfigProps} from './CommentsConfigType';
 import type {PostConfigType} from './PostConfigType';
+import type {LocaleConfigType} from './LocaleConfigType';
 
 export type {
   BlogConfigType,
+  CommentsType,
+  CommentsProvider,
+  GiscusConfigProps,
+  LocaleConfigType,
   PostConfigType,
   PostType,
   SocialConfigType,
   SocialIdentifiers,
-  CommentsType,
-  CommentsProvider,
-  GiscusConfigProps,
 };

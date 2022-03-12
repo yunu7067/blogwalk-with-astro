@@ -11,6 +11,8 @@ function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticP
     <Layout config={config}>
       <Head>
         <title>{post.title}</title>
+        <meta property='og:title' content={post.title} key='title' />
+        {post.description && <meta name='description' content={post.description} />}
       </Head>
 
       <article>
