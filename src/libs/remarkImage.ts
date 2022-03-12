@@ -1,12 +1,13 @@
 import {copyFileSync, mkdir} from 'fs';
 import path from 'path';
+import {Plugin} from 'unified';
 import {visit} from 'unist-util-visit';
 
 export interface RemarkImageProps {
   folderName: string;
 }
 
-export default function remarkImage(options: RemarkImageProps) {
+export default function remarkImage(options: RemarkImageProps): Plugin {
   console.debug({options});
 
   return (tree, file) => {

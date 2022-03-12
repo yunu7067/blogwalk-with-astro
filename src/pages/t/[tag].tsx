@@ -23,7 +23,7 @@ export async function getStaticProps({params}: GetStaticPropsContext<{tag: strin
   const slug = params!.tag;
 
   const post = getPostBySlug(slug, ['title', 'date', 'slug', 'tags', 'content', 'img']);
-  const content = await markdownToHtml(post!.content || '');
+  const content = await markdownToHtml(post!.content || '', '');
 
   return {
     props: {
