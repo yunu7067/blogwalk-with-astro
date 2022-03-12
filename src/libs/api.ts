@@ -25,7 +25,7 @@ function getAllPostsData(postDirs: string[]) {
   return postDirs.map(postDir => getPostByDirectory(postDir));
 }
 
-function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug(slug: string, fields: string[] = []) {
   const dirs = getPostDirs();
   const posts = getAllPostsData(dirs);
   let findPost = posts.find(post => post.data.slug === slug);
@@ -39,6 +39,8 @@ function getPostBySlug(slug: string, fields: string[] = []) {
   if (findPost === undefined) {
     return undefined;
   }
+
+  // console.log({slug});
 
   const {data, content} = findPost;
   const items: Items = {};
@@ -56,12 +58,12 @@ function getPostBySlug(slug: string, fields: string[] = []) {
     }
   });
 
-  console.debug(data);
+  // console.debug(data);
 
   return items;
 }
 
-function getAllPosts(fields: string[] = []): Items[] {
+export function getAllPosts(fields: string[] = []): Items[] {
   const slugs = getPostDirs();
   const posts = (slugs.map(slug => getPostBySlug(slug, fields)).filter(post => post !== undefined) as Items[]).sort(
     (post1: Items, post2: Items) => (post1.date > post2.date ? -1 : 1),
@@ -69,5 +71,3 @@ function getAllPosts(fields: string[] = []): Items[] {
 
   return posts;
 }
-
-export {getAllPosts, getPostBySlug};

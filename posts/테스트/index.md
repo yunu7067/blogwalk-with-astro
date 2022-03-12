@@ -5,6 +5,8 @@ date: '2020-03-02'
 
 # 테스트 게시글
 
+![meow](./meow.jpg)
+
 ㅁㅅㄷㄴㅅ
 
 ## 테스트
@@ -13,10 +15,28 @@ date: '2020-03-02'
 | :------: | :------: |
 |    1     |    2ß    |
 
-### 테스
+### UML
 
-#### 테
+```mermaid
+graph LR
+    Start --> Stop
+```
+
+#### Math
+
+Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following
+equation.
+
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
 
 ##### ㅌ
 
 ㅇksds
+
+## Footnote
+
+A note[^1]
+
+[^1]: Big note.

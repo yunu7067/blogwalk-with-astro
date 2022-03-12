@@ -1,11 +1,12 @@
 import type {AppProps} from 'next/app';
-import {useLayoutEffect, useState} from 'react';
+import {useEffect, useLayoutEffect, useState} from 'react';
 import globalStyles from '@style/globalStyles';
+import 'public/lib/katex/katex.min.css';
 
 export default function MyApp({Component, pageProps}: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     globalStyles();
     setIsLoading(false);
   }, []);

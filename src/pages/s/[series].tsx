@@ -1,7 +1,6 @@
 import {GetStaticPropsContext, InferGetStaticPropsType} from 'next';
-import getConfig from 'next/config';
 import Layout from '@com/Layout';
-import {getAllPosts, getPostBySlug, markdownToHtml} from '@libs';
+import {getAllPosts, getConfig, getPostBySlug, markdownToHtml} from '@libs';
 import Head from 'next/head';
 
 export default function Series({config, series}: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -20,7 +19,7 @@ export async function getStaticProps({params}: GetStaticPropsContext<{series: st
   const slug = params!.series;
 
   const post = getPostBySlug(slug, ['title', 'date', 'slug', 'tags', 'content', 'img']);
-  const content = await markdownToHtml(post!.content || '');
+  const content = await markdownToHtml(post!.content || '', '', config.post);
 
   return {
     props: {
@@ -44,7 +43,7 @@ export async function getStaticPaths() {
   }));
 
   return {
-    paths,
+    paths: [],
     fallback: false,
   };
 }

@@ -2,9 +2,8 @@ import React from 'react';
 import {GetStaticPropsContext, InferGetStaticPropsType} from 'next';
 import Head from 'next/head';
 import Layout from '@com/Layout';
-import {getAllPosts, getPostBySlug} from 'src/libs/api';
 import {Label} from '@com/atoms';
-import {getConfig, markdownToHtml} from '@libs';
+import {getConfig, markdownToHtml, getAllPosts, getPostBySlug} from '@libs';
 import Commnets from '@com/organisms/Commnet';
 
 function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -12,6 +11,8 @@ function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticP
     <Layout config={config}>
       <Head>
         <title>{post.title}</title>
+        <meta property='og:title' content={post.title} key='title' />
+        {post.description && <meta name='description' content={post.description} />}
       </Head>
 
       <article>
@@ -19,7 +20,7 @@ function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticP
         {post.title && <p>{post.title}</p>}
         {post.date && <p>{post.date}</p>}
         {(post.tags as unknown as string[])?.map(tag => (
-          <Label key={tag} href='/'>
+          <Label key={tag} href={`/t/${tag}`}>
             {tag}
           </Label>
         ))}
@@ -35,7 +36,8 @@ async function getStaticProps({params}: GetStaticPropsContext<{slug: string}>) {
   const slug = params!.slug;
 
   const post = getPostBySlug(slug, ['title', 'date', 'slug', 'tags', 'content', 'img']);
-  const content = await markdownToHtml(post!.content || '');
+
+  const content = await markdownToHtml(post!.content || '', '테스트', config.post);
 
   return {
     props: {
