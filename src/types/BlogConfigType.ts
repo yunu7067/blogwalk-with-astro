@@ -1,3 +1,4 @@
+import {PostConfigType} from 'src/types/PostConfigType';
 import {CommentsType} from './CommentsConfigType';
 
 export type SocialIdentifiers = 'github' | 'twitter' | 'discord' | 'notion' | 'instagram' | 'linkedin';
@@ -16,5 +17,6 @@ export interface BlogConfigType {
   baseurl: string;
   avatar: AvatarConfigType;
   social?: SocialConfigType[];
+  post: PostConfigType;
   comments: CommentsType;
 }

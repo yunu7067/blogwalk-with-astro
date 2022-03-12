@@ -8,12 +8,7 @@ const nextConfig = {
   },
   swcMinify: true,
   reactStrictMode: true,
-  // @ts-ignore
-  exportPathMap: async (defaultPathMap, {dev, dir, outDir, distDir, buildId}) => {
-    return {
-      '/': {page: '/'},
-    };
-  },
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;

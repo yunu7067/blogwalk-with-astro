@@ -4,9 +4,8 @@ import Head from 'next/head';
 
 import {styled} from '@style/createStyles';
 import Layout from '@com/Layout';
-import {getAllPosts} from 'src/libs/api';
 import Link from 'next/link';
-import {getConfig} from '@libs';
+import {getConfig, getAllPosts} from '@libs';
 import {SocialButtonCollection} from '@com/organisms';
 import {Button} from '@com/atoms';
 import {ArrowLeftIcon, ArrowRightIcon} from '@radix-ui/react-icons';
@@ -86,7 +85,7 @@ export async function getStaticProps() {
   const config = await getConfig();
   const posts = getAllPosts(['slug', 'title', 'description', 'date', 'img']);
 
-  console.log(config);
+  // console.debug(config);
 
   return {
     props: {

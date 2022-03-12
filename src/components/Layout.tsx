@@ -8,7 +8,7 @@ interface LayoutProps {
 }
 
 function Layout({children, config}: LayoutProps) {
-  console.log(config);
+  // console.debug(config);
   return (
     <>
       {config.avatar?.enabled && <img src={`/${config.avatar.src}`} alt='avatar' width='64' />}
