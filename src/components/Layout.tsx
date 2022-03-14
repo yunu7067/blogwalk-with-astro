@@ -1,14 +1,28 @@
+import {styled} from '@style/createStyles';
+import {darkTheme, lightTheme} from '@style/themes';
 import {BlogConfigType} from '@types';
 import Head from 'next/head';
-import React from 'react';
+import React, {useState} from 'react';
+import useTheme from 'src/libs/useTheme';
 
 interface LayoutProps {
   children: React.ReactNode;
   config: BlogConfigType;
 }
 
+const Root = styled('div', {
+  backgroundColor: '$colors$loContrast',
+  color: '$colors$hiContrast',
+  transition: 'background 0.25s ease, color 0.30s ease',
+
+  minHeight: '100vh',
+  height: 'fit-content',
+});
+
 function Layout({children, config}: LayoutProps) {
+  const {theme, toggleTheme} = useTheme({light: lightTheme, dark: darkTheme});
   // console.debug(config);
+
   return (
     <>
       <Head>
@@ -28,8 +42,11 @@ function Layout({children, config}: LayoutProps) {
         {/* Favicon */}
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <aside>{config.avatar?.enabled && <img src={`/${config.avatar.src}`} alt='avatar' width='64' />}</aside>
-      <main>{children}</main>
+      <Root className={theme}>
+        <button onClick={toggleTheme}>toggle</button>
+        <aside>{config.avatar?.enabled && <img src={`/${config.avatar.src}`} alt='avatar' width='64' />}</aside>
+        <main>{children}</main>
+      </Root>
     </>
   );
 }

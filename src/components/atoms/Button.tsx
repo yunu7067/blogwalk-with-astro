@@ -2,7 +2,6 @@ import {styled} from '@style/createStyles';
 import React from 'react';
 
 const StyledButton = styled('button', {
-  backgroundColor: 'gainsboro',
   borderRadius: '9999px',
   fontSize: '15px',
   height: '36px',
@@ -11,6 +10,9 @@ const StyledButton = styled('button', {
   paddingLeft: '15px',
   paddingRight: '15px',
   fontWeight: 800,
+
+  backgroundColor: '$colors$loContrast',
+  color: '$colors$hiContrast',
 
   '&:hover': {
     backgroundColor: 'lightgray',

@@ -6,7 +6,7 @@ const nextConfig = {
     styledComponents: false,
     removeConsole: false,
   },
-  swcMinify: true,
+  swcMinify: false,
   reactStrictMode: true,
   trailingSlash: true,
 };
