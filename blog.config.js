@@ -17,6 +17,7 @@ const blogConfig = {
     {identifier: 'twitter', name: 'sdaf', url: 'https://github.com/yunu7067'},
     {identifier: 'linkedin', name: 'sdaf', url: 'https://github.com/yunu7067'},
   ],
+  theme: 'auto',
   post: {
     math: true,
     mermaid: true,

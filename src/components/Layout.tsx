@@ -20,7 +20,7 @@ const Root = styled('div', {
 });
 
 function Layout({children, config}: LayoutProps) {
-  const {theme, toggleTheme} = useTheme({light: lightTheme, dark: darkTheme});
+  const {theme, toggleTheme} = useTheme({default: config.theme, light: lightTheme, dark: darkTheme});
   // console.debug(config);
 
   return (
@@ -43,7 +43,7 @@ function Layout({children, config}: LayoutProps) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Root className={theme}>
-        <button onClick={toggleTheme}>toggle</button>
+        {config.theme === 'auto' && <button onClick={toggleTheme}>toggle</button>}
         <aside>{config.avatar?.enabled && <img src={`/${config.avatar.src}`} alt='avatar' width='64' />}</aside>
         <main>{children}</main>
       </Root>
