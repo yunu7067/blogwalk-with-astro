@@ -15,6 +15,7 @@ function getSystemTheme() {
 
 export default function useTheme(options: useThemeProps) {
   const [theme, setTheme] = useState(options.light);
+  const [themeString, setThemeString] = useState(options.light);
 
   useLayoutEffect(() => {
     switch (options.default) {
@@ -45,6 +46,7 @@ export default function useTheme(options: useThemeProps) {
 
   const changeTheme = (theme: ThemeString) => {
     setTheme(theme === 'light' ? options.light : options.dark);
+    setThemeString(theme);
     LocalStorage.setItem('theme', theme);
   };
 
@@ -53,5 +55,5 @@ export default function useTheme(options: useThemeProps) {
     changeTheme(toggledTheme);
   };
 
-  return {theme, changeTheme, toggleTheme};
+  return {theme, themeString, changeTheme, toggleTheme};
 }

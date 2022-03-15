@@ -1,3 +1,5 @@
+import {Button} from '@com/atoms';
+import {LightningBoltIcon, MoonIcon, SunIcon} from '@radix-ui/react-icons';
 import {styled} from '@style/createStyles';
 import {darkTheme, lightTheme} from '@style/themes';
 import {BlogConfigType} from '@types';
@@ -20,7 +22,7 @@ const Root = styled('div', {
 });
 
 function Layout({children, config}: LayoutProps) {
-  const {theme, toggleTheme} = useTheme({default: config.theme, light: lightTheme, dark: darkTheme});
+  const {theme, themeString, toggleTheme} = useTheme({default: config.theme, light: lightTheme, dark: darkTheme});
   // console.debug(config);
 
   return (
@@ -43,7 +45,9 @@ function Layout({children, config}: LayoutProps) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Root className={theme}>
-        {config.theme === 'auto' && <button onClick={toggleTheme}>toggle</button>}
+        {config.theme === 'auto' && (
+          <Button onClick={toggleTheme}>{themeString === 'light' ? <SunIcon /> : <MoonIcon />}</Button>
+        )}
         <aside>{config.avatar?.enabled && <img src={`/${config.avatar.src}`} alt='avatar' width='64' />}</aside>
         <main>{children}</main>
       </Root>
