@@ -11,7 +11,7 @@ const StyledButton = styled('button', {
   paddingRight: '15px',
   fontWeight: 800,
 
-  backgroundColor: '$colors$loContrast',
+  backgroundColor: '$gray600',
   color: '$colors$hiContrast',
 
   '&:hover': {

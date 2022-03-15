@@ -1,3 +1,4 @@
+import {darkTheme, lightTheme} from '@style/themes';
 import {ThemeString} from '@types';
 import {useState, useLayoutEffect} from 'react';
 import * as LocalStorage from 'src/libs/LocalStorage';
@@ -5,8 +6,8 @@ import {ThemeIdentifiers} from 'src/types/BlogConfigType';
 
 interface useThemeProps {
   default: ThemeIdentifiers;
-  light: Object;
-  dark: Object;
+  light: typeof lightTheme;
+  dark: typeof darkTheme;
 }
 
 function getSystemTheme() {
@@ -14,8 +15,8 @@ function getSystemTheme() {
 }
 
 export default function useTheme(options: useThemeProps) {
-  const [theme, setTheme] = useState(options.light);
-  const [themeString, setThemeString] = useState(options.light);
+  const [theme, setTheme] = useState<typeof lightTheme | typeof darkTheme>(options.light);
+  const [themeString, setThemeString] = useState<string>('light');
 
   useLayoutEffect(() => {
     switch (options.default) {

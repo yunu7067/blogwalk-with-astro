@@ -23,6 +23,7 @@ const Root = styled('div', {
 
 function Layout({children, config}: LayoutProps) {
   const {theme, themeString, toggleTheme} = useTheme({default: config.theme, light: lightTheme, dark: darkTheme});
+
   // console.debug(config);
 
   return (
