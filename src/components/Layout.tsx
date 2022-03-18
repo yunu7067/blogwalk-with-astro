@@ -13,8 +13,8 @@ interface LayoutProps {
 }
 
 const Root = styled('div', {
-  backgroundColor: '$colors$loContrast',
-  color: '$colors$hiContrast',
+  color: '$fg-default',
+  background: '$canvas-default',
   transition: 'background 0.25s ease, color 0.30s ease',
 
   minHeight: '100vh',

@@ -2,11 +2,15 @@ import React from 'react';
 import {GetStaticPropsContext, InferGetStaticPropsType} from 'next';
 import Head from 'next/head';
 import Layout from '@com/Layout';
-import {Label} from '@com/atoms';
+import {Button, Label} from '@com/atoms';
 import {getConfig, markdownToHtml, getAllPosts, getPostBySlug} from '@libs';
 import Commnets from '@com/organisms/Commnet';
+import {useRouter} from 'next/router';
+import {AlignLeftIcon, ArrowLeftIcon, BorderLeftIcon, CaretLeftIcon} from '@radix-ui/react-icons';
 
 function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const {back} = useRouter();
+
   return (
     <Layout config={config}>
       <Head>
@@ -14,6 +18,10 @@ function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticP
         <meta property='og:title' content={post.title} key='title' />
         {post.description && <meta name='description' content={post.description} />}
       </Head>
+
+      <Button onClick={back}>
+        <ArrowLeftIcon /> back
+      </Button>
 
       <article>
         {post.img && <p>{post.img}</p>}
