@@ -6,27 +6,23 @@ const Pretendard =
 export const {config, createTheme, css, getCssText, globalCss, styled, theme} = createStitches({
   theme: {
     colors: {
-      foreground: '#24292f',
-      background: '#ffffff',
-      hiContrast: 'hsl(206,10%,5%)',
-      loContrast: 'white',
+      'fg-default': '#24292f',
+      'canvas-default': '#ffffff',
 
-      gray100: 'hsl(206,22%,99%)',
-      gray200: 'hsl(206,12%,97%)',
-      gray300: 'hsl(206,11%,92%)',
-      gray400: 'hsl(206,10%,84%)',
-      gray500: 'hsl(206,10%,76%)',
-      gray600: 'hsl(206,10%,44%)',
+      /* Border */
+      'border-default': '#d0d7de',
 
-      purple100: 'hsl(252,100%,99%)',
-      purple200: 'hsl(252,100%,98%)',
-      purple300: 'hsl(252,100%,94%)',
-      purple400: 'hsl(252,75%,84%)',
-      purple500: 'hsl(252,78%,60%)',
-      purple600: 'hsl(252,80%,53%)',
+      /* Button */
+      'btn-text': '#24292f',
+      'btn-bg': '#f6f8fa',
+      'btn-border': 'rgba(27,31,36,0.15)',
+      'btn-hover-bg': ' #f3f4f6',
+      'btn-hover-border': 'rgba(27,31,36,0.15)',
+      /* Anchor */
     },
-    border: {
-      default: '#d0d7de',
+    shadows: {
+      'btn-shadow': '0 1px 0 rgba(27,31,36,0.04)',
+      'btn-inset-shadow': 'inset 0 1px 0 rgba(255,255,255,0.25)',
     },
     space: {
       1: '5px',

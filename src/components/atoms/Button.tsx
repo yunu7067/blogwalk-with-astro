@@ -1,30 +1,48 @@
 import {styled} from '@style/createStyles';
-import React from 'react';
 
-const StyledButton = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '15px',
-  height: '36px',
+export const Button = styled('button', {
   position: 'relative',
-  border: '0',
-  paddingLeft: '15px',
-  paddingRight: '15px',
-  fontWeight: 800,
+  display: 'inline-block',
+  fontSize: '$3',
+  fontWeight: '600',
+  lineHeight: '20px',
+  whiteSpace: 'nowrap',
+  verticalAlign: 'middle',
+  cursor: 'pointer',
+  userSelect: 'none',
+  border: '1px solid',
+  borderRadius: '6px',
+  appearance: 'none',
+
+  backgroundColor: '$btn-bg',
+  color: '$btn-text',
+  borderColor: '$btn-border',
+  boxShadow: '$btn-shadow, $btn-inset-shadow',
 
   '&:hover': {
-    backgroundColor: 'lightgray',
+    backgroundColor: '$btn-hover-bg',
+    borderColor: '$btn-hover-border',
   },
   '& svg': {
     display: 'inline-block',
-    verticalAlign: 'bottom',
-    height: '15px',
-    marginLeft: '5px',
+    verticalAlign: 'middle',
+  },
+
+  variants: {
+    content: {
+      text: {
+        height: '32px',
+      },
+      icon: {
+        width: '32px',
+        height: '32px',
+      },
+      icontext: {
+        padding: '5px 16px',
+        '& svg': {
+          marginRight: '8px',
+        },
+      },
+    },
   },
 });
-
-function Button(props: React.HTMLAttributes<HTMLButtonElement>) {
-  return <StyledButton {...props} />;
-}
-
-export default Button;

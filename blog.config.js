@@ -9,7 +9,7 @@ const blogConfig = {
     languageCode: 'ko-KR',
   },
   avatar: {
-    enabled: false,
+    enabled: true,
     src: 'img/avatar.png',
   },
   social: [
@@ -17,6 +17,7 @@ const blogConfig = {
     {identifier: 'twitter', name: 'sdaf', url: 'https://github.com/yunu7067'},
     {identifier: 'linkedin', name: 'sdaf', url: 'https://github.com/yunu7067'},
   ],
+  theme: 'auto',
   post: {
     math: true,
     mermaid: true,
@@ -28,7 +29,7 @@ const blogConfig = {
     },
   },
   comments: {
-    enabled: false,
+    enabled: true,
     provider: 'giscus',
     giscus: {
       repo: 'yunu7067/yunu7067.github.io',

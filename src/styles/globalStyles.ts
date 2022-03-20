@@ -25,8 +25,4 @@ export default globalCss({
     padding: 0,
     margin: 0,
   },
-  '[data-color-mode]': {
-    color: '$colors$foreground',
-    background: '$colors$background',
-  },
 });
