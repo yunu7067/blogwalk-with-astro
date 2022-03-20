@@ -1,11 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 import {Button} from '@com/atoms';
 import {SocialButtonCollection} from '@com/organisms';
-import {LightningBoltIcon, MoonIcon, SunIcon} from '@radix-ui/react-icons';
+import {MoonIcon, SunIcon} from '@radix-ui/react-icons';
 import {styled} from '@style/createStyles';
 import {darkTheme, lightTheme} from '@style/themes';
 import {BlogConfigType} from '@types';
 import Head from 'next/head';
-import React, {useState} from 'react';
+import React from 'react';
 import useTheme from 'src/libs/useTheme';
 
 interface LayoutProps {

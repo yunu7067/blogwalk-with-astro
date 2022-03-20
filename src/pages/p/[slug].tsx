@@ -43,15 +43,12 @@ async function getStaticProps({params}: GetStaticPropsContext<{slug: string}>) {
 
   const post = getPostBySlug(slug, ['title', 'date', 'slug', 'tags', 'content', 'img']);
 
-  const content = await markdownToHtml(post!.content || '', post.slug, config.post);
+  const content = await markdownToHtml(post!.content || '', post!.slug, config.post);
 
   return {
     props: {
       config: {...config},
-      post: {
-        ...post,
-      },
-
+      post: {...post},
       content,
     },
   };
