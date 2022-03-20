@@ -1,5 +1,11 @@
 # Next.js Static Blog
 
+사용 기술 스택
+
+- Framework : Next.jS
+- Style : [Stitches](https://stitches.dev/)
+- Markdown Parser: unified, [remark](https://github.com/remarkjs/remark)
+
 ## NextJS Static HTML Export
 
 [**Documents**](https://nextjs.org/docs/advanced-features/static-html-export)
