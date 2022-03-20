@@ -18,6 +18,7 @@ export const {config, createTheme, css, getCssText, globalCss, styled, theme} = 
       'btn-border': 'rgba(27,31,36,0.15)',
       'btn-hover-bg': ' #f3f4f6',
       'btn-hover-border': 'rgba(27,31,36,0.15)',
+      /* Anchor */
     },
     shadows: {
       'btn-shadow': '0 1px 0 rgba(27,31,36,0.04)',

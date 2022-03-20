@@ -16,28 +16,41 @@ export const Article = styled('article', {
   /* 제목 */
   h1: {
     fontSize: '$8',
+    fontWeight: '600',
   },
   h2: {
     fontSize: '$7',
+    fontWeight: '500',
   },
   h3: {
     fontSize: '$6',
+    fontWeight: '500',
   },
   h4: {
     fontSize: '$5',
+    fontWeight: '500',
   },
   h5: {
     fontSize: '$4',
+    fontWeight: '500',
   },
   h6: {
     fontSize: '$3',
+    fontWeight: '500',
   },
   /* 문장 */
   p: {
+    display: 'inline-block',
     fontSize: '$3',
+    fontWeight: '400',
   },
   /* 하이퍼링크 */
-  a: {},
+  a: {
+    color: 'hsl(210 100% 66.1%)',
+    '&:hover': {
+      textDecorationLine: 'underline',
+    },
+  },
   /* 강조 */
   strong: {},
   /* 기울임 */
@@ -47,25 +60,62 @@ export const Article = styled('article', {
   /* 줄바꿈 */
   br: {},
   /* 목록 */
-  ul: {},
-  ol: {},
-  li: {},
+  ul: {
+    listStyleType: 'disc',
+    listStylePosition: 'inside',
+  },
+  'ul ul': {
+    listStyleType: 'circle',
+    paddingInlineStart: 'em',
+  },
+  'ul ul ul': {
+    listStyleType: 'square',
+  },
+  ol: {
+    listStyleType: 'unset',
+    listStylePosition: 'inside',
+  },
+  'ol ol': {
+    listStyleType: 'unset',
+  },
+  li: {
+    padding: 'auto',
+  },
   /* 수평선 */
-  hr: {},
+  hr: {
+    margin: '1em 0',
+  },
 
   pre: {},
 
   /* 블록인용 */
-  blockquote: {},
+  blockquote: {
+    display: 'block',
+    margin: '.5em 0',
+    padding: '0.2em 0.8em',
+    borderLeft: '5px solid gray',
+    '&>*': {
+      margin: '0',
+    },
+  },
   /* 코드블록 */
   code: {
     display: 'block',
+    margin: '.5em 0',
+    padding: '.5em 1em',
+    borderRadius: '6px',
     color: 'rgb(57, 58, 52)',
     backgroundColor: 'rgb(246, 248, 250)',
     overflow: 'auto',
+    '&>*': {
+      margin: '0',
+    },
   },
   /* 이미지 */
   img: {
+    display: 'block',
     width: '100%',
+    borderRadius: '5px',
+    margin: '.5em 0',
   },
 });
