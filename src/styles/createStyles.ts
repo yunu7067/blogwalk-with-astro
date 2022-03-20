@@ -9,20 +9,15 @@ export const {config, createTheme, css, getCssText, globalCss, styled, theme} = 
       'fg-default': '#24292f',
       'canvas-default': '#ffffff',
 
+      /* Border */
+      'border-default': '#d0d7de',
+
+      /* Button */
       'btn-text': '#24292f',
       'btn-bg': '#f6f8fa',
       'btn-border': 'rgba(27,31,36,0.15)',
       'btn-hover-bg': ' #f3f4f6',
       'btn-hover-border': 'rgba(27,31,36,0.15)',
-
-      foreground: '#24292f',
-      background: '#ffffff',
-
-      hiContrast: 'hsl(206,10%,5%)',
-      loContrast: 'white',
-    },
-    border: {
-      default: '#d0d7de',
     },
     shadows: {
       'btn-shadow': '0 1px 0 rgba(27,31,36,0.04)',

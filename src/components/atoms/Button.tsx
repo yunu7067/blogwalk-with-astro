@@ -1,11 +1,9 @@
 import {styled} from '@style/createStyles';
-import React from 'react';
 
-const StyledButton = styled('button', {
+export const Button = styled('button', {
   position: 'relative',
   display: 'inline-block',
   fontSize: '$3',
-  padding: '5px 16px',
   fontWeight: '600',
   lineHeight: '20px',
   whiteSpace: 'nowrap',
@@ -29,10 +27,22 @@ const StyledButton = styled('button', {
     display: 'inline-block',
     verticalAlign: 'middle',
   },
+
+  variants: {
+    content: {
+      text: {
+        height: '32px',
+      },
+      icon: {
+        width: '32px',
+        height: '32px',
+      },
+      icontext: {
+        padding: '5px 16px',
+        '& svg': {
+          marginRight: '8px',
+        },
+      },
+    },
+  },
 });
-
-function Button(props: React.HTMLAttributes<HTMLButtonElement>) {
-  return <StyledButton {...props} />;
-}
-
-export default Button;

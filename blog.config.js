@@ -9,7 +9,7 @@ const blogConfig = {
     languageCode: 'ko-KR',
   },
   avatar: {
-    enabled: false,
+    enabled: true,
     src: 'img/avatar.png',
   },
   social: [
@@ -29,7 +29,7 @@ const blogConfig = {
     },
   },
   comments: {
-    enabled: false,
+    enabled: true,
     provider: 'giscus',
     giscus: {
       repo: 'yunu7067/yunu7067.github.io',

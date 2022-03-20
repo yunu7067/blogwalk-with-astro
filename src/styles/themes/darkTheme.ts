@@ -5,15 +5,19 @@ export const darkTheme = createTheme('dark', {
     'fg-default': '#c9d1d9',
     'canvas-default': '#0d1117',
 
-    'btn-text': '#24292f',
-    'btn-bg': '#f6f8fa',
-    'btn-border': 'rgba(27,31,36,0.15)',
-    'btn-hover-bg': ' #f3f4f6',
-    'btn-hover-border': 'rgba(27,31,36,0.15)',
+    /* Border */
+    'border-default': '#303643',
+
+    /* Button */
+    'btn-text': '#c9d1d9',
+    'btn-bg': '#21262d',
+    'btn-border': 'rgba(240,246,252,0.1)',
+    'btn-hover-bg': ' #30363d',
+    'btn-hover-border': '#8b949e',
   },
   shadows: {
-    'btn-shadow': '0 1px 0 rgba(27,31,36,0.04)',
-    'btn-inset-shadow': 'inset 0 1px 0 rgba(255,255,255,0.25)',
+    'btn-shadow': '0 0 transparent',
+    'btn-inset-shadow': '0 0 transparent',
   },
   space: {},
   fonts: {},

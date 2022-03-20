@@ -5,14 +5,21 @@ import React from 'react';
 const StyledLabel = styled('a', {
   display: 'inline-block',
   padding: '0 7px',
-  fontSize: '$fontSizes$1',
+  fontSize: '$1',
   fontWeight: '500',
   lineHeight: '18px',
   whiteSpace: 'nowrap',
-  border: '1px solid $border$default',
+
   borderRadius: '2em',
-  color: '$colors$foreground',
-  background: '$colors$background',
+  backgroundColor: '$btn-bg',
+  color: '$btn-text',
+  border: '1px solid transparent',
+  borderColor: '$btn-border',
+  boxShadow: '$btn-shadow, $btn-inset-shadow',
+  '&:hover': {
+    backgroundColor: '$btn-hover-bg',
+    borderColor: '$btn-hover-border',
+  },
 });
 
 function Label(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {

@@ -12,11 +12,6 @@ import {ArrowLeftIcon, ArrowRightIcon} from '@radix-ui/react-icons';
 
 const Box = styled('div', {});
 
-const Text = styled('p', {
-  fontFamily: '$pretendard',
-  color: '$hiContrast',
-});
-
 const Container = styled('div', {
   marginX: 'auto',
   paddingX: '$3',
@@ -41,10 +36,6 @@ function Home({config, posts}: InferGetStaticPropsType<typeof getStaticProps>) {
     <Layout config={config}>
       <Box css={{paddingY: '$6'}}>
         <Container size={{'@initial': '1', '@bp1': '2'}}>
-          <Text as='h1'>{config.title || ''}</Text>
-          <Text>{config.subtitle}</Text>
-          <SocialButtonCollection social={config.social} />
-
           <section>
             <h2>Blog</h2>
             <ul>
@@ -61,11 +52,11 @@ function Home({config, posts}: InferGetStaticPropsType<typeof getStaticProps>) {
               ))}
             </ul>
           </section>
-          <Button>
+          <Button content='icontext'>
             <ArrowLeftIcon />
             Prev
           </Button>
-          <Button>
+          <Button content='icontext'>
             Next
             <ArrowRightIcon />
           </Button>

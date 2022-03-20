@@ -22,7 +22,7 @@ const StyledAnchor = styled('a', {
   alignItems: 'center',
   padding: '2px',
   fontSize: '$fontSizes$1',
-  color: '$colors$foreground',
+  color: '$btn-text',
   '&>svg': {
     width: '24px',
     height: '24px',

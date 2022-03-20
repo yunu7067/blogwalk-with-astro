@@ -2,7 +2,7 @@ import React from 'react';
 import {GetStaticPropsContext, InferGetStaticPropsType} from 'next';
 import Head from 'next/head';
 import Layout from '@com/Layout';
-import {Button, Label} from '@com/atoms';
+import {Article, Button, Label} from '@com/atoms';
 import {getConfig, markdownToHtml, getAllPosts, getPostBySlug} from '@libs';
 import Commnets from '@com/organisms/Commnet';
 import {useRouter} from 'next/router';
@@ -18,12 +18,10 @@ function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticP
         <meta property='og:title' content={post.title} key='title' />
         {post.description && <meta name='description' content={post.description} />}
       </Head>
-
-      <Button onClick={back}>
+      <Button onClick={back} content='icontext'>
         <ArrowLeftIcon /> back
       </Button>
-
-      <article>
+      <section>
         {post.img && <p>{post.img}</p>}
         {post.title && <p>{post.title}</p>}
         {post.date && <p>{post.date}</p>}
@@ -32,9 +30,9 @@ function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticP
             {tag}
           </Label>
         ))}
-        <div dangerouslySetInnerHTML={{__html: content}} />
-        <Commnets {...config.comments} />
-      </article>
+        <Article dangerouslySetInnerHTML={{__html: content}} />
+      </section>
+      <Commnets {...config.comments} />
     </Layout>
   );
 }
@@ -45,7 +43,7 @@ async function getStaticProps({params}: GetStaticPropsContext<{slug: string}>) {
 
   const post = getPostBySlug(slug, ['title', 'date', 'slug', 'tags', 'content', 'img']);
 
-  const content = await markdownToHtml(post!.content || '', '테스트', config.post);
+  const content = await markdownToHtml(post!.content || '', post.slug, config.post);
 
   return {
     props: {
