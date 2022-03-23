@@ -71,3 +71,15 @@ export function getAllPosts(fields: string[] = []): Items[] {
 
   return posts;
 }
+
+export function getAllTags() {
+  const posts = getAllPosts(['tags']);
+  return posts
+    .map(post => post?.tags)
+    .flat()
+    .filter(v => v !== undefined);
+}
+export function getPostsByTag(tag: string, fields: string[] = []) {
+  const posts = getAllPosts([...fields, 'tags']);
+  return posts.filter(post => post?.tags?.includes(tag));
+}
