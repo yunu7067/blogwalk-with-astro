@@ -9,8 +9,8 @@ import rehypeKatex from 'rehype-katex';
 import remarkImage from './remarkImage';
 
 export default async function markdownToHtml(markdown: string, postFolderName: string, config?: PostConfigType) {
-  const plugins: Preset | PluggableList = [remarkParse, remarkGfm];
   const parser = unified();
+  const plugins: Preset | PluggableList = [remarkParse, remarkGfm];
 
   if (config) {
     /* pre processing */

@@ -52,9 +52,13 @@ export const Article = styled('article', {
     },
   },
   /* 강조 */
-  strong: {},
+  strong: {
+    fontWeight: '600',
+  },
   /* 기울임 */
-  em: {},
+  em: {
+    fontStyle: 'italic',
+  },
   /* 취소선 */
   del: {},
   /* 줄바꿈 */
@@ -86,8 +90,6 @@ export const Article = styled('article', {
     margin: '1em 0',
   },
 
-  pre: {},
-
   /* 블록인용 */
   blockquote: {
     display: 'block',
@@ -100,10 +102,9 @@ export const Article = styled('article', {
   },
   /* 코드블록 */
   code: {
-    display: 'block',
-    margin: '.5em 0',
-    padding: '.5em 1em',
-    borderRadius: '6px',
+    display: 'inline',
+    padding: '0.2em 0.4em',
+    fontSize: '85%',
     color: 'rgb(57, 58, 52)',
     backgroundColor: 'rgb(246, 248, 250)',
     overflow: 'auto',
@@ -111,6 +112,19 @@ export const Article = styled('article', {
       margin: '0',
     },
   },
+
+  pre: {
+    margin: '.5em 0',
+    code: {
+      height: 'fit-content',
+      padding: '.5em 1em',
+      fontSize: '100%',
+    },
+    '*': {
+      display: 'block',
+    },
+  },
+
   /* 이미지 */
   img: {
     display: 'block',
