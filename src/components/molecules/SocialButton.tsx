@@ -1,3 +1,4 @@
+import {AnchorButton} from '@com/atoms';
 import {
   DiscordLogoIcon,
   GitHubLogoIcon,
@@ -6,9 +7,7 @@ import {
   NotionLogoIcon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons';
-import {styled} from '@style/createStyles';
 import {SocialIdentifiers} from '@types';
-import Link from 'next/link';
 import {useMemo} from 'react';
 
 interface SocialButtonParams {
@@ -17,48 +16,33 @@ interface SocialButtonParams {
   href: string;
 }
 
-const StyledAnchor = styled('a', {
-  display: 'inline-flex',
-  alignItems: 'center',
-  padding: '2px',
-  fontSize: '$fontSizes$1',
-  color: '$btn-text',
-  '&>svg': {
-    width: '24px',
-    height: '24px',
-  },
-});
-
 function SocialIcon({identifier}: {identifier: SocialIdentifiers}) {
   switch (identifier) {
     case 'discord':
-      return <DiscordLogoIcon />;
+      return <DiscordLogoIcon width='20' height='20' />;
     case 'github':
-      return <GitHubLogoIcon />;
+      return <GitHubLogoIcon width='20' height='20' />;
     case 'instagram':
-      return <InstagramLogoIcon />;
+      return <InstagramLogoIcon width='20' height='20' />;
     case 'linkedin':
-      return <LinkedInLogoIcon />;
+      return <LinkedInLogoIcon width='20' height='20' />;
     case 'notion':
-      return <NotionLogoIcon />;
+      return <NotionLogoIcon width='20' height='20' />;
     case 'twitter':
-      return <TwitterLogoIcon />;
+      return <TwitterLogoIcon width='20' height='20' />;
     default:
       return <>{identifier}</>;
   }
 }
 
-function SocialButton(social: SocialButtonParams) {
+export default function SocialButton(social: SocialButtonParams) {
   const SocialButtonMemo = useMemo(() => {
     return (
-      <Link href={social.href} passHref>
-        <StyledAnchor title={social.title} target='_blank' rel='noopener noreferrer'>
-          <SocialIcon identifier={social.identifier} />
-        </StyledAnchor>
-      </Link>
+      <AnchorButton href={social.href} title={social.title} target='_blank' rel='noopener noreferrer'>
+        <SocialIcon identifier={social.identifier} />
+      </AnchorButton>
     );
   }, [social]);
+
   return SocialButtonMemo;
 }
-
-export default SocialButton;

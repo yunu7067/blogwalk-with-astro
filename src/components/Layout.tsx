@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import {Button} from '@com/atoms';
 import {SocialButtonCollection} from '@com/organisms';
+import BlogHeader from '@com/organisms/BlogHeader';
 import {MoonIcon, SunIcon} from '@radix-ui/react-icons';
 import {styled} from '@style/createStyles';
 import {darkTheme, lightTheme} from '@style/themes';
@@ -56,15 +57,17 @@ function Layout({children, config}: LayoutProps) {
       </Head>
       <Root className={theme}>
         <Header>
-          <aside>{config.avatar?.enabled && <img src={`/${config.avatar.src}`} alt='avatar' width='64' />}</aside>
+          <BlogHeader config={config} />
           {config.theme === 'auto' && (
-            <Button content='icon' onClick={toggleTheme}>
+            <Button
+              content='icon'
+              onClick={toggleTheme}
+              aria-label='Use dark mode'
+              aria-pressed={themeString !== 'light'}
+            >
               {themeString === 'light' ? <SunIcon /> : <MoonIcon />}
             </Button>
           )}
-          <h1>{config.title || ''}</h1>
-          <p>{config.subtitle}</p>
-          <SocialButtonCollection social={config.social} />
         </Header>
         <Content>{children}</Content>
       </Root>

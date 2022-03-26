@@ -3,14 +3,14 @@
 /** @type {import('@types').BlogConfigType} */
 const blogConfig = {
   baseurl: 'http://example.com/',
-  title: 'new blog',
-  subtitle: '새로운 블로그',
+  title: '새로운 블로그',
+  subtitle: 'next.js와 stitches, lunr 검색 엔진으로 만드는 블로그',
   locale: {
     languageCode: 'ko-KR',
   },
   avatar: {
     enabled: true,
-    src: 'img/avatar.png',
+    src: 'img/avatar.jpg',
   },
   social: [
     {identifier: 'github', name: 'yunu7067', url: 'https://github.com/yunu7067'},
