@@ -1,10 +1,12 @@
 import type {PostConfigType} from '@types';
 
 export interface PostType {
-  id: string;
+  slug: string;
   title: string;
-  date: string;
-  post: PostConfigType;
+  description?: string;
+  date: Date;
+  image?: string;
+  draft?: boolean;
+  series?: string;
   content?: string;
-  rest?: unknown[];
 }

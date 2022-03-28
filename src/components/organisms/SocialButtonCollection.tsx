@@ -1,4 +1,4 @@
-import SocialButton from '@com/molecules/SocialButton';
+import {SocialButton} from '@com/molecules';
 import {SocialConfigType} from '@types';
 
 interface SocialButtonCollectionParam {

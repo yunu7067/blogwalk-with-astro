@@ -1,21 +1,16 @@
 import React from 'react';
-import type {InferGetStaticPropsType, NextPage} from 'next';
-import Head from 'next/head';
-
+import type {InferGetStaticPropsType} from 'next';
 import {styled} from '@style/createStyles';
 import Layout from '@com/Layout';
-import Link from 'next/link';
 import {getConfig, getAllPosts} from '@libs';
-import {SocialButtonCollection} from '@com/organisms';
 import {Button} from '@com/atoms';
 import {ArrowLeftIcon, ArrowRightIcon} from '@radix-ui/react-icons';
+import {PostType} from '@types';
+import {PostList} from '@com/molecules';
 
 const Box = styled('div', {});
 
 const Container = styled('div', {
-  marginX: 'auto',
-  paddingX: '$3',
-
   variants: {
     size: {
       1: {
@@ -38,19 +33,12 @@ function Home({config, posts}: InferGetStaticPropsType<typeof getStaticProps>) {
         <Container size={{'@initial': '1', '@bp1': '2'}}>
           <section>
             <h2>Blog</h2>
-            <ul>
-              {posts.map(({slug, date, title}) => (
-                <li key={slug} style={{marginBottom: '20px'}}>
-                  <Link href={`/p/${slug}`}>
-                    <a>
-                      {title}
-                      <br />
-                      {date}
-                    </a>
-                  </Link>
-                </li>
+
+            <PostList>
+              {posts.map(post => (
+                <PostList.Item key={post.slug} post={post as unknown as PostType} />
               ))}
-            </ul>
+            </PostList>
           </section>
           <Button content='icontext'>
             <ArrowLeftIcon />

@@ -5,6 +5,7 @@
 - Framework : Next.jS
 - Style : [Stitches](https://stitches.dev/)
 - Markdown Parser: unified, [remark](https://github.com/remarkjs/remark)
+- Search Engine : [Lunr.js](https://lunrjs.com/)
 
 ## NextJS Static HTML Export
 
