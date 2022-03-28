@@ -5,8 +5,11 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import {PluggableList, Plugin, Preset, unified} from 'unified';
 import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
 import remarkImage from './remarkImage';
+import remarkToc from 'remark-toc';
+import rehypeSlug from 'rehype-slug';
+import rehypeKatex from 'rehype-katex';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 export default async function markdownToHtml(markdown: string, postFolderName: string, config?: PostConfigType) {
   const parser = unified();
@@ -17,8 +20,16 @@ export default async function markdownToHtml(markdown: string, postFolderName: s
     if (config.math) {
       plugins.push(remarkMath);
     }
+    /* make toc */
+    if (config.toc) {
+      plugins.push([remarkToc, {maxDepth: 3, skip: 'delta'}]);
+    }
+    /* posts image to public folder */
+    plugins.push([remarkImage, {folderName: postFolderName}]);
+
     /* remark -> rehype */
-    plugins.push([remarkImage, {folderName: postFolderName}], remarkRehype as Plugin);
+    plugins.push(remarkRehype as Plugin);
+    plugins.push(rehypeSlug, rehypeAutolinkHeadings);
 
     /* post processing */
     if (config.math) {
@@ -29,7 +40,7 @@ export default async function markdownToHtml(markdown: string, postFolderName: s
     plugins.push(rehypeStringify);
   }
 
-  // console.debug({plugins});
+  console.debug({plugins});
   const result = await parser.use(plugins).process(markdown);
 
   return result.toString();
