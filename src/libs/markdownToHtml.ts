@@ -29,6 +29,8 @@ export default async function markdownToHtml(markdown: string, postFolderName: s
 
     /* remark -> rehype */
     plugins.push(remarkRehype as Plugin);
+
+    /* automatic header id */
     plugins.push(rehypeSlug, rehypeAutolinkHeadings);
 
     /* post processing */
