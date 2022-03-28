@@ -5,7 +5,7 @@ export default globalCss({
   ...reset,
   '*': {
     boxSizing: 'border-box',
-    fontFamily: '$fonts$pretendard',
+    fontFamily: '$fonts$pretendard !important',
   },
   a: {
     color: 'inherit',
