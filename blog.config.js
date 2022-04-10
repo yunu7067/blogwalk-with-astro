@@ -22,7 +22,7 @@ const blogConfig = {
     math: true,
     mermaid: true,
     readingTime: false,
-    toc: false,
+    toc: true,
     license: {
       enable: false,
       default: '',

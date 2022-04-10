@@ -1,11 +1,11 @@
 import {globalCss} from './createStyles';
-import {reset} from './reset.css';
+import {minireset} from '@style/minireset.css';
 
 export default globalCss({
-  ...reset,
+  ...minireset,
   '*': {
     boxSizing: 'border-box',
-    fontFamily: '$fonts$pretendard',
+    fontFamily: '$fonts$pretendard !important',
   },
   a: {
     color: 'inherit',
