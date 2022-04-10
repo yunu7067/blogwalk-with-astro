@@ -9,16 +9,18 @@ const StyledBlogHeader = styled('header', {
   paddingTop: '$3',
   paddingBottom: '$1',
   display: 'flex',
-  gap: '1ch',
 
   variants: {
     responsive: {
       1: {
+        gap: '1ch',
         alignItems: 'center',
         textAlign: 'center',
         flexDirection: 'column',
       },
       2: {
+        gap: '2ch',
+        textAlign: 'start',
         alignItems: 'flex-start',
         flexDirection: 'row',
       },
