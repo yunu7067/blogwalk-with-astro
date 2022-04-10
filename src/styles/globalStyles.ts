@@ -18,4 +18,7 @@ export default globalCss({
     padding: 0,
     margin: 0,
   },
+  body: {
+    overflowY: 'scroll',
+  },
 });
