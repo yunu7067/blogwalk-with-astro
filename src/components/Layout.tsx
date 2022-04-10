@@ -16,21 +16,28 @@ interface LayoutProps {
 }
 
 const Root = styled('div', {
+  minHeight: '100vh',
+  height: 'fit-content',
+
   color: '$fg-default',
   background: '$canvas-default',
   transition: 'background 0.25s ease, color 0.30s ease',
-  minHeight: '100vh',
-  height: 'fit-content',
 });
 
 const Wrapper = styled('div', {
   margin: 'auto',
+  padding: '$3',
   maxWidth: '70ch',
+  position: 'relative',
 });
 
 const Header = styled(Wrapper, {});
-const Content = styled(Wrapper, {
-  minHeight: '100vh',
+const Content = styled(Wrapper, {});
+
+const DarkModeButtonContainer = styled('div', {
+  position: 'absolute',
+  top: '2ch',
+  right: '2ch',
 });
 
 function Layout({children, config}: LayoutProps) {
@@ -59,14 +66,16 @@ function Layout({children, config}: LayoutProps) {
         <Header>
           <BlogHeader config={config} />
           {config.theme === 'auto' && (
-            <Button
-              content='icon'
-              onClick={toggleTheme}
-              aria-label='Use dark mode'
-              aria-pressed={themeString !== 'light'}
-            >
-              {themeString === 'light' ? <SunIcon /> : <MoonIcon />}
-            </Button>
+            <DarkModeButtonContainer>
+              <Button
+                content='icon'
+                onClick={toggleTheme}
+                aria-label='Use dark mode'
+                aria-pressed={themeString !== 'light'}
+              >
+                {themeString === 'light' ? <SunIcon /> : <MoonIcon />}
+              </Button>
+            </DarkModeButtonContainer>
           )}
         </Header>
         <Content>{children}</Content>

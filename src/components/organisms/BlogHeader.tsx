@@ -5,26 +5,31 @@ import Link from 'next/link';
 
 const StyledBlogHeader = styled('header', {
   width: '100%',
+  color: '$fg-default',
+  paddingTop: '$3',
+  paddingBottom: '$1',
+  display: 'flex',
+  gap: '1ch',
 
   variants: {
-    padding: {
+    responsive: {
       1: {
-        paddingX: '$2',
-        paddingY: '$5',
+        alignItems: 'center',
+        textAlign: 'center',
+        flexDirection: 'column',
       },
       2: {
-        paddingX: '0',
-        paddingY: '$5',
+        alignItems: 'flex-start',
+        flexDirection: 'row',
       },
     },
   },
 });
 
 const StyledAvatar = styled('div', {
-  display: 'inline-block',
+  flex: 'none',
   width: '96px',
   height: '96px',
-  marginRight: '$3',
   borderRadius: '29px',
   overflow: 'hidden',
 
@@ -35,28 +40,34 @@ const StyledAvatar = styled('div', {
 });
 
 const StyledBlogMetadata = styled('div', {
-  display: 'inline-block',
-  height: '96px',
+  flex: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
+  minHeight: '96px',
   paddingY: '$1',
   overflow: 'hidden',
 
   '& > h1': {
+    flex: 'none',
     marginBottom: '$2',
     fontSize: '$6',
     fontWeight: '700',
   },
   '& > p': {
-    marginBottom: '$3',
+    flex: 'auto',
     fontSize: '$2',
+  },
+  '& > div': {
+    flex: 'none',
   },
 });
 
 export default function BlogHeader({config}: {config: BlogConfigType}) {
   return (
     <StyledBlogHeader
-      padding={{
+      responsive={{
         '@initial': '1',
-        '@bp2': '2',
+        '@bp1': '2',
       }}
     >
       <StyledAvatar>

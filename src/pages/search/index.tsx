@@ -36,6 +36,7 @@ export default function Series({config, post, indexing}: InferGetStaticPropsType
       console.log(finds);
       setPosts(finds);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
 
   return (
