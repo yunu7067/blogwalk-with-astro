@@ -7,6 +7,7 @@ import {Button} from '@com/atoms';
 import {ArrowLeftIcon, ArrowRightIcon} from '@radix-ui/react-icons';
 import {PostType} from '@types';
 import {PostList} from '@com/molecules';
+import {SearchForm} from '@com/organisms';
 
 const Container = styled('div', {
   margin: 'auto',

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import {Button} from '@com/atoms';
-import {SocialButtonCollection} from '@com/organisms';
+import {SearchForm, SocialButtonCollection} from '@com/organisms';
 import BlogHeader from '@com/organisms/BlogHeader';
 import {MoonIcon, SunIcon} from '@radix-ui/react-icons';
 import {styled} from '@style/createStyles';
@@ -78,7 +78,10 @@ function Layout({children, config}: LayoutProps) {
             </DarkModeButtonContainer>
           )}
         </Header>
-        <Content>{children}</Content>
+        <Content>
+          <SearchForm />
+          {children}
+        </Content>
       </Root>
     </>
   );
