@@ -1,8 +1,6 @@
 import {globalCss} from './createStyles';
-import {minireset} from '@style/minireset.css';
 
 export default globalCss({
-  ...minireset,
   '*': {
     boxSizing: 'border-box',
     fontFamily: '$fonts$pretendard !important',
