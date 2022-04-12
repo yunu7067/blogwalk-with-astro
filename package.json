@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "yarn run rimraf node_modules/.cache",
+    "prebuild": "yarn run rimraf node_modules/.cache && yarn run rimraf out",
     "build": "next build && next export",
     "postbuild": "echo $null >> out/.nojekyll",
     "start": "next start",
