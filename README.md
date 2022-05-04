@@ -7,6 +7,40 @@
 - Markdown Parser: unified, [remark](https://github.com/remarkjs/remark)
 - Search Engine : [Lunr.js](https://lunrjs.com/)
 
+## Markdown parsing pipeline
+
+```mermaid
+
+flowchart LR
+	subgraph unified
+		isConfig{Is config exist?}
+		IsMath{Is config.math true?}
+		IsMath2{Is config.math true?}
+		isToc{Is config.toc true?}
+
+			Markdown([Markdown]) --> remarkParse
+			remarkParse --> remarkGfm
+			remarkGfm --> isConfig
+			isConfig -- Yes -->  IsMath
+				IsMath -- Yes --> remarkMath
+					remarkMath --> isToc
+				IsMath -- No --> isToc
+				isToc -- Yes --> remarkToc
+					remarkToc --> remarkImage
+				isToc -- No -->remarkImage
+				remarkImage --> remarkRehype
+				remarkRehype --> rehypeSlug
+				rehypeSlug --> rehypeAutolinkHeadings
+				rehypeAutolinkHeadings --> IsMath2
+				IsMath2 -- Yes --> rehypeKatex
+					rehypeKatex --> rehypeStringify
+				IsMath2 -- No --> rehypeStringify
+			rehypeStringify --> HTML([HTML])
+			isConfig -- No --> End
+	end
+
+```
+
 ## NextJS Static HTML Export
 
 [**Documents**](https://nextjs.org/docs/advanced-features/static-html-export)
