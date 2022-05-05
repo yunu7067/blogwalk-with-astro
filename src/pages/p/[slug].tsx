@@ -3,29 +3,26 @@ import {GetStaticPropsContext, InferGetStaticPropsType} from 'next';
 import Head from 'next/head';
 import Layout from '@com/Layout';
 import {Article, Button, Label} from '@com/atoms';
-import {getConfig, markdownToHtml, getAllPosts, getPostBySlug} from '@libs';
+import {getConfig, markdownToHtml} from '@libs';
 import Commnets from '@com/organisms/Commnet';
 import {useRouter} from 'next/router';
 import {AlignLeftIcon, ArrowLeftIcon, BorderLeftIcon, CaretLeftIcon} from '@radix-ui/react-icons';
+import {getAllSlugs, getPostBySlug} from 'src/libs/api';
+import {Post} from '@types';
 
 function Post({config, post, content}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const {back} = useRouter();
-
   return (
     <Layout config={config}>
       <Head>
-        <title>{post.title}</title>
-        <meta property='og:title' content={post.title} key='title' />
-        {post.description && <meta name='description' content={post.description} />}
+        <title>{post.meta.title}</title>
+        <meta property='og:title' content={post.meta.title} key='title' />
+        {post.meta.description && <meta name='description' content={post.meta.description} />}
       </Head>
-      <Button onClick={back} content='icontext'>
-        <ArrowLeftIcon /> back
-      </Button>
+
       <section>
-        {post.img && <p>{post.img}</p>}
-        {post.title && <p>{post.title}</p>}
-        {post.date && <p>{post.date}</p>}
-        {(post.tags as unknown as string[])?.map(tag => (
+        {post.meta.title && <h1>{post.meta.title}</h1>}
+        {post.meta.date && <p>{post.meta.date}</p>}
+        {(post.meta.tags as unknown as string[])?.map(tag => (
           <Label key={tag} href={`/t/${tag}`}>
             {tag}
           </Label>
@@ -41,25 +38,23 @@ async function getStaticProps({params}: GetStaticPropsContext<{slug: string}>) {
   const config = await getConfig();
   const slug = params!.slug;
 
-  const post = getPostBySlug(slug, ['title', 'date', 'slug', 'tags', 'content', 'img']);
-  const content = await markdownToHtml(post!.content || '', post!.slug, config.post);
-  delete post?.content;
+  // const post = getPostBySlug(slug, ['title', 'date', 'slug', 'tags', 'content', 'img']);
+  const post = getPostBySlug(slug) as Post;
+  const content = await markdownToHtml(post.content || '', post!.slug, config.post);
 
   return {
     props: {
       config: {...config},
       post: {...post},
-      content,
+      content: content,
     },
   };
 }
 
 async function getStaticPaths() {
-  const posts = getAllPosts(['slug']);
-  const paths = posts.map(post => ({
-    params: {
-      slug: post.slug,
-    },
+  const slugs = getAllSlugs();
+  const paths = slugs.map(slug => ({
+    params: {slug},
   }));
 
   return {

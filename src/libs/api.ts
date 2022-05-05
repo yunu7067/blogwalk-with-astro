@@ -5,6 +5,7 @@ import {join} from 'path';
 type Items = {[key: string]: string};
 const PAGE_SIZE = 5;
 const SOURCE_DIR = join(process.cwd(), 'posts');
+const SLUGS = readdirSync(SOURCE_DIR);
 
 export const getPostByDir = (postDir: string) => {
   const postPath = join(SOURCE_DIR, postDir, `index.md`);
@@ -18,14 +19,21 @@ export const getPostByDir = (postDir: string) => {
   };
 };
 
-function getAllPosts() {
-  const dirs = readdirSync(SOURCE_DIR);
-  const posts = dirs
-    .map(dir => getPostByDir(dir))
+export function getAllSlugs() {
+  return SLUGS;
+}
+
+export function getAllPosts() {
+  const posts = SLUGS.map(dir => getPostByDir(dir))
     .filter(post => post !== undefined)
     .sort((post1, post2) => (post1.meta.date > post2.meta.date ? -1 : 1));
 
   return posts;
+}
+
+export function getPostBySlug(slug: string) {
+  const posts = getAllPosts();
+  return posts.find(post => post.slug === slug);
 }
 
 export const getPagination = () => {
