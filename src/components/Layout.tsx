@@ -1,12 +1,12 @@
 import {Button} from '@com/atoms';
-import {SearchForm} from '@com/organisms';
-import BlogHeader from '@com/organisms/BlogHeader';
 import {MoonIcon, SunIcon} from '@radix-ui/react-icons';
 import {styled} from '@style/createStyles';
 import {darkTheme, lightTheme} from '@style/themes';
 import {BlogConfigType} from '@types';
 import Head from 'next/head';
 import React from 'react';
+import {DarkModeButton} from 'src/blocks/elements';
+import {BlogHeader, SearchForm} from 'src/blocks/templates';
 import useTheme from 'src/libs/useTheme';
 
 interface LayoutProps {
@@ -37,12 +37,6 @@ const Content = styled(Wrapper, {
   },
 });
 
-const DarkModeButtonContainer = styled('div', {
-  position: 'absolute',
-  top: '2ch',
-  right: '2ch',
-});
-
 function Layout({children, config}: LayoutProps) {
   const {theme, themeString, toggleTheme} = useTheme({default: config.theme, light: lightTheme, dark: darkTheme});
 
@@ -68,23 +62,11 @@ function Layout({children, config}: LayoutProps) {
       <Root className={theme}>
         <Header>
           <BlogHeader config={config} />
-          {config.theme === 'auto' && (
-            <DarkModeButtonContainer>
-              <Button
-                content='icon'
-                onClick={toggleTheme}
-                aria-label='Use dark mode'
-                aria-pressed={themeString !== 'light'}
-              >
-                {themeString === 'light' ? <SunIcon /> : <MoonIcon />}
-              </Button>
-            </DarkModeButtonContainer>
-          )}
-        </Header>
-        <Content>
+          {config.theme === 'auto' && <DarkModeButton themeString={themeString} toggleTheme={toggleTheme} />}
+
           <SearchForm />
-          {children}
-        </Content>
+        </Header>
+        <Content>{children}</Content>
       </Root>
     </>
   );

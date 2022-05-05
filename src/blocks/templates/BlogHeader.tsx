@@ -4,25 +4,32 @@ import {BlogConfigType} from '@types';
 import Link from 'next/link';
 
 const StyledBlogHeader = styled('header', {
+  maxWidth: '636px',
   width: '100%',
   color: '$fg-default',
-  paddingTop: '$3',
-  paddingBottom: '$1',
+  paddingTop: '$4',
+  paddingBottom: '$3',
+  paddingX: '$3',
   display: 'flex',
+  alignItems: 'center',
+  textAlign: 'center',
+  flexDirection: 'column',
+  gap: '1ch',
 
   variants: {
     responsive: {
-      1: {
-        gap: '1ch',
-        alignItems: 'center',
-        textAlign: 'center',
-        flexDirection: 'column',
-      },
-      2: {
-        gap: '2ch',
+      small: {},
+      medium: {
+        paddingY: '$3',
+        paddingX: '$4',
         textAlign: 'start',
         alignItems: 'flex-start',
         flexDirection: 'row',
+        gap: '2ch',
+      },
+      large: {
+        paddingX: '0',
+        gap: '2ch',
       },
     },
   },
@@ -68,8 +75,10 @@ export default function BlogHeader({config}: {config: BlogConfigType}) {
   return (
     <StyledBlogHeader
       responsive={{
-        '@initial': '1',
-        '@bp1': '2',
+        '@initial': 'small',
+        '@small': 'small',
+        '@medium': 'medium',
+        '@large': 'large',
       }}
     >
       <StyledAvatar>
