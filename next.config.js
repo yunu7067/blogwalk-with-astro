@@ -4,7 +4,7 @@
 const nextConfig = {
   compiler: {
     styledComponents: false,
-    removeConsole: false,
+    removeConsole: true,
   },
   redirects: async () => {
     return [

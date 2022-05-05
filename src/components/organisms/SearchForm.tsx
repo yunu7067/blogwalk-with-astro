@@ -24,9 +24,9 @@ const StyledSearchForm = styled('form', {
 
 export default function SearchForm(props: SearchSectionProps) {
   return (
-    <StyledSearchForm action='/search/'>
-      <input type='text' name='keyword' />
-      <Button content='icon'>
+    <StyledSearchForm action='/search/' role='search'>
+      <input type='search' name='keyword' spellCheck='false' aria-label='Search' />
+      <Button content='icon' aria-label='Submit Search'>
         <MagnifyingGlassIcon />
       </Button>
     </StyledSearchForm>
