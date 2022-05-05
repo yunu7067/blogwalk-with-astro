@@ -27,7 +27,7 @@ export function getSearchIndex(posts: PostType[], refField: string, fields: stri
   };
 
   return lunr(function () {
-    this.use(tokenLengthMetadata);
+    // this.use(tokenLengthMetadata);
     this.ref(refField);
     for (let i = 0; i < fields.length; i++) {
       this.field(fields[i]);

@@ -1,13 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {InferGetStaticPropsType} from 'next';
 import {styled} from '@style/createStyles';
 import Layout from '@com/Layout';
-import {getConfig, getAllPosts} from '@libs';
-import {Button} from '@com/atoms';
-import {ArrowLeftIcon, ArrowRightIcon} from '@radix-ui/react-icons';
-import {PostType} from '@types';
-import {PostList} from '@com/molecules';
-import {SearchForm} from '@com/organisms';
+import {getConfig} from '@libs';
+import {Pagination, PostList} from 'src/blocks/templates';
+import {getPagination, getPostsByPagination} from 'src/libs/api';
+import {Post} from '@types';
 
 const Container = styled('div', {
   margin: 'auto',
@@ -15,7 +13,7 @@ const Container = styled('div', {
   paddingY: '$2',
 });
 
-function Home({config, posts}: InferGetStaticPropsType<typeof getStaticProps>) {
+function Home({config, pagination, posts}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout config={config}>
       <Container>
@@ -24,9 +22,10 @@ function Home({config, posts}: InferGetStaticPropsType<typeof getStaticProps>) {
 
           <PostList>
             {posts.map(post => (
-              <PostList.Item key={post.slug} post={post as unknown as PostType} />
+              <PostList.Item key={post.slug} post={post as unknown as Post} />
             ))}
           </PostList>
+          <Pagination {...pagination} />
         </section>
       </Container>
     </Layout>
@@ -35,14 +34,23 @@ function Home({config, posts}: InferGetStaticPropsType<typeof getStaticProps>) {
 
 export async function getStaticProps() {
   const config = await getConfig();
-  const posts = getAllPosts(['slug', 'title', 'description', 'date', 'img']);
+  // const posts = getAllPosts(['slug', 'title', 'description', 'date', 'img']);
+  const pagination = {
+    current: 1,
+    pageNums: getPagination(),
+  };
+
+  const pages = getPostsByPagination('1');
+  // pages.map(page => console.log(page.meta));
+  console.log(pages.length);
 
   // console.debug(config);
 
   return {
     props: {
       config: {...config},
-      posts,
+      pagination,
+      posts: pages,
     },
   };
 }

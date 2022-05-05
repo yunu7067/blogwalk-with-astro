@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import {Button} from '@com/atoms';
-import {SearchForm, SocialButtonCollection} from '@com/organisms';
+import {SearchForm} from '@com/organisms';
 import BlogHeader from '@com/organisms/BlogHeader';
 import {MoonIcon, SunIcon} from '@radix-ui/react-icons';
 import {styled} from '@style/createStyles';
@@ -26,13 +25,17 @@ const Root = styled('div', {
 
 const Wrapper = styled('div', {
   margin: 'auto',
-  padding: '$3',
-  maxWidth: '70ch',
+  maxWidth: '636px',
   position: 'relative',
 });
 
 const Header = styled(Wrapper, {});
-const Content = styled(Wrapper, {});
+const Content = styled(Wrapper, {
+  '& > section': {
+    contentVisibility: 'auto',
+    containIntrinsicSize: '1000px',
+  },
+});
 
 const DarkModeButtonContainer = styled('div', {
   position: 'absolute',

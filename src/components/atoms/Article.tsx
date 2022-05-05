@@ -120,7 +120,7 @@ export const Article = styled('article', {
       padding: '.5em 1em',
       fontSize: '100%',
     },
-    '*': {
+    '& > *': {
       display: 'block',
     },
   },

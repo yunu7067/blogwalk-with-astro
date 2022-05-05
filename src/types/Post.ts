@@ -1,14 +1,14 @@
-export interface PostDataProps {
+export interface PostMetadataProps {
   title: string;
   description?: string;
   date: string;
   image?: string;
   draft?: boolean;
-  slug?: string;
   series?: string;
   tags?: string[];
 }
-export interface PostContentProps {
+export type Post = {
+  slug: string;
+  meta: PostMetadataProps;
   content: string;
-}
-export type Post = PostDataProps & PostContentProps;
+};

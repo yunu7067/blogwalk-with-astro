@@ -6,6 +6,15 @@ const nextConfig = {
     styledComponents: false,
     removeConsole: false,
   },
+  redirects: async () => {
+    return [
+      {
+        source: '/page/1/',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
   swcMinify: false,
   reactStrictMode: true,
   trailingSlash: true,
