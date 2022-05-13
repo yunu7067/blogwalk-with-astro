@@ -40,6 +40,7 @@ const StyledAvatar = styled('div', {
   width: '96px',
   height: '96px',
   borderRadius: '29px',
+  aspectRatio: '1',
   overflow: 'hidden',
 
   '& > img': {
@@ -82,7 +83,14 @@ export default function BlogHeader({config}: {config: BlogConfigType}) {
       }}
     >
       <StyledAvatar>
-        {config.avatar?.enabled && <img src={`/${config.avatar.src}`} alt='avatar' width='64' />}
+        {config.avatar?.enabled && (
+          <img
+            src={`/${config.avatar.src}`}
+            srcSet={`/${config.avatar.src}.32x32.webp 500w, /${config.avatar.src}.64x64.webp 600w, /${config.avatar.src}.96x96.webp 706w`}
+            alt='avatar'
+            width='96'
+          />
+        )}
       </StyledAvatar>
       <StyledBlogMetadata>
         <h1>
