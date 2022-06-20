@@ -1,9 +1,12 @@
 ---
+import { MarkdownInstance } from 'astro';
+import readingTime from 'reading-time';
+
 export interface Props {
-	post: any;
+	post: MarkdownInstance<Record<string, unknown>>
 }
 
-const { post } = Astro.props;
+const { post } = Astro.props as Props;
 ---
 
 <article class="post-preview">
@@ -12,6 +15,7 @@ const { post } = Astro.props;
 		<a href={post.url}><h1 class="title">{post.frontmatter.title}</h1></a>
 	</header>
 	<p>{post.frontmatter.description}</p>
+	<p>{readingTime(post.rawContent()).text}</p>
 	<a href={post.url}>Read more</a>
 </article>
 
