@@ -11,6 +11,7 @@
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+package-lock.json
 
 # testing
 /coverage
@@ -33,10 +34,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+*.env
 
 # vercel
 .vercel
@@ -44,6 +42,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
+# ignore top-level vscode settings
+/.vscode/settings.json
 
-# next-static-blog
-/public/p
+# exclude IntelliJ/WebStorm stuff
+.idea
+
+# astro
+dist/
+_site/
+scripts/smoke/*-main/
+scripts/memory/project/src/pages/
+*.log
+
+packages/astro/src/**/*.prebuilt.ts
+!packages/astro/vendor/vite/dist
+packages/integrations/**/.netlify/
