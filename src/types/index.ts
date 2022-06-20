@@ -4,6 +4,7 @@ import type {CommentsType, CommentsProvider, GiscusConfigProps} from './Comments
 import type {PostConfigType} from './PostConfigType';
 import type {LocaleConfigType} from './LocaleConfigType';
 import type {ThemeString} from './ThemeString';
+import type {Post} from './Post';
 
 export type {
   BlogConfigType,
@@ -12,6 +13,7 @@ export type {
   GiscusConfigProps,
   LocaleConfigType,
   PostConfigType,
+  Post,
   PostType,
   SocialConfigType,
   SocialIdentifiers,

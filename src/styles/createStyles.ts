@@ -78,7 +78,8 @@ export const {config, createTheme, css, getCssText, globalCss, styled, theme} = 
     }),
   },
   media: {
-    bp1: '(min-width: 520px)',
-    bp2: '(min-width: 900px)',
+    large: '(min-width: 636px)',
+    medium: '(min-width: 425px)',
+    small: '(min-width: 375px)',
   },
 });

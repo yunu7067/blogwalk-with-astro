@@ -1,5 +1,5 @@
-import {Giscus} from '@giscus/react';
-import {CommentsType, GiscusConfigProps, CommentsProvider} from '@types';
+import Giscus from '@giscus/react';
+import {CommentsType, GiscusConfigProps} from '@types';
 
 function GiscusWrapper({config}: {config: GiscusConfigProps | undefined}) {
   if (typeof config === 'undefined') {

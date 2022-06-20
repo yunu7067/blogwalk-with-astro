@@ -4,7 +4,16 @@
 const nextConfig = {
   compiler: {
     styledComponents: false,
-    removeConsole: false,
+    removeConsole: true,
+  },
+  redirects: async () => {
+    return [
+      {
+        source: '/page/1/',
+        destination: '/',
+        permanent: true,
+      },
+    ];
   },
   swcMinify: false,
   reactStrictMode: true,

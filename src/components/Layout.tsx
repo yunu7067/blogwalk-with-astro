@@ -1,13 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
 import {Button} from '@com/atoms';
-import {SocialButtonCollection} from '@com/organisms';
-import BlogHeader from '@com/organisms/BlogHeader';
 import {MoonIcon, SunIcon} from '@radix-ui/react-icons';
 import {styled} from '@style/createStyles';
 import {darkTheme, lightTheme} from '@style/themes';
 import {BlogConfigType} from '@types';
 import Head from 'next/head';
 import React from 'react';
+import {DarkModeButton} from 'src/blocks/elements';
+import {BlogHeader, SearchForm} from 'src/blocks/templates';
 import useTheme from 'src/libs/useTheme';
 
 interface LayoutProps {
@@ -16,21 +15,26 @@ interface LayoutProps {
 }
 
 const Root = styled('div', {
+  minHeight: '100vh',
+  height: 'fit-content',
+
   color: '$fg-default',
   background: '$canvas-default',
   transition: 'background 0.25s ease, color 0.30s ease',
-  minHeight: '100vh',
-  height: 'fit-content',
 });
 
 const Wrapper = styled('div', {
   margin: 'auto',
-  maxWidth: '70ch',
+  maxWidth: '636px',
+  position: 'relative',
 });
 
 const Header = styled(Wrapper, {});
 const Content = styled(Wrapper, {
-  minHeight: '100vh',
+  '& > section': {
+    contentVisibility: 'auto',
+    containIntrinsicSize: '1000px',
+  },
 });
 
 function Layout({children, config}: LayoutProps) {
@@ -58,16 +62,9 @@ function Layout({children, config}: LayoutProps) {
       <Root className={theme}>
         <Header>
           <BlogHeader config={config} />
-          {config.theme === 'auto' && (
-            <Button
-              content='icon'
-              onClick={toggleTheme}
-              aria-label='Use dark mode'
-              aria-pressed={themeString !== 'light'}
-            >
-              {themeString === 'light' ? <SunIcon /> : <MoonIcon />}
-            </Button>
-          )}
+          {config.theme === 'auto' && <DarkModeButton themeString={themeString} toggleTheme={toggleTheme} />}
+
+          <SearchForm />
         </Header>
         <Content>{children}</Content>
       </Root>

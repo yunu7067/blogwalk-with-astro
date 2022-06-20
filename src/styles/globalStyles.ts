@@ -1,8 +1,6 @@
 import {globalCss} from './createStyles';
-import {reset} from './reset.css';
 
 export default globalCss({
-  ...reset,
   '*': {
     boxSizing: 'border-box',
     fontFamily: '$fonts$pretendard !important',
@@ -17,5 +15,8 @@ export default globalCss({
   'html, body': {
     padding: 0,
     margin: 0,
+  },
+  body: {
+    overflowY: 'scroll',
   },
 });

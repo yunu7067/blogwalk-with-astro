@@ -14,8 +14,7 @@ const blogConfig = {
   },
   social: [
     {identifier: 'github', name: 'yunu7067', url: 'https://github.com/yunu7067'},
-    {identifier: 'twitter', name: 'sdaf', url: 'https://github.com/yunu7067'},
-    {identifier: 'linkedin', name: 'sdaf', url: 'https://github.com/yunu7067'},
+    {identifier: 'instagram', name: 'yunu_2022', url: 'https://www.instagram.com/yunu_2022/'},
   ],
   theme: 'auto',
   post: {

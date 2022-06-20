@@ -1,5 +1,5 @@
-import {SocialButton} from '@com/molecules';
 import {SocialConfigType} from '@types';
+import {SocialButton} from 'src/blocks/elements';
 
 interface SocialButtonCollectionParam {
   social: SocialConfigType[] | undefined;
