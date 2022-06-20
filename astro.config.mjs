@@ -9,6 +9,7 @@ export default defineConfig({
   vite: {
     
   },
+  site: "htts://yunu7067.github.io",
   experimental: {
     integrations: true
   },
