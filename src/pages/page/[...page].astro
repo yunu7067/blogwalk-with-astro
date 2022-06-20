@@ -1,12 +1,12 @@
 ---
 // Component Imports
-import BaseHead from '../../components/BaseHead.astro';
+import BaseHead from '../../components/MainHead.astro';
 import BlogHeader from '../../components/BlogHeader.astro';
-import BlogPostPreview from '../../components/BlogPostPreview.astro';
+import BlogPostPreview from '../../components/PostPreview.astro';
 import Pagination from '../../components/Pagination.astro';
 
 export async function getStaticPaths({paginate}) {
-	let allPosts = await Astro.glob('../posts/*.md');
+	let allPosts = await Astro.glob('../p/*.md');
 	const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
 
 	// Return a paginated collection of paths for all posts

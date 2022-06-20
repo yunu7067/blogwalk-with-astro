@@ -12,11 +12,11 @@ const { post } = Astro.props as Props;
 <article class="post-preview">
 	<header>
 		<p class="publish-date">{post.frontmatter.publishDate}</p>
-		<a href={post.url}><h1 class="title">{post.frontmatter.title}</h1></a>
+		<a href={post?.url || '#error'}><h1 class="title">{post.frontmatter.title}</h1></a>
 	</header>
 	<p>{post.frontmatter.description}</p>
 	<p>{readingTime(post.rawContent()).text}</p>
-	<a href={post.url}>Read more</a>
+	<a href={post?.url || "#error"}>Read more</a>
 </article>
 
 <style>
