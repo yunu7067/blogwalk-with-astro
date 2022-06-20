@@ -1,79 +1,71 @@
-# Next.js Static Blog
-
-사용 기술 스택
-
-- Framework : Next.jS
-- Style : [Stitches](https://stitches.dev/)
-- Markdown Parser: unified, [remark](https://github.com/remarkjs/remark)
-- Search Engine : [Lunr.js](https://lunrjs.com/)
-
-## Markdown parsing pipeline
-
-```mermaid
-
-flowchart LR
-	subgraph unified
-		isConfig{Is config exist?}
-		IsMath{Is config.math true?}
-		IsMath2{Is config.math true?}
-		isToc{Is config.toc true?}
-
-			Markdown([Markdown]) --> remarkParse
-			remarkParse --> remarkGfm
-			remarkGfm --> isConfig
-			isConfig -- Yes -->  IsMath
-				IsMath -- Yes --> remarkMath
-					remarkMath --> isToc
-				IsMath -- No --> isToc
-				isToc -- Yes --> remarkToc
-					remarkToc --> remarkImage
-				isToc -- No -->remarkImage
-				remarkImage --> remarkRehype
-				remarkRehype --> rehypeSlug
-				rehypeSlug --> rehypeAutolinkHeadings
-				rehypeAutolinkHeadings --> IsMath2
-				IsMath2 -- Yes --> rehypeKatex
-					rehypeKatex --> rehypeStringify
-				IsMath2 -- No --> rehypeStringify
-			rehypeStringify --> HTML([HTML])
-			isConfig -- No --> End
-	end
+# Astro Starter Kit: Blog
 
 ```
+npm init astro -- --template blog
+```
 
-## NextJS Static HTML Export
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
 
-[**Documents**](https://nextjs.org/docs/advanced-features/static-html-export)
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-### Supported Features
+Features:
 
-The majority of core Next.js features needed to build a static site are supported, including:
+- ✅ SEO-friendly setup with canonical URLs and OpenGraph data
+- ✅ Full Markdown support
 
-- [Dynamic Routes when using getStaticPaths](https://nextjs.org/docs/routing/dynamic-routes)
-- Prefetching with next/link
-- Preloading JavaScript
-- [Dynamic Imports](https://nextjs.org/docs/advanced-features/dynamic-import)
-- Any styling options (e.g. CSS Modules, styled-jsx)
-- [Client-side data fetching](https://nextjs.org/docs/basic-features/data-fetching/client-side)
-- [getStaticProps](https://nextjs.org/docs/basic-features/data-fetching/get-static-props)
-- [getStaticPaths](https://nextjs.org/docs/basic-features/data-fetching/get-static-paths)
-- [Image Optimization](https://nextjs.org/docs/basic-features/image-optimization) using a [custom loader](https://nextjs.org/docs/basic-features/image-optimization#loader)
+## 🚀 Project Structure
 
-### Unsupported Features
+Inside of your Astro project, you'll see the following folders and files:
 
-Features that require a Node.js server, or dynamic logic that cannot be computed during the build process, are not supported:
+```
+├── README.md
+├── astro.config.mjs
+├── package.json
+├── public
+│   ├── assets
+│   │   └── blog
+│   │       └── introducing-astro.jpg
+│   ├── favicon.ico
+│   ├── social.jpg
+│   └── social.png
+├── sandbox.config.json
+├── src
+│   ├── components
+│   │   ├── Author.astro
+│   │   ├── BaseHead.astro
+│   │   ├── BlogHeader.astro
+│   │   ├── BlogPost.astro
+│   │   ├── BlogPostPreview.astro
+│   │   ├── Heading.astro
+│   │   └── Logo.astro
+│   ├── layouts
+│   │   └── BlogPost.astro
+│   ├── pages
+│   │   ├── index.astro
+│   │   └── posts
+│   │       └── index.md
+│   └── styles
+│       └── blog.css
+└── tsconfig.json
+```
 
-- [Image Optimization (default loader)](https://nextjs.org/docs/basic-features/image-optimization)
-- [Internationalized Routing](https://nextjs.org/docs/advanced-features/i18n-routing)
-- [API Routes](https://nextjs.org/docs/api-routes/introduction)
-- [Rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites)
-- [Redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects)
-- [Headers](https://nextjs.org/docs/api-reference/next.config.js/headers)
-- [Middleware](https://nextjs.org/docs/middleware)
-- [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration)
-- [fallback: true](https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-true)
-- [getServerSideProps](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-## Licences
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-- [Radix Icons - designed by the @modulz team](https://icons.modulz.app/)
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command           | Action                                       |
+|:----------------  |:-------------------------------------------- |
+| `npm install`     | Installs dependencies                        |
+| `npm run dev`     | Starts local dev server at `localhost:3000`  |
+| `npm run build`   | Build your production site to `./dist/`      |
+| `npm run preview` | Preview your build locally, before deploying |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
