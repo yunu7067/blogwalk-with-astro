@@ -26,8 +26,8 @@ jobs:
           node-version: 16
 
       # Not using npm? Change `npm ci` to `yarn install` or `pnpm i`
-      #- name: Install dependencies
-      #  run: yarn install
+      - name: Install dependencies
+        run: yarn install
 
       # Not using npm? Change `npm run build` to `yarn build` or `pnpm run build`
       - name: Build Astro
