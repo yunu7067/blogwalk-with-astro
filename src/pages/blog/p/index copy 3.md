@@ -1,8 +1,7 @@
 ---
 setup: |
-  import Layout from '../../layouts/BlogPost.astro'
-  import Cool from '../../components/Author.astro'
-  import Counter from '../../components/Counter.jsx'
+  import Layout from '../../../layouts/BlogPost.astro'
+  import Cool from '../../../components/Author.astro'
   import { Picture } from "astro-imagetools/components";
 title: Nice Astro!
 publishDate: 12 Sep 2021
@@ -19,7 +18,6 @@ This is so cool!
 
 Do variables work {frontmatter.value * 2}?
 
-<Counter client:visible  />
 
 ```javascript
 // Example JavaScript

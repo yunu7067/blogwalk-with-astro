@@ -1,6 +1,6 @@
 ---
 setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+  import Layout from '../../../layouts/BlogPost.astro'
 title: Nice Astro!
 publishDate: 12 Sep 2021
 description: Just a Hello World Post!

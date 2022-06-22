@@ -1,0 +1,55 @@
+---
+import { SocialConfigType } from "../types/ConfigType";
+import Avatar from "./Avatar.astro";
+import Discord from "./icons/Discord.astro";
+import Facebook from "./icons/Facebook.astro";
+import GitHub from "./icons/GitHub.astro";
+import Instagram from "./icons/Instagram.astro";
+import LinkedIn from "./icons/LinkedIn.astro";
+import LinkedInLine from "./icons/LinkedInLine.astro";
+import Npmjs from "./icons/Npmjs.astro";
+import Twitter from "./icons/Twitter.astro";
+import YouTube from "./icons/YouTube.astro";
+
+export interface Props {
+	avatar?: string;
+	title?: string;
+	description?: string;
+	socials?: SocialConfigType[];
+}
+
+const props = Astro.props as Props;
+
+---
+
+<header class="w-full">
+	<div class="max-w-3xl w-full my-4 flex flex-col items-center mx-auto font-light text-gray-700">
+		{props.avatar &&
+		<Avatar src={props.avatar} alt="avatar" /> }
+		{props.title && <h1 class="mt-2 text-3xl">{props.title}</h1>}
+		{props.description && <p>{props.description}</p>}
+		{props.socials &&
+		<div class="p-1 flex flex-row flex-wrap text-xl">
+			{props.socials.map((social) => (
+			<a href={social.url} title={social.name}>
+				{ social.identifier === 'github' &&
+				<GitHub />}
+				{ social.identifier === 'facebook' &&
+				<Facebook />}
+				{ social.identifier === 'twitter' &&
+				<Twitter />}
+				{ social.identifier === 'discord' &&
+				<Discord />}
+				{ social.identifier === 'instagram' &&
+				<Instagram />}
+				{ social.identifier === 'linkedin' &&
+				<LinkedIn />}
+				{ social.identifier === 'npmjs' &&
+				<Npmjs />}
+				{ social.identifier === 'youtube' &&
+				<YouTube />}
+			</a>
+			))}
+		</div>}
+	</div>
+</header>

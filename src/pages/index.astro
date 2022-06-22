@@ -1,39 +1,39 @@
 ---
-// Component Imports
-import MainHead from '../components/MainHead.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import PostPreview from '../components/PostPreview.astro';
-import Pagination from '../components/Pagination.astro';
+import LargeHeader from '../components/LargeHeader.astro';
+import { SocialConfigType } from '../types/ConfigType';
 
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
-let title = 'Don’s Blog';
+let title = 'yunu://';
 let description = 'An example blog on Astro';
 let canonicalURL = Astro.canonicalURL;
+const avatar = '/public/assets/profile/avatar.jpeg'
 
-// Data Fetching: List all Markdown posts in the repo.
-let allPosts = await Astro.glob('./p/*.md');
+let allPosts = await Astro.glob('./blog/p/*.md');
 allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
-let firstPage = allPosts.slice(0, 2);
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+let firstPage = allPosts.slice(0, 5);
+
+
+const socials: SocialConfigType[] = [
+	{ identifier: 'github', name: 'GitHub test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'facebook', name: 'Facebook test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'twitter', name: 'Twitter test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'discord', name: 'Discord test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'instagram', name: 'Instagram test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'linkedin', name: 'Linkedin test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'npmjs', name: 'Npm test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'youtube', name: 'Npm test', url: 'https://github.com/yunu7067/' },
+];
 ---
 
-<html lang="en">
-	<head>
-		<MainHead {title} {description} image={allPosts[0].frontmatter.image} {canonicalURL} />
-	</head>
+<BaseLayout seo={{ title: title, description: description, image:allPosts[0].frontmatter.image, canonical:
+	canonicalURL.toString() }}>
+	<LargeHeader avatar={avatar} title={title} description={description} socials={socials} />
+	<!-- <Nav {title} /> -->
 
-	<body>
-		<Nav {title} />
+	<main class="wrapper">
+		<a href="/page/">All Posts {'>>'} </a>
+	</main>
 
-		<main class="wrapper">
-			<a href="/page/">All Posts >> </a>
-		</main>
-
-		<footer>
-		</footer>
-	</body>
-</html>
+</BaseLayout>

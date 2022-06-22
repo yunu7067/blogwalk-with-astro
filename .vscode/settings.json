@@ -17,5 +17,6 @@
 	"prettier.rangeStart": 0,
 	"prettier.requirePragma": false,
 	"prettier.insertPragma": true,
-	"editor.tabSize": 2
+	"editor.tabSize": 2,
+	"editor.formatOnSave": true
 }
