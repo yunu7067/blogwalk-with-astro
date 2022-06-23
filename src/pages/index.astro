@@ -5,7 +5,7 @@ import PostPreview from '../components/PostPreview.astro';
 import LargeHeader from '../components/LargeHeader.astro';
 import { SocialConfigType } from '../types/ConfigType';
 
-let title = 'yunu://';
+let title = 'tololo://';
 let description = 'An example blog on Astro';
 let canonicalURL = Astro.canonicalURL;
 const avatar = '/public/assets/profile/avatar.jpeg'
@@ -22,8 +22,10 @@ const socials: SocialConfigType[] = [
 	{ identifier: 'discord', name: 'Discord test', url: 'https://github.com/yunu7067/' },
 	{ identifier: 'instagram', name: 'Instagram test', url: 'https://github.com/yunu7067/' },
 	{ identifier: 'linkedin', name: 'Linkedin test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'npmjs', name: 'Npm test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'youtube', name: 'Npm test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'npmjs', name: 'Npmjs test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'youtube', name: 'Youtube test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'email', name: 'email test', url: 'https://github.com/yunu7067/' },
+	{ identifier: 'default', name: 'Default test', url: 'https://github.com/yunu7067/' },
 ];
 ---
 
@@ -32,8 +34,13 @@ const socials: SocialConfigType[] = [
 	<LargeHeader avatar={avatar} title={title} description={description} socials={socials} />
 	<!-- <Nav {title} /> -->
 
-	<main class="wrapper">
-		<a href="/page/">All Posts {'>>'} </a>
+	<main class="wrapper w-full">
+		<div class="max-w-3xl w-full mx-auto">
+			{firstPage.map((post) => (
+			<PostPreview post={post} />
+			))}
+			<a href="/page/">All Posts {'>>'} </a>
+		</div>
 	</main>
 
 </BaseLayout>

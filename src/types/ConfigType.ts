@@ -6,7 +6,9 @@ export type SocialIdentifiers =
   | 'instagram'
   | 'linkedin'
   | 'npmjs'
-  | 'youtube';
+  | 'youtube'
+  | 'email'
+  | 'default';
 export interface SocialConfigType {
   identifier: SocialIdentifiers;
   name: string;

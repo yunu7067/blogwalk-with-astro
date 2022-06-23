@@ -1,22 +1,24 @@
 {
-	"prettier.arrowParens": "avoid",
-	"prettier.bracketSpacing": false,
-	"prettier.endOfLine": "lf",
-	"prettier.htmlWhitespaceSensitivity": "css",
-	"prettier.jsxBracketSameLine": false,
-	"prettier.jsxSingleQuote": true,
-	"prettier.printWidth": 120,
-	"prettier.proseWrap": "preserve",
-	"prettier.quoteProps": "as-needed",
-	"prettier.semi": true,
-	"prettier.singleQuote": true,
-	"prettier.tabWidth": 2,
-	"prettier.trailingComma": "all",
-	"prettier.useTabs": false,
-	"prettier.vueIndentScriptAndStyle": true,
-	"prettier.rangeStart": 0,
-	"prettier.requirePragma": false,
-	"prettier.insertPragma": true,
-	"editor.tabSize": 2,
-	"editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode",
+    "editor.tabSize": 2,
+    "editor.detectIndentation: false"
+  }
 }
