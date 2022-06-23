@@ -1,5 +1,5 @@
 import {Component} from 'solid-js';
-import {SocialConfigType, SocialIdentifiers} from '../types/ConfigType';
+import {SocialConfigType, SocialIdentifiers} from '../types';
 import {Discord, Earth, Facebook, GitHub, Instagram, LinkedIn, Mail, Npmjs, Twitter, YouTube} from './icons';
 
 interface SocialIconProps {

@@ -3,13 +3,14 @@ import Head from '../components/Head.astro';
 import Footer from '../components/Footer';
 import AstroSeo, { AstroSeoProps } from '../components/AstroSeo';
 import type { JSX } from 'solid-js';
+import { BlogConfigType } from '../types';
 
 export interface Props {
-	head?: JSX.Element;
-	seo?: AstroSeoProps
+	seo?: AstroSeoProps,
+	config: BlogConfigType
 }
 
-const { seo, head } = Astro.props as Props;
+const { seo, config } = Astro.props as Props;
 const defaultSeo: AstroSeoProps = {
 	twitter: {
 		site: '@site',
@@ -17,10 +18,9 @@ const defaultSeo: AstroSeoProps = {
 		cardType: 'summary',
 	}
 };
-// console.log(seo);
 ---
 
-<html lang={'ko'}>
+<html lang={config?.locale.languageCode || 'ko' }>
 
 <Head>
 	<AstroSeo {...{...defaultSeo, ...seo}} />
