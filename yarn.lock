@@ -450,10 +450,10 @@ __metadata:
   dependencies:
     "@astrojs/solid-js": ^0.1.4
     "@astrojs/tailwind": ^0.2.1
-    astro: ^1.0.0-beta.48
+    astro: ^1.0.0-beta.53
     astro-imagetools: ^0.6.10
     reading-time: ^1.5.0
-    sass: ^1.52.3
+    sass: ^1.53.0
     solid-js: ^1.4.4
   languageName: unknown
   linkType: soft
@@ -1389,9 +1389,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^1.0.0-beta.48":
-  version: 1.0.0-beta.48
-  resolution: "astro@npm:1.0.0-beta.48"
+"astro@npm:^1.0.0-beta.53":
+  version: 1.0.0-beta.53
+  resolution: "astro@npm:1.0.0-beta.53"
   dependencies:
     "@astrojs/compiler": ^0.16.1
     "@astrojs/language-server": ^0.13.4
@@ -1450,7 +1450,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: 51f5235e6d8ef20c7e0113659848f82ef18bf74dde9cf7e7a8cda6ae2ed4243067bd9491c7a2ec368fbb2e213aab1022366d97f6321c7066d6c535632306bec4
+  checksum: 281de2fa0913fb97e3abac1face03dcb3ca720c4972cf6aa47daf732955ff45ff43da8cfa3ddb0e4595b94b7905bf1e4a656f8f0873204bba91548c590cb4fec
   languageName: node
   linkType: hard
 
@@ -5882,16 +5882,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.52.3":
-  version: 1.52.3
-  resolution: "sass@npm:1.52.3"
+"sass@npm:^1.53.0":
+  version: 1.53.0
+  resolution: "sass@npm:1.53.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 175a073c0e7b67d1baff6d3969431228002ece681886cebc2a354c241134ff120fda5c12a0465989966dacfb1ca518d85507304f4d4cd03d4a91d71dbc77d978
+  checksum: 4bcb0617d6a4d1f2c089a1cb5c32f65a9ee874b23559f2742fab07cf8478fb74ad20c0730cf9f93915d7dbfc258901f89970674228c3ac91c3883a0a62a0ddab
   languageName: node
   linkType: hard
 
