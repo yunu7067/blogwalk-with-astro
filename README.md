@@ -1,9 +1,18 @@
 # astro 정적 블로그
 
+## 구현할 기능
+
+- [ ] 게시글 카테고리
+- [ ] 게시글 태그
+- [ ] 검색
+- [ ] 조회수
+
 ## Description
+
 .
 
 ## Credits
+
 - [Remix Icon](https://github.com/Remix-Design/RemixIcon) - Apache License 2.0
 
   <details markdown="1">

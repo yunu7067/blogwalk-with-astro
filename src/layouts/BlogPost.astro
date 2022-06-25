@@ -3,13 +3,13 @@ import BaseLayout from './BaseLayout.astro';
 import BlogHeader from '../components/BlogHeader.astro';
 import BlogPost from '../components/BlogPost.astro';
 import Author from '../components/Author.astro';
-
+import config from '../../blog.config.js';
 
 const { content } = Astro.props;
 const { title, description, publishDate, author, heroImage, permalink, alt } = content;
 ---
 
-<BaseLayout seo={{title: title, description: description}}>
+<BaseLayout seo={{title: title, description: description}} config={config}>
 	<BlogHeader />
 	<div class="max-w-3xl w-full">
 		<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
