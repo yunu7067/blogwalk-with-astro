@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Nav from '../components/Nav.astro';
 import PostPreview from '../components/PostPreview.astro';
 import LargeHeader from '../components/LargeHeader.astro';
 import { SocialConfigType } from '../types/ConfigType';
+import { ArrowRightCircleLine } from '../components/icons';
 
 let title = 'tololo://';
 let description = 'An example blog on Astro';
@@ -32,14 +32,18 @@ const socials: SocialConfigType[] = [
 <BaseLayout seo={{ title: title, description: description, image:allPosts[0].frontmatter.image, canonical:
 	canonicalURL.toString() }}>
 	<LargeHeader avatar={avatar} title={title} description={description} socials={socials} />
-	<!-- <Nav {title} /> -->
 
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto">
 			{firstPage.map((post) => (
 			<PostPreview post={post} />
 			))}
-			<a href="/page/">All Posts {'>>'} </a>
+			<div class="text-right tracking-tight">
+				<a href="/blog/page/" class="p-2 inline-flex flex-row items-center gap-2">
+					All Posts
+					<ArrowRightCircleLine />
+				</a>
+			</div>
 		</div>
 	</main>
 

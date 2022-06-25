@@ -239,11 +239,6 @@ pre {
 	}
 }
 
-.flex {
-	display: flex;
-	align-items: center;
-}
-
 img.cover {
 	width: 100%;
 	max-height: 50vh;

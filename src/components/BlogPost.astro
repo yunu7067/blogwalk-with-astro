@@ -1,4 +1,5 @@
 ---
+import { timeFormatter } from '../utils/timeFormatter';
 import Author from './Author.astro';
 
 export interface Props {
@@ -7,9 +8,10 @@ export interface Props {
 	publishDate: string;
 	heroImage: string;
 	alt: string;
+	locale: string;
 }
 
-const { title, author, publishDate, heroImage, alt } = Astro.props;
+const { title, author, publishDate, heroImage, alt, locale } = Astro.props;
 ---
 
 <div class="layout">
@@ -17,13 +19,13 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
 		<div>
 			<header>
 				{heroImage && <img width="720" height="420" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}
-				<p class="publish-date">{publishDate}</p>
+				<p class="publish-date">{timeFormatter(publishDate, locale || "ko-KR")}</p>
 				<h1 class="title">{title}</h1>
-				<Author name="@FredKSchott" href="https://twitter.com/FredKSchott" />
 			</header>
 			<main>
 				<slot />
 			</main>
+			<Author name="@FredKSchott" href="https://twitter.com/FredKSchott" />
 		</div>
 	</article>
 </div>
