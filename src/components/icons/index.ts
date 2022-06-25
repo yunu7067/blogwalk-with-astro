@@ -1,3 +1,4 @@
+export {default as ArrowLeftCircleLine} from './ArrowLeftCircleLine';
 export {default as ArrowRightCircleLine} from './ArrowRightCircleLine';
 export {default as Discord} from './Discord';
 export {default as Earth} from './Earth';

@@ -4,17 +4,22 @@ import PostPreview from '../components/PostPreview.astro';
 import LargeHeader from '../components/LargeHeader.astro';
 import { SocialConfigType } from '../types/ConfigType';
 import { ArrowRightCircleLine } from '../components/icons';
+import AdditionalPost from '../components/AdditionalPost.astro';
+import { AstroSeoProps } from '../components/AstroSeo';
 
-let title = 'tololo://';
-let description = 'An example blog on Astro';
-let canonicalURL = Astro.canonicalURL;
 const avatar = '/public/assets/profile/avatar.jpeg'
 
-let allPosts = await Astro.glob('./blog/p/*.md');
-allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
-let firstPage = allPosts.slice(0, 5);
+let allPosts = await Astro.glob('./p/*.md');
+allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+let firstPage = allPosts.slice(0, 3);
 
 
+const seo: AstroSeoProps = {
+	title: 'tololo://',
+	description: 'An example blog on Astro',
+	image: allPosts[0].frontmatter.image,
+	canonical: Astro.canonicalURL.toString()
+};
 const socials: SocialConfigType[] = [
 	{ identifier: 'github', name: 'GitHub test', url: 'https://github.com/yunu7067/' },
 	{ identifier: 'facebook', name: 'Facebook test', url: 'https://github.com/yunu7067/' },
@@ -29,17 +34,18 @@ const socials: SocialConfigType[] = [
 ];
 ---
 
-<BaseLayout seo={{ title: title, description: description, image:allPosts[0].frontmatter.image, canonical:
-	canonicalURL.toString() }}>
-	<LargeHeader avatar={avatar} title={title} description={description} socials={socials} />
+<BaseLayout seo={seo}>
+	<LargeHeader avatar={avatar} title={seo.title} description={seo.description} socials={socials} />
 
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto">
+			<AdditionalPost />
+
 			{firstPage.map((post) => (
 			<PostPreview post={post} />
 			))}
 			<div class="text-right tracking-tight">
-				<a href="/blog/page/" class="p-2 inline-flex flex-row items-center gap-2">
+				<a href="/page/" class="p-2 inline-flex flex-row items-center gap-2">
 					All Posts
 					<ArrowRightCircleLine />
 				</a>

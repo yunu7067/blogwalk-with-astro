@@ -1,7 +1,20 @@
 ---
+import { Picture } from "astro-imagetools/components";
+import { AstroSeoProps } from "../components/AstroSeo";
 import BaseLayout from '../layouts/BaseLayout.astro';
----
-<BaseLayout seo={{title: 'test2',description: "This is a test page.", canonical: "https://yunu7067.github.io"}}>
-	about me
-</BaseLayout>
 
+const seo: AstroSeoProps = {
+	title: "About"
+}
+---
+
+<BaseLayout seo={seo}>
+	<div class="w-fit shadow-sm">
+		<Picture src="/public/social.png" alt="social" w={300} h={112} />
+	</div>
+	<div class="w-fit shadow-sm">
+		<Picture src="/public/assets/blog/introducing-astro.jpg" alt="social" w={300} h={112} />
+	</div>
+
+
+</BaseLayout>
