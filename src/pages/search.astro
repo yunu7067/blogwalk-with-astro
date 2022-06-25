@@ -1,9 +1,17 @@
 ---
-import { Picture } from "astro-imagetools/components";
 import { AstroSeoProps } from "../components/AstroSeo";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import config from '../../blog.config.js';
 import BlogHeader from "../components/BlogHeader.astro";
+
+let allPosts = await Astro.glob('./p/*.md');
+const posts: {id: string, title: string}[] = allPosts.map(p => {
+	return { id:p.url , title: p.frontmatter.title};
+});
+
+
+const a = Astro.canonicalURL;
+// console.log({ a })
 
 const seo: AstroSeoProps = {
 	title: "Search"
@@ -14,7 +22,14 @@ const seo: AstroSeoProps = {
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto">
 			<BlogHeader title={config.title} />
+
 			search
 		</div>
 	</main>
 </BaseLayout>
+<script client:load> 
+	const urlSearchParams = new URLSearchParams(window.location.search);
+	const params = Object.fromEntries(urlSearchParams.entries());
+
+	console.log(params);
+</script>

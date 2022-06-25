@@ -18,15 +18,17 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/solid-js": "^0.2.0",
-    "@astrojs/tailwind": "^0.2.1",
+    "@astrojs/solid-js": "0.2.0",
+    "@astrojs/tailwind": "0.2.1",
+    "@astropub/webapi": "^0.10.14",
     "@tailwindcss/line-clamp": "^0.4.0",
-    "astro": "^1.0.0-beta.56",
-    "astro-imagetools": "^0.6.10",
-    "dayjs": "^1.11.3",
-    "reading-time": "^1.5.0",
-    "sass": "^1.53.0",
-    "solid-js": "^1.4.4"
+    "astro": "1.0.0-beta.40",
+    "astro-imagetools": "0.6.10",
+    "reading-time": "1.5.0",
+    "sass": "^1.53.0"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.2.1",
+  "dependencies": {
+    "solid-js": "^1.4.4"
+  }
 }

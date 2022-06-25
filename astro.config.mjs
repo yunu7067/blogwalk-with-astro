@@ -6,12 +6,16 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    
-  },
-  site: 'https://yunu7067.github.io', // sitemap
+  vite: {},
+  // site: 'https://yunu7067.github.io', // sitemap
   experimental: {
-    integrations: true
+    integrations: true,
   },
-  integrations: [solid(), tailwind(), astroImageTools],
+  integrations: [
+    solid(),
+    tailwind(),
+    // sitemap(),
+    astroImageTools,
+  ],
 });
+``;
