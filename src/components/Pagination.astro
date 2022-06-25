@@ -1,4 +1,6 @@
 ---
+import { ArrowLeftCircleLine, ArrowRightCircleLine } from "./icons";
+
 export interface Props {
 	prevUrl: string;
 	nextUrl: string;
@@ -9,8 +11,14 @@ const { prevUrl, nextUrl } = Astro.props;
 
 <div class="wrapper">
 	<nav class="nav">
-		<a class="prev" href={prevUrl || '#'} aria-label="Previous Page">Prev</a>
-		<a class="next" href={nextUrl || '#'} aria-label="Next Page">Next</a>
+		<a class="prev p-2 inline-flex items-center gap-2" href={prevUrl || '#' } aria-label="Previous Page">
+			<ArrowLeftCircleLine />
+			이전
+		</a>
+		<a class="next p-2 inline-flex items-center gap-2" href={nextUrl || '#' } aria-label="Next Page">
+			다음
+			<ArrowRightCircleLine />
+		</a>
 	</nav>
 </div>
 
@@ -25,14 +33,12 @@ const { prevUrl, nextUrl } = Astro.props;
 
 	.prev,
 	.next {
-		display: block;
 		text-transform: uppercase;
-		font-size: 0.8em;
 	}
 
-	.prev[href='#'] ,
+	.prev[href='#'],
 	.next[href='#'] {
-			display: none;
+		display: none;
 
 	}
 

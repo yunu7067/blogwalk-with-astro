@@ -1,0 +1,23 @@
+---
+import { SearchLine } from "./icons";
+import { btn } from '../components/classes';
+
+---
+
+<div class="mb-8 px-5 py-4 rounded-md  bg-gray-100">
+	<article class="mb-2 flex flex-col items-start justify-center text-start">
+		<a href="/about/">
+			<h1 class="text-4xl font-bold">About Me</h1>
+		</a>
+		<main>
+			<p>이 블로그 혹은 자신에 대한 간단한 텍스트 설명이나 요소들</p>
+			<a href="/about/">Read more</a>
+		</main>
+	</article>
+</div>
+<div class="mb-1 text-right">
+	<a class={btn + " rounded-md bg-gray-50" } href="/search/">
+		Search
+		<SearchLine />
+	</a>
+</div>

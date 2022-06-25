@@ -1,39 +1,45 @@
 ---
-// Component Imports
-import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
-import PostPreview from '../components/PostPreview.astro';
-import Pagination from '../components/Pagination.astro';
+import { btn } from '@components/classes';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PostPreview from '@components/PostPreview.astro';
+import LargeHeader from '@components/LargeHeader.astro';
+import AboutContainer from '@components/AboutContainer.astro';
+import { ArrowRightCircleLine } from '@components/icons';
+import config from '../../blog.config.js';
 
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
-let title = 'Don’s Blog';
-let description = 'An example blog on Astro';
+
+
+const {
+	title,
+	description,
+	avatar,
+	social
+} = config;
 let canonicalURL = Astro.canonicalURL;
 
-// Data Fetching: List all Markdown posts in the repo.
 let allPosts = await Astro.glob('./p/*.md');
-allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
-let firstPage = allPosts.slice(0, 2);
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+let firstPage = allPosts.slice(0, 3);
 ---
 
-<html lang="en">
-	<head>
-		<MainHead {title} {description} image={allPosts[0].frontmatter.image} {canonicalURL} />
-	</head>
+<BaseLayout config={config} seo={{ title: title, description: description, image:allPosts[0].frontmatter.image,
+	canonical: canonicalURL.toString() }}>
+	<LargeHeader avatar={avatar} title={title} description={description} socials={social} />
 
-	<body>
-		<Nav {title} />
+	<main class="wrapper w-full">
+		<div class="max-w-3xl w-full mx-auto">
+			<AboutContainer />
 
-		<main class="wrapper">
-			<a href="/page/">All Posts >> </a>
-		</main>
+			{firstPage.map((post) => (
+			<PostPreview post={post} />
+			))}
+			<div class="text-right tracking-tight">
+				<a href="/page/" class={btn}>
+					All Posts
+					<ArrowRightCircleLine />
+				</a>
+			</div>
+		</div>
+	</main>
 
-		<footer>
-		</footer>
-	</body>
-</html>
+</BaseLayout>

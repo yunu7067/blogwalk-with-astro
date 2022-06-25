@@ -1,0 +1,34 @@
+---
+import Head from '../components/Head.astro';
+import AstroSeo, { AstroSeoProps } from '../components/AstroSeo';
+import { BlogConfigType } from '../types';
+import Footer from '../components/Footer';
+
+export interface Props {
+	seo?: AstroSeoProps,
+	config: BlogConfigType
+}
+
+const props = Astro.props as Props;
+const defaultSeo: AstroSeoProps = {
+	twitter: {
+		site: '@site',
+		handle: '@handle',
+		cardType: 'summary',
+	}
+};
+---
+
+<html lang={props.config?.locale.languageCode || 'ko' }>
+
+<Head>
+	<AstroSeo {...{...defaultSeo, ...(props?.seo || {})}} />
+</Head>
+
+<body>
+	<slot />
+
+	<Footer />
+</body>
+
+</html>

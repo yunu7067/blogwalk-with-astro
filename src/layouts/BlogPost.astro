@@ -1,25 +1,27 @@
 ---
-import BaseHead from '../components/MainHead.astro';
+import BaseLayout from './BaseLayout.astro';
 import BlogHeader from '../components/BlogHeader.astro';
 import BlogPost from '../components/BlogPost.astro';
-
+import Author from '@components/Author.astro'
+import config from '../../blog.config.js';
 
 const { content } = Astro.props;
 const { title, description, publishDate, author, heroImage, permalink, alt } = content;
+
 ---
 
-<html lang={content.lang || 'en'}>
-	<head>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-lucario.css"/>
-		<BaseHead {title} {description} {permalink} />
-	</head>
+<BaseLayout seo={{title: title, description: description}} config={config}>
 
-	<body>
-		<BlogHeader />
-		<div class="wrapper">
+	<main class="wrapper w-full">
+		<div class="max-w-3xl w-full mx-auto">
+			<BlogHeader title={config.title} />
+
 			<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
 				<slot />
+
 			</BlogPost>
+
+			<Author avatar={config.avatar} name="YUNU7067" href="/" />
 		</div>
-	</body>
-</html>
+	</main>
+</BaseLayout>
