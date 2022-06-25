@@ -2,40 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostPreview from '../components/PostPreview.astro';
 import LargeHeader from '../components/LargeHeader.astro';
-import { SocialConfigType } from '../types/ConfigType';
-import { ArrowRightCircleLine } from '../components/icons';
-import AdditionalPost from '../components/AdditionalPost.astro';
-import { AstroSeoProps } from '../components/AstroSeo';
+import config from '../../blog.config.js';
 
-const avatar = '/public/assets/profile/avatar.jpeg'
+const {
+	title,
+	description,
+	avatar,
+	social
+} = config;
+let canonicalURL = Astro.canonicalURL;
 
 let allPosts = await Astro.glob('./p/*.md');
 allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
 let firstPage = allPosts.slice(0, 3);
 
-
-const seo: AstroSeoProps = {
-	title: 'tololo://',
-	description: 'An example blog on Astro',
-	image: allPosts[0].frontmatter.image,
-	canonical: Astro.canonicalURL.toString()
-};
-const socials: SocialConfigType[] = [
-	{ identifier: 'github', name: 'GitHub test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'facebook', name: 'Facebook test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'twitter', name: 'Twitter test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'discord', name: 'Discord test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'instagram', name: 'Instagram test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'linkedin', name: 'Linkedin test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'npmjs', name: 'Npmjs test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'youtube', name: 'Youtube test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'email', name: 'email test', url: 'https://github.com/yunu7067/' },
-	{ identifier: 'default', name: 'Default test', url: 'https://github.com/yunu7067/' },
-];
 ---
 
-<BaseLayout seo={seo}>
-	<LargeHeader avatar={avatar} title={seo.title} description={seo.description} socials={socials} />
+<BaseLayout seo={{ title: title, description: description, image:allPosts[0].frontmatter.image, canonical:
+	canonicalURL.toString() }}>
+	<LargeHeader avatar={avatar} title={title} description={description} socials={social} />
+	<!-- <Nav {title} /> -->
 
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto">

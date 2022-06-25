@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import BlogHeader from '../components/BlogHeader.astro';
 import BlogPost from '../components/BlogPost.astro';
+import Author from '../components/Author.astro';
 
 
 const { content } = Astro.props;
@@ -9,24 +10,12 @@ const { title, description, publishDate, author, heroImage, permalink, alt } = c
 ---
 
 <BaseLayout seo={{title: title, description: description}}>
-	<!-- 게시글 데이터 -->
-	<main class="wrapper w-full">
-		<div class="max-w-3xl w-full mx-auto">
+	<BlogHeader />
+	<div class="max-w-3xl w-full">
+		<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
+			<slot />
 
-			<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
-				<slot />
-			</BlogPost>
-		</div>
-	</main>
-
-	<!-- 이전 다음글 -->
-	<!-- 글쓴이에 관하여-->
-
+			<Author name="YUNU7067" href="/" />
+		</BlogPost>
+	</div>
 </BaseLayout>
-
-<style lang="scss">
-	pre.astro-code {
-		padding: 10px;
-
-	}
-</style>
