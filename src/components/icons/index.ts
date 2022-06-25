@@ -8,5 +8,6 @@ export {default as Instagram} from './Instagram';
 export {default as LinkedIn} from './LinkedIn';
 export {default as Mail} from './Mail';
 export {default as Npmjs} from './Npmjs';
+export {default as SearchLine} from './SearchLine';
 export {default as Twitter} from './Twitter';
 export {default as YouTube} from './YouTube';

@@ -2,6 +2,9 @@
 import BlogPostPreview from '../../components/PostPreview.astro';
 import Pagination from '../../components/Pagination.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import config from '../../../blog.config.js';
+import { AstroSeoProps } from '../../components/AstroSeo';
+import BlogHeader from '../../components/BlogHeader.astro';
 
 export async function getStaticPaths({ paginate }) {
 	let allPosts = await Astro.glob('../p/*.md');
@@ -12,11 +15,15 @@ export async function getStaticPaths({ paginate }) {
 }
 // page
 const { page } = Astro.props;
+const seo: AstroSeoProps = {
+};
 ---
 
-<BaseLayout>
+<BaseLayout config={config} seo={seo}>
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto">
+			<BlogHeader title={config.title} />
+
 			<main class="wrapper">
 				<h2 class="title">All Posts</h2>
 				<small class="count">{page.start + 1}–{page.end + 1} of {page.total}</small>

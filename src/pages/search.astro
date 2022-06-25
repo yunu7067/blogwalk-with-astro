@@ -6,7 +6,7 @@ import config from '../../blog.config.js';
 import BlogHeader from "../components/BlogHeader.astro";
 
 const seo: AstroSeoProps = {
-	title: "About"
+	title: "Search"
 }
 ---
 
@@ -14,15 +14,7 @@ const seo: AstroSeoProps = {
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto">
 			<BlogHeader title={config.title} />
-
-			<div class="w-fit shadow-sm">
-				<Picture src="/public/social.png" alt="social" w={300} h={112} />
-			</div>
-			<div class="w-fit shadow-sm">
-				<Picture src="/public/assets/blog/introducing-astro.jpg" alt="social" w={300} h={112} />
-			</div>
+			search
 		</div>
 	</main>
-
-
 </BaseLayout>

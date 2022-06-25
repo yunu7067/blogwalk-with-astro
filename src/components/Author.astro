@@ -1,18 +1,31 @@
 ---
+import { Picture } from "astro-imagetools/components";
+import { AvatarConfigType } from "../types";
+import Avatar from "./Avatar.astro";
+import { btn } from "./classes";
+
 export interface Props {
+	avatar: AvatarConfigType;
 	name: string;
 	href: string;
 }
 
-const { name, href } = Astro.props as Props;
+const { avatar, name, href } = Astro.props as Props;
 ---
 
-<div class="author">
-	<p><a {href}>{name}</a></p>
+<div class="my-5 px-4 sm:px-8 py-6 rounded-sm bg-gray-100 flex flex-col-reverse sm:flex-row gap-4 shadow-sm">
+	<div class="flex-auto flex flex-col">
+		Author
+		<h3 class="text-xl mb-1">@{name}</h3>
+		<p class="flex-auto font-light line-clamp-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos at,
+			nesciunt molestias
+			quibusdam laborum molestiae explicabo nulla velit impedit, expedita a, ratione animi illum error neque qui nobis
+			excepturi eaque.</p>
+	</div>
+	<div class="flex-none">
+		{avatar.enabled &&
+		<div class="w-fit shadow-sm  overflow-hidden">
+			<Picture src={avatar.src} alt={name} w={145} h={104} />
+		</div>}
+	</div>
 </div>
-
-<style>
-	.author {
-		margin-bottom: 0.75rem;
-	}
-</style>

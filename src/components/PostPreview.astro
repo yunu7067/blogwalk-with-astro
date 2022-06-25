@@ -11,7 +11,7 @@ const { post } = Astro.props as Props;
 ---
 
 <article class="mb-8">
-	<header class="mb-2 flex flex-col items-start justify-center text-start">
+	<header class="mb-2 flex flex-col items-start justify-center gap-1 text-start">
 		<a href={post?.url || '#error' }>
 			<h1 class="text-4xl font-bold">{post.frontmatter.title}</h1>
 		</a>

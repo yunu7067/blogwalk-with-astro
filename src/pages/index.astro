@@ -1,9 +1,10 @@
 ---
+import { btn } from '../components/classes';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostPreview from '../components/PostPreview.astro';
 import LargeHeader from '../components/LargeHeader.astro';
 import config from '../../blog.config.js';
-import AdditionalPost from '../components/AdditionalPost.astro';
+import AboutContainer from '../components/AboutContainer.astro';
 import { ArrowRightCircleLine } from '../components/icons';
 
 const {
@@ -23,17 +24,16 @@ let firstPage = allPosts.slice(0, 3);
 <BaseLayout config={config} seo={{ title: title, description: description, image:allPosts[0].frontmatter.image,
 	canonical: canonicalURL.toString() }}>
 	<LargeHeader avatar={avatar} title={title} description={description} socials={social} />
-	<!-- <Nav {title} /> -->
 
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto">
-			<AdditionalPost />
+			<AboutContainer />
 
 			{firstPage.map((post) => (
 			<PostPreview post={post} />
 			))}
 			<div class="text-right tracking-tight">
-				<a href="/page/" class="p-2 inline-flex flex-row items-center gap-2">
+				<a href="/page/" class={btn}>
 					All Posts
 					<ArrowRightCircleLine />
 				</a>

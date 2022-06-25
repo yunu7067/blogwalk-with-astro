@@ -1,3 +1,5 @@
+import {Component} from 'solid-js';
+
 export type OpeningHoursSpecification = {
   opens: string;
   closes: string;
@@ -288,12 +290,7 @@ export interface RDFaMetaTag extends BaseMetaTag {
 }
 
 export interface HTTPEquivMetaTag extends BaseMetaTag {
-  httpEquiv:
-  | 'content-security-policy'
-  | 'content-type'
-  | 'default-style'
-  | 'x-ua-compatible'
-  | 'refresh';
+  httpEquiv: 'content-security-policy' | 'content-type' | 'default-style' | 'x-ua-compatible' | 'refresh';
   name?: undefined;
   property?: undefined;
 }
@@ -407,11 +404,11 @@ interface DefaultSeoProps {
   mobileAlternate?: MobileAlternate;
   languageAlternates?: ReadonlyArray<LanguageAlternate>;
   openGraph?: OpenGraph;
-  facebook?: { appId: string };
+  facebook?: {appId: string};
   twitter?: Twitter;
   additionalMetaTags?: ReadonlyArray<MetaTag>;
   additionalLinkTags?: ReadonlyArray<LinkTag>;
-};
+}
 
 interface BlogSeoProps {
   next?: string;
@@ -419,42 +416,42 @@ interface BlogSeoProps {
   image?: string;
 }
 
-interface AstroSeoProps extends DefaultSeoProps, BlogSeoProps { };
+interface AstroSeoProps extends DefaultSeoProps, BlogSeoProps {}
 
 /**
  * Next SEO를 Astro용으로 마이그레이션한 것
  * TODO: 아직 SEO 불완전하게 지원함. 추후 개선 예정.
- * 
+ *
  * 참조 : [Next SEO](https://github.com/garmeeh/next-seo)
  */
-const AstroSeo = (seo: AstroSeoProps) => {
+function AstroSeo(seo): Component<AstroSeoProps> {
   return (
     <>
       {/* Common */}
       {seo.title && <title>{seo.title}</title>}
-      {seo.description && <meta name="description" content={seo.description} />}
+      {seo.description && <meta name='description' content={seo.description} />}
 
       {/* SEO */}
       {seo.canonical && <link rel='canonical' href={seo.canonical} />}
-      {seo.next && <link rel="next" aria-label="Previous Page" href={new URL(seo.next, seo.canonical).href} />}
-      {seo.prev && <link rel="prev" aria-label="Next Page" href={new URL(seo.prev, seo.canonical).href} />}
+      {seo.next && <link rel='next' aria-label='Previous Page' href={new URL(seo.next, seo.canonical).href} />}
+      {seo.prev && <link rel='prev' aria-label='Next Page' href={new URL(seo.prev, seo.canonical).href} />}
 
       {/* OpenGraph */}
-      {seo.title && <meta property="og:title" content={seo.title} />}
-      {seo.description && <meta property="og:description" content={seo.description} />}
-      {seo.image && <meta property="og:image" content={new URL(seo.image, seo.canonical)} />}
+      {seo.title && <meta property='og:title' content={seo.title} />}
+      {seo.description && <meta property='og:description' content={seo.description} />}
+      {seo.image && <meta property='og:image' content={new URL(seo.image, seo.canonical)} />}
 
       {/* Twitter */}
-      {seo.image && <meta name="twitter:card" content={seo.image ? 'summary_large_image' : 'summary'} />}
-      {seo.twitter?.site && <meta name="twitter:site" content={seo.twitter.site} />}
-      {seo.twitter?.cardType && <meta name="twitter:card" content={seo.twitter.cardType} />}
-      {seo.twitter?.handle && <meta name="twitter:creator" content={seo.twitter.handle} />}
-      {seo.title && <meta name="twitter:title" content={seo.title} />}
-      {seo.description && <meta name="twitter:description" content={seo.description} />}
-      {seo.image && <meta name="twitter:image" content={seo.image} />}
+      {seo.image && <meta name='twitter:card' content={seo.image ? 'summary_large_image' : 'summary'} />}
+      {seo.twitter?.site && <meta name='twitter:site' content={seo.twitter.site} />}
+      {seo.twitter?.cardType && <meta name='twitter:card' content={seo.twitter.cardType} />}
+      {seo.twitter?.handle && <meta name='twitter:creator' content={seo.twitter.handle} />}
+      {seo.title && <meta name='twitter:title' content={seo.title} />}
+      {seo.description && <meta name='twitter:description' content={seo.description} />}
+      {seo.image && <meta name='twitter:image' content={seo.image} />}
     </>
   );
 }
 
 export default AstroSeo;
-export type { AstroSeoProps };
+export type {AstroSeoProps};

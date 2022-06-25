@@ -10,12 +10,17 @@ const { title, description, publishDate, author, heroImage, permalink, alt } = c
 ---
 
 <BaseLayout seo={{title: title, description: description}} config={config}>
-	<BlogHeader />
-	<div class="max-w-3xl w-full">
-		<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
-			<slot />
 
-			<Author name="YUNU7067" href="/" />
-		</BlogPost>
-	</div>
+	<main class="wrapper w-full">
+		<div class="max-w-3xl w-full mx-auto">
+			<BlogHeader title={config.title} />
+
+			<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
+				<slot />
+
+			</BlogPost>
+
+			<Author avatar={config.avatar} name="YUNU7067" href="/" />
+		</div>
+	</main>
 </BaseLayout>
