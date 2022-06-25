@@ -18,10 +18,10 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/solid-js": "^0.1.4",
+    "@astrojs/solid-js": "^0.2.0",
     "@astrojs/tailwind": "^0.2.1",
     "@tailwindcss/line-clamp": "^0.4.0",
-    "astro": "^1.0.0-beta.53",
+    "astro": "^1.0.0-beta.56",
     "astro-imagetools": "^0.6.10",
     "dayjs": "^1.11.3",
     "reading-time": "^1.5.0",
