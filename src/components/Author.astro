@@ -1,8 +1,6 @@
 ---
 import { Picture } from "astro-imagetools/components";
 import { AvatarConfigType } from "../types";
-import Avatar from "./Avatar.astro";
-import { btn } from "./classes";
 
 export interface Props {
 	avatar: AvatarConfigType;
@@ -23,7 +21,7 @@ const { avatar, name, href } = Astro.props as Props;
 			excepturi eaque.</p>
 	</div>
 	<div class="flex-none">
-		{avatar.enabled &&
+		{avatar?.enabled &&
 		<div class="w-fit shadow-sm  overflow-hidden">
 			<Picture src={avatar.src} alt={name} w={145} h={104} />
 		</div>}

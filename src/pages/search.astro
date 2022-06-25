@@ -9,10 +9,6 @@ const posts: {id: string, title: string}[] = allPosts.map(p => {
 	return { id:p.url , title: p.frontmatter.title};
 });
 
-
-const a = Astro.canonicalURL;
-// console.log({ a })
-
 const seo: AstroSeoProps = {
 	title: "Search"
 }

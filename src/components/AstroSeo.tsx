@@ -1,5 +1,3 @@
-import {Component} from 'solid-js';
-
 export type OpeningHoursSpecification = {
   opens: string;
   closes: string;
@@ -424,7 +422,7 @@ interface AstroSeoProps extends DefaultSeoProps, BlogSeoProps {}
  *
  * 참조 : [Next SEO](https://github.com/garmeeh/next-seo)
  */
-function AstroSeo(seo): Component<AstroSeoProps> {
+function AstroSeo(seo: AstroSeoProps) {
   return (
     <>
       {/* Common */}
@@ -439,7 +437,7 @@ function AstroSeo(seo): Component<AstroSeoProps> {
       {/* OpenGraph */}
       {seo.title && <meta property='og:title' content={seo.title} />}
       {seo.description && <meta property='og:description' content={seo.description} />}
-      {seo.image && <meta property='og:image' content={new URL(seo.image, seo.canonical)} />}
+      {seo.image && <meta property='og:image' content={new URL(seo.image, seo.canonical).toString()} />}
 
       {/* Twitter */}
       {seo.image && <meta name='twitter:card' content={seo.image ? 'summary_large_image' : 'summary'} />}

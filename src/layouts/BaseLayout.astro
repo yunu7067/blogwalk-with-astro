@@ -9,7 +9,7 @@ export interface Props {
 	config: BlogConfigType
 }
 
-const { seo, config } = Astro.props as Props;
+const props = Astro.props as Props;
 const defaultSeo: AstroSeoProps = {
 	twitter: {
 		site: '@site',
@@ -19,10 +19,10 @@ const defaultSeo: AstroSeoProps = {
 };
 ---
 
-<html lang={config?.locale.languageCode || 'ko' }>
+<html lang={props.config?.locale.languageCode || 'ko' }>
 
 <Head>
-	<AstroSeo {...{...defaultSeo, ...seo}} />
+	<AstroSeo {...{...defaultSeo, ...(props?.seo || {})}} />
 </Head>
 
 <body>

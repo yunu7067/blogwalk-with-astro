@@ -1,4 +1,4 @@
-import {Component} from 'solid-js';
+import {Component, JSX} from 'solid-js';
 import {SocialConfigType, SocialIdentifiers} from '../types';
 import {Discord, Earth, Facebook, GitHub, Instagram, LinkedIn, Mail, Npmjs, Twitter, YouTube} from './icons';
 
@@ -12,7 +12,7 @@ const SocialIcon: Component<SocialIconProps> = ({social}) => (
   </a>
 );
 
-const IconSwitcher = (identifier: SocialIdentifiers): Component => {
+const IconSwitcher = (identifier: SocialIdentifiers): JSX.Element => {
   switch (identifier) {
     case 'github':
       return <GitHub />;

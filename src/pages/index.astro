@@ -1,11 +1,13 @@
 ---
-import { btn } from '../components/classes';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PostPreview from '../components/PostPreview.astro';
-import LargeHeader from '../components/LargeHeader.astro';
+import { btn } from '@components/classes';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PostPreview from '@components/PostPreview.astro';
+import LargeHeader from '@components/LargeHeader.astro';
+import AboutContainer from '@components/AboutContainer.astro';
+import { ArrowRightCircleLine } from '@components/icons';
 import config from '../../blog.config.js';
-import AboutContainer from '../components/AboutContainer.astro';
-import { ArrowRightCircleLine } from '../components/icons';
+
+
 
 const {
 	title,
@@ -18,7 +20,6 @@ let canonicalURL = Astro.canonicalURL;
 let allPosts = await Astro.glob('./p/*.md');
 allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
 let firstPage = allPosts.slice(0, 3);
-
 ---
 
 <BaseLayout config={config} seo={{ title: title, description: description, image:allPosts[0].frontmatter.image,

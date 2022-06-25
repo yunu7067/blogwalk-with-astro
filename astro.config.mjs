@@ -9,6 +9,7 @@ export default defineConfig({
   vite: {},
   // site: 'https://yunu7067.github.io', // sitemap
   experimental: {
+    ssr: false,
     integrations: true,
   },
   integrations: [
@@ -18,4 +19,3 @@ export default defineConfig({
     astroImageTools,
   ],
 });
-``;
