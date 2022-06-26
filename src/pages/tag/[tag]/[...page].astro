@@ -4,18 +4,37 @@ import Pagination from '@components/Pagination.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { AstroSeoProps } from '@components/AstroSeo';
 import BlogHeader from '@components/BlogHeader.astro';
-import config from '../../../blog.config.js';
+import config from '../../../../blog.config.js';
 
 export async function getStaticPaths({ paginate }) {
-	let allPosts = await Astro.glob('../p/**/*.md');
-	const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+	const allPosts = await Astro.glob('../../p/**/*.md');
+	const allTagsSet = new Set();
 
-	// Return a paginated collection of paths for all posts
-	return paginate(sortedPosts, { pageSize: 7 });
+	allPosts.map((post) => {
+		const tags = post.frontmatter.tags || [];
+		tags.map((tag) => allTagsSet.add(tag));
+	})
+
+	return Array.from(allTagsSet).map((tag) => {
+		const filteredPosts = allPosts
+			.filter((post) => {
+				// console.debug({ tags: post.frontmatter.tags });
+				return post.frontmatter.tags?.includes(tag)
+			})
+			.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+
+		return paginate(filteredPosts, {
+			params: { tag },
+			pageSize: 7
+		});
+	});
 }
 // page
 const { page } = Astro.props;
-const seo: AstroSeoProps = {};
+const { tag } = Astro.params;
+const seo: AstroSeoProps = {
+	title: `TAG: ${tag}`
+};
 ---
 
 <BaseLayout config={config} seo={seo}>
@@ -24,7 +43,7 @@ const seo: AstroSeoProps = {};
 			<BlogHeader title={config.title} />
 
 			<main class="wrapper">
-				<h2 class="mt-8 mb-0 text-5xl tracking-tight text-center">All Posts</h2>
+				<h2 class="mt-8 mb-0 text-5xl tracking-tight text-center">TAG : #{tag}</h2>
 				<small class="block text-base text-center mb-3">{page.start + 1}–{page.end + 1} of {page.total}</small>
 				{page.data.map((post) =>
 				<BlogPostPreview post={post} />)}

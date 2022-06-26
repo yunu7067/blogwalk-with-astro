@@ -1,3 +1,4 @@
+import {CommentsType} from 'src/types/CommentsConfigType';
 import {LocaleConfigType} from './LocaleConfigType';
 
 export type SocialIdentifiers =
@@ -21,6 +22,10 @@ export interface AvatarConfigType {
   enabled: boolean;
   src: string;
 }
+export interface AuthorConfigType {
+  name: string;
+  comment: string;
+}
 
 // export type ThemeIdentifiers = 'auto' | 'light' | 'dark' | 'system';
 
@@ -29,9 +34,10 @@ export interface BlogConfigType {
   description?: string;
   baseurl: string;
   locale: LocaleConfigType;
+  author: AuthorConfigType;
   avatar: AvatarConfigType;
   social?: SocialConfigType[];
   // post: PostConfigType;
-  // comments: CommentsType;
+  comments: CommentsType;
   // theme: ThemeIdentifiers;
 }

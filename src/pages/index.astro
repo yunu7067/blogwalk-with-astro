@@ -17,7 +17,7 @@ const {
 } = config;
 let canonicalURL = Astro.canonicalURL;
 
-let allPosts = await Astro.glob('./p/*.md');
+let allPosts = await Astro.glob('./p/**/*.md');
 allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
 let firstPage = allPosts.slice(0, 3);
 ---
@@ -28,7 +28,7 @@ let firstPage = allPosts.slice(0, 3);
 
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto">
-			<AboutContainer />
+			<AboutContainer author={config.author} />
 
 			{firstPage.map((post) => (
 			<PostPreview post={post} />

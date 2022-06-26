@@ -4,24 +4,40 @@ import BlogHeader from '../components/BlogHeader.astro';
 import BlogPost from '../components/BlogPost.astro';
 import Author from '@components/Author.astro'
 import config from '../../blog.config.js';
+import { parse } from 'node-html-parser';
+import BlogToc from '@components/BlogToc.astro';
+import { PostContent } from 'src/types';
+import BlogComment from '@components/BlogComment.astro';
+import BlogViews from '@components/BlogViews';
 
 const { content } = Astro.props;
-const { title, description, publishDate, author, heroImage, permalink, alt } = content;
+const { pathname } = Astro.canonicalURL;
+const { title, description, publishDate, heroImage, tags, astro } = content as PostContent;
 
+// console.debug({ test: Astro.request });
+// 목차 (h1, h2, h3 까지만 추출)
+// 기본적으로 제공하는 헤더는 마크다운만 추출되고 html 태그는 추출되지 않아 따로 구현함.
+const headers = parse(astro?.html || '').querySelectorAll("h1, h2, h3");
 ---
 
 <BaseLayout seo={{title: title, description: description}} config={config}>
 
 	<main class="wrapper w-full">
-		<div class="max-w-3xl w-full mx-auto">
+		<div class="max-w-3xl w-full mx-auto px-4 md:px-3 lg:px-0">
 			<BlogHeader title={config.title} />
+			<BlogPost title={title} publishDate={publishDate} locale={config.locale.languageCode} tags={tags}
+				description={description} heroImage={heroImage}>
+				{headers && headers.length !== 0 &&
+				<BlogToc contents={headers} />}
 
-			<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
 				<slot />
 
 			</BlogPost>
-
-			<Author avatar={config.avatar} name="YUNU7067" href="/" />
+			<div class="">
+				<BlogViews client:load namespace={config.baseurl} key={decodeURI(pathname)} />
+			</div>
+			<Author avatar={config.avatar} name={config.author.name} href="/" description={config.author.comment} />
+			<BlogComment comments={config.comments} />
 		</div>
 	</main>
 </BaseLayout>

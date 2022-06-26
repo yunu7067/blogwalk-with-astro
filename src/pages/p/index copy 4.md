@@ -4,6 +4,7 @@ setup: |
 title: Nice Astro!
 publishDate: 2022-06-23T07:10:00.000Z
 description: Just a Hello World Post!
+tags: ['test']
 ---
 
 This is so cool!
