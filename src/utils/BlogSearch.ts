@@ -5,7 +5,11 @@ import FlexSearch from 'flexsearch';
  */
 
 interface BlogSearchProps {
-  posts: {id: string; title: string}[];
+  posts: {
+    id: string;
+    title: string;
+    tags: string[];
+  }[];
 }
 
 export default async function BlogSearch(props: BlogSearchProps) {
@@ -14,8 +18,8 @@ export default async function BlogSearch(props: BlogSearchProps) {
     tokenize: 'full',
     document: {
       id: 'id',
-      index: 'title',
-      store: ['title'], // 같이 저장되는 필드. id는 안 넣어도 됨
+      index: ['title', 'description', 'tags'],
+      store: ['title', 'description', 'tags'], // 저장되는 필드. id는 안 넣어도 됨
     },
     context: {
       resolution: 9,
@@ -27,17 +31,7 @@ export default async function BlogSearch(props: BlogSearchProps) {
   function indexing(data) {
     index.add(data);
   }
-  // async function searching(text) {
-  //   const result = await index.search(text, {
-  //     enrich: true,
-  //     suggest: true,
-  //   });
 
-  //   console.debug(text);
-  //   console.debug(result[0]);
-  //   console.debug(result[0].field);
-  //   console.debug(result[0].result);
-  // }
   const searchIndexPath = './public/search-index/';
   // const indexedData: {[key: string | number]: unknown} = {};
   async function exporting() {

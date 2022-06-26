@@ -1,7 +1,7 @@
 ---
-import { PostContent, PostMetadata } from 'src/types';
+import { PostMetadata } from 'src/types';
 import { timeFormatter } from '../utils/timeFormatter';
-import Author from './Author.astro';
+import Tags from './Tags';
 
 export interface Props extends PostMetadata {
 	locale: string;
@@ -17,11 +17,8 @@ const { title, publishDate, locale, description, tags } = Astro.props as Props;
 				<!-- {heroImage && <img width="720" height="420" class="hero-image" loading="lazy" src={heroImage} alt={alt} />} -->
 				<p class="publish-date">{timeFormatter(publishDate, locale || "ko-KR")}</p>
 				<h1 class="title">{title}</h1>
-				<ul class="flex flex-row gap-2 flex-wrap">
-					{ tags && tags.map((tag) => <li class="py-1 px-3 rounded-md bg-amber-400 text-sm"><a
-							href={`/tag/${tag}`}>#{tag}</a></li>
-					) }
-				</ul>
+
+				<Tags tags={tags}>
 			</header>
 			<main>
 				<slot />

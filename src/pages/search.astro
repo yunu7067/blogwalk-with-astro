@@ -7,12 +7,23 @@ import BlogSearch from "src/utils/BlogSearch";
 import Search from "@components/Search";
 
 let allPosts = await Astro.glob('./p/*.md');
-const posts: { id: string, title: string }[] = allPosts.map(p => {
-	return { id: p.url, title: p.frontmatter.title };
+const posts = allPosts.map(p => {
+	return {
+		id: p.url,
+		title: p.frontmatter.title,
+		description: p.frontmatter?.description || '',
+		tags: p.frontmatter?.tags || []
+	};
 });
 
-const flexSearchIndex = await BlogSearch({ posts });
-const flexSearchIndexKeys = ["reg", "title.cfg", "title.map", "title.ctx", "tag", "store"];
+await BlogSearch({ posts });
+const flexSearchIndexKeys = [
+	"reg",
+	"title.cfg", "title.map", "title.ctx",
+	"tags.cfg", "tags.map", "tags.ctx",
+	"description.cfg", "description.map", "description.ctx",
+	"tag", "store"
+];
 
 const seo: AstroSeoProps = {
 	title: "Search"

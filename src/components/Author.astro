@@ -5,20 +5,18 @@ import { AvatarConfigType } from "../types";
 export interface Props {
 	avatar: AvatarConfigType;
 	name: string;
-	href: string;
+	href?: string;
+	description?: string;
 }
 
-const { avatar, name, href } = Astro.props as Props;
+const { avatar, name, href = '', description = '' } = Astro.props as Props;
 ---
 
 <div class="my-5 px-4 sm:px-8 py-6 rounded-sm bg-gray-100 flex flex-col-reverse sm:flex-row gap-4 shadow-sm">
 	<div class="flex-auto flex flex-col">
 		Author
 		<h3 class="text-xl mb-1">@{name}</h3>
-		<p class="flex-auto font-light line-clamp-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos at,
-			nesciunt molestias
-			quibusdam laborum molestiae explicabo nulla velit impedit, expedita a, ratione animi illum error neque qui nobis
-			excepturi eaque.</p>
+		<p class="flex-auto font-light line-clamp-2">{description}</p>
 	</div>
 	<div class="flex-none">
 		{avatar?.enabled &&

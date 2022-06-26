@@ -1,31 +1,47 @@
 import {createEffect, createSignal} from 'solid-js';
 import * as FlexSearch from 'flexsearch';
 import createDebounce from 'src/utils/createDebounce';
+import {SearchLine} from '@components/icons';
+import Tags from '@components/Tags';
 
 export default function Search({keys}: {keys: string[]}) {
   const [keyword, setKeyword] = createSignal<string>('');
   const [doc, setDoc] = createSignal<FlexSearch.Document<unknown, false>>();
-  const [searchResult, setSearchResult] = createSignal<DocumentSearchResult<{title: string}, true, true>>([]);
+  // const [searchResult, setSearchResult] = createSignal<
+  //   FlexSearch.DocumentSearchResult<{title: string; description: string; tags: string[]}, true, true>
+  // >([]);
+  const [searchResult, setSearchResult] =
+    createSignal<
+      FlexSearch.EnrichedDocumentSearchResultSetUnitResultUnit<{title: string; description: string; tags: string[]}>[]
+    >();
+
   const [trigger, clear] = createDebounce(() => {
-    console.log('search function');
     // console.debug({doc: doc()});
+    const resultMap = new Map();
     const results = doc().search(keyword(), {
       enrich: true,
       suggest: true,
+    }) as unknown as FlexSearch.DocumentSearchResult<{}, true, true>;
+    // 검색 Field 반복
+    results.forEach(result => {
+      // Field 내 검색 결과 반복
+      result.result.forEach(res => {
+        resultMap.set(res.id, res);
+      });
     });
-    setSearchResult(results as unknown as typeof searchResult);
-    console.debug({results});
+    setSearchResult(Array.from(resultMap, ([key, value]) => value));
+    // setSearchResult(results as unknown as typeof searchResult);
+    console.debug({results: resultMap});
   }, 365); // 365 ms 동안 대기
 
   createEffect(() => {
-    console.log('default');
-
     (async function () {
       // console.debug({keys});
       const flexSearchDoc = new FlexSearch.Document({
         document: {
           id: 'id',
-          index: 'title',
+          index: ['title', 'description', 'tags'],
+          store: ['title', 'description', 'tags'],
         },
       });
 
@@ -44,49 +60,39 @@ export default function Search({keys}: {keys: string[]}) {
     });
   });
 
-  createEffect(() => {
-    console.log(keyword);
-    // trigger();
-    // function search() {
-    //   console.log('search function');
-    //   // console.debug({doc: doc()});
-    //   const results = doc().search(keyword(), {
-    //     enrich: true,
-    //     suggest: true,
-    //   });
-    //   setSearchResult(results as unknown as typeof searchResult);
-    //   // console.debug({results});
-    // }
-
-    // if (doc()) {
-    //   eventId && clearTimeout(eventId);
-    //   eventId = setTimeout(search, 500) as unknown as number;
-    // }
-  }, keyword);
-
   return (
     <div>
-      <input
-        type='text'
-        class='bg-gray-100 mb-4 p-4 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300'
-        onInput={e => {
-          setKeyword(e.currentTarget.value);
-          trigger();
-        }}
-        placeholder='여기에 검색어를 입력하세요.'
-      />
-      <p class='mb-5'> (현재는 제목 검색만 지원합니다.)</p>
+      <div class='relative'>
+        <input
+          id='input-search'
+          type='text'
+          class='bg-gray-100 mb-4 p-4 pr-14 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md text-sm border-gray-300'
+          onInput={e => {
+            setKeyword(e.currentTarget.value);
+            trigger();
+          }}
+          placeholder='여기에 검색어를 입력하세요.'
+          maxLength={30}
+        />
+        <label for='input-search' class='absolute p-4 mb-4 top-0 right-0 text-sm'>
+          <SearchLine width='20' height='20' />
+        </label>
+        <p class='mb-5'>(검색 필드: title, description, tags)</p>
+      </div>
 
       <output>
-        {searchResult().map(res => (
-          <div>
-            {res.result.map(({id, doc}) => (
-              <div class='p-8 border mb-2'>
-                <a href={id as unknown as string}>{doc.title}</a>
+        <div>
+          {searchResult() &&
+            searchResult().map(({id, doc}) => (
+              <div class='p-8 border rounded-md mb-2'>
+                <a href={id as unknown as string}>
+                  <h1 class='text-2xl font-bold mb-1.5'>{doc.title}</h1>
+                  <p class='mb-3'>{doc.description}</p>
+                  <Tags tags={doc.tags} />
+                </a>
               </div>
             ))}
-          </div>
-        ))}
+        </div>
       </output>
     </div>
   );

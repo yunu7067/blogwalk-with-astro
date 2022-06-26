@@ -25,7 +25,7 @@ const seo: AstroSeoProps = {};
 
 			<main class="wrapper">
 				<h2 class="title">All Posts</h2>
-				<small class="count">{page.start + 1}–{page.end + 1} of {page.total}</small>
+				<small class="count mb-3">{page.start + 1}–{page.end + 1} of {page.total}</small>
 				{page.data.map((post) =>
 				<BlogPostPreview post={post} />)}
 			</main>

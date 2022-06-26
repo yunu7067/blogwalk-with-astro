@@ -33,7 +33,7 @@ const headers = parse(astro?.html || '').querySelectorAll("h1, h2, h3");
 
 			</BlogPost>
 
-			<Author avatar={config.avatar} name="YUNU7067" href="/" />
+			<Author avatar={config.avatar} name={config.author.name} href="/" description={config.author.comment} />
 		</div>
 	</main>
 </BaseLayout>

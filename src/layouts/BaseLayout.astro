@@ -25,7 +25,7 @@ const defaultSeo: AstroSeoProps = {
 	<AstroSeo {...{...defaultSeo, ...(props?.seo || {})}} />
 </Head>
 
-<body>
+<body class="overflow-y-scroll">
 	<slot />
 
 	<Footer />

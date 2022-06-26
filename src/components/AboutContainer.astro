@@ -1,16 +1,22 @@
 ---
 import { SearchLine } from "./icons";
 import { btn } from '../components/classes';
+import { AuthorConfigType } from "src/types";
 
+export interface Props {
+	author: AuthorConfigType;
+};
+
+const { author } = Astro.props as Props;
 ---
 
-<div class="mb-8 px-5 py-4 rounded-md  bg-gray-100">
+<div class="mb-8 px-8 py-8 rounded-md  bg-gray-100">
 	<article class="mb-2 flex flex-col items-start justify-center text-start">
 		<a href="/about/">
-			<h1 class="text-4xl font-bold">About Me</h1>
+			<h1 class="text-4xl font-bold mb-3">About Me</h1>
 		</a>
 		<main>
-			<p>이 블로그 혹은 자신에 대한 간단한 텍스트 설명이나 요소들</p>
+			<p class="mb-2">{author.comment}</p>
 			<a href="/about/">Read more</a>
 		</main>
 	</article>

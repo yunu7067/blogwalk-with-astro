@@ -8,6 +8,10 @@ const blogConfig = {
   locale: {
     languageCode: 'ko-KR',
   },
+  author: {
+    name: 'YUNU7067',
+    comment: '여기에는 이 글쓴이에 대한 간단한 설명을 기입해줍니다.',
+  },
   avatar: {
     enabled: true,
     src: '/public/assets/profile/avatar.jpeg',
