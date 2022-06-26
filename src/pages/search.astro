@@ -1,13 +1,18 @@
 ---
-import { AstroSeoProps } from "../components/AstroSeo";
-import BaseLayout from '../layouts/BaseLayout.astro';
+import { AstroSeoProps } from "@components/AstroSeo";
+import BaseLayout from '@layouts/BaseLayout.astro';
 import config from '../../blog.config.js';
-import BlogHeader from "../components/BlogHeader.astro";
+import BlogHeader from "@components/BlogHeader.astro";
+import BlogSearch from "src/utils/BlogSearch";
+import Search from "@components/Search";
 
 let allPosts = await Astro.glob('./p/*.md');
-const posts: {id: string, title: string}[] = allPosts.map(p => {
-	return { id:p.url , title: p.frontmatter.title};
+const posts: { id: string, title: string }[] = allPosts.map(p => {
+	return { id: p.url, title: p.frontmatter.title };
 });
+
+const flexSearchIndex = await BlogSearch({ posts });
+const flexSearchIndexKeys = ["reg", "title.cfg", "title.map", "title.ctx", "tag", "store"];
 
 const seo: AstroSeoProps = {
 	title: "Search"
@@ -19,13 +24,8 @@ const seo: AstroSeoProps = {
 		<div class="max-w-3xl w-full mx-auto">
 			<BlogHeader title={config.title} />
 
-			search
+
+			<Search client:only keys={flexSearchIndexKeys} />
 		</div>
 	</main>
 </BaseLayout>
-<script client:load> 
-	const urlSearchParams = new URLSearchParams(window.location.search);
-	const params = Object.fromEntries(urlSearchParams.entries());
-
-	console.log(params);
-</script>
