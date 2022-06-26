@@ -3,7 +3,7 @@ setup: |
   import Layout from '../../layouts/BlogPost.astro'
 title: Hello world!
 publishDate: 12 Sep 2022
-heroImage: '/public/assets/profile/dscf0346.jpg'
+heroImage: '/public/assets/profile/hero.jpg'
 description: Just a Hello World Post!
 tags: ['test']
 ---
