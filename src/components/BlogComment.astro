@@ -12,8 +12,7 @@ const { comments } = Astro.props as Props;
 {comments.enabled &&
 <div class="giscus mt-12 mb-8" />}
 
-{
-comments.enabled && comments.provider == 'giscus' && (
+{comments.enabled && comments.provider == 'giscus' && (
 <script
 	client:load
 	src="https://giscus.app/client.js"
@@ -32,5 +31,4 @@ comments.enabled && comments.provider == 'giscus' && (
 	async
 >
 </script>
-)
-}
+)}

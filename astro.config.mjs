@@ -8,6 +8,9 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   vite: {},
   // site: 'https://yunu7067.github.io', // sitemap
+  markdown: {
+    syntaxHighlight: 'shiki',
+  },
   experimental: {
     ssr: false,
     integrations: true,

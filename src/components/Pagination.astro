@@ -10,12 +10,13 @@ const { prevUrl, nextUrl } = Astro.props;
 ---
 
 <div class="wrapper">
-	<nav class="nav">
-		<a class="prev p-2 inline-flex items-center gap-2" href={prevUrl || '#' } aria-label="Previous Page">
+	<nav class="flex mx-auto py-16">
+		<a class="prev mr-auto uppercase p-2 inline-flex items-center gap-2" href={prevUrl || '#' }
+			aria-label="Previous Page">
 			<ArrowLeftCircleLine />
 			이전
 		</a>
-		<a class="next p-2 inline-flex items-center gap-2" href={nextUrl || '#' } aria-label="Next Page">
+		<a class="next ml-auto uppercase p-2 inline-flex items-center gap-2" href={nextUrl || '#' } aria-label="Next Page">
 			다음
 			<ArrowRightCircleLine />
 		</a>
@@ -23,30 +24,9 @@ const { prevUrl, nextUrl } = Astro.props;
 </div>
 
 <style>
-	.nav {
-		display: flex;
-		margin-right: auto;
-		margin-left: auto;
-		padding-top: 4rem;
-		padding-bottom: 4rem;
-	}
-
-	.prev,
-	.next {
-		text-transform: uppercase;
-	}
-
 	.prev[href='#'],
 	.next[href='#'] {
 		display: none;
 
-	}
-
-	.prev {
-		margin-right: auto;
-	}
-
-	.next {
-		margin-left: auto;
 	}
 </style>

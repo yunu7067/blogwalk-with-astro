@@ -4,7 +4,7 @@ setup: |
   import Cool from '../../components/Author.astro'
 title: Hello world!
 publishDate: 12 Sep 2022
-value: 128
+heroImage: '/public/assets/profile/dscf0346.jpg'
 description: Just a Hello World Post!
 tags: ['test']
 ---

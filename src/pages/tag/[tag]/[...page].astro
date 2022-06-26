@@ -31,8 +31,10 @@ export async function getStaticPaths({ paginate }) {
 }
 // page
 const { page } = Astro.props;
-const seo: AstroSeoProps = {};
 const { tag } = Astro.params;
+const seo: AstroSeoProps = {
+	title: `TAG: ${tag}`
+};
 ---
 
 <BaseLayout config={config} seo={seo}>
@@ -41,8 +43,8 @@ const { tag } = Astro.params;
 			<BlogHeader title={config.title} />
 
 			<main class="wrapper">
-				<h2 class="title">TAG : #{tag}</h2>
-				<small class="count mb-3">{page.start + 1}–{page.end + 1} of {page.total}</small>
+				<h2 class="mt-8 mb-0 text-5xl tracking-tight text-center">TAG : #{tag}</h2>
+				<small class="block text-base text-center mb-3">{page.start + 1}–{page.end + 1} of {page.total}</small>
 				{page.data.map((post) =>
 				<BlogPostPreview post={post} />)}
 			</main>
@@ -55,18 +57,3 @@ const { tag } = Astro.params;
 	</main>
 
 </BaseLayout>
-<style>
-	.title {
-		font-size: 3em;
-		letter-spacing: -0.04em;
-		margin-top: 2rem;
-		margin-bottom: 0;
-		text-align: center;
-	}
-
-	.count {
-		font-size: 1em;
-		display: block;
-		text-align: center;
-	}
-</style>
