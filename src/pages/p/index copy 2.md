@@ -4,6 +4,7 @@ setup: |
 title: 暗黒公使
 publishDate: 2022-06-26T08:42:00.000Z
 description: 「新作探偵小説全集　全九巻」1933（昭和8）年1月15日
+tags: ['test']
 ---
 
 # 暗黒公使

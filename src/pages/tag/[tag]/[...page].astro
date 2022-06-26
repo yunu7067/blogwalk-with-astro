@@ -1,0 +1,71 @@
+---
+import BlogPostPreview from '@components/PostPreview.astro';
+import Pagination from '@components/Pagination.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { AstroSeoProps } from '@components/AstroSeo';
+import BlogHeader from '@components/BlogHeader.astro';
+import config from '../../../../blog.config.js';
+
+export async function getStaticPaths({ paginate }) {
+	const allPosts = await Astro.glob('../../p/*.md');
+	const allTagsSet = new Set();
+
+	allPosts.map((post) => {
+		const tags = post.frontmatter.tags || [];
+		tags.map((tag) => allTagsSet.add(tag));
+	})
+
+	return Array.from(allTagsSet).map((tag) => {
+		const filteredPosts = allPosts
+			.filter((post) => {
+				// console.debug({ tags: post.frontmatter.tags });
+				return post.frontmatter.tags?.includes(tag)
+			})
+			.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+
+		return paginate(filteredPosts, {
+			params: { tag },
+			pageSize: 10
+		});
+	});
+}
+// page
+const { page } = Astro.props;
+const seo: AstroSeoProps = {};
+---
+
+<BaseLayout config={config} seo={seo}>
+	<main class="wrapper w-full">
+		<div class="max-w-3xl w-full mx-auto">
+			<BlogHeader title={config.title} />
+
+			<main class="wrapper">
+				<h2 class="title">All Posts</h2>
+				<small class="count">{page.start + 1}–{page.end + 1} of {page.total}</small>
+				{page.data.map((post) =>
+				<BlogPostPreview post={post} />)}
+			</main>
+
+			<footer>
+				<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+			</footer>
+
+		</div>
+	</main>
+
+</BaseLayout>
+<style>
+	.title {
+		font-size: 3em;
+		letter-spacing: -0.04em;
+		margin-top: 2rem;
+		margin-bottom: 0;
+		text-align: center;
+	}
+
+	.count {
+		font-size: 1em;
+		display: block;
+		text-align: center;
+	}
+</style>

@@ -6,12 +6,14 @@ import Author from '@components/Author.astro'
 import config from '../../blog.config.js';
 import { parse } from 'node-html-parser';
 import BlogToc from '@components/BlogToc.astro';
+import { PostContent } from 'src/types';
 
 const { content } = Astro.props;
-const { title, description, publishDate, author, heroImage, permalink, alt } = content;
+const { title, description, publishDate, tags, astro } = content as PostContent;
 
+// console.debug(content);
 // 목차 (h1, h2, h3 까지만 추출)
-const headers = parse(content?.astro?.html || '').querySelectorAll("h1, h2, h3");
+const headers = parse(astro?.html || '').querySelectorAll("h1, h2, h3");
 ---
 
 <BaseLayout seo={{title: title, description: description}} config={config}>
@@ -21,7 +23,8 @@ const headers = parse(content?.astro?.html || '').querySelectorAll("h1, h2, h3")
 			<BlogHeader title={config.title} />
 
 
-			<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
+			<BlogPost title={title} publishDate={publishDate} locale={config.locale.languageCode} tags={tags}
+				description={description}>
 				{headers && headers.length &&
 				<BlogToc contents={headers} />}
 

@@ -6,11 +6,10 @@ title: Hello world!
 publishDate: 12 Sep 2022
 value: 128
 description: Just a Hello World Post!
+tags: ['test']
 ---
 
 This is so cool!
-
-Do variables work {frontmatter.value * 2}?
 
 ```javascript
 // Example JavaScript

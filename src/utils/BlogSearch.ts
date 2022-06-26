@@ -41,9 +41,12 @@ export default async function BlogSearch(props: BlogSearchProps) {
   const searchIndexPath = './public/search-index/';
   // const indexedData: {[key: string | number]: unknown} = {};
   async function exporting() {
+    if (!fs.existsSync(searchIndexPath)) {
+      fs.mkdirSync(searchIndexPath, {recursive: true});
+    }
     return index.export((key, data) => {
       // indexedData[key] = data;
-      // console.log({key});
+      // console.debug({key});
       fs.writeFileSync(`${searchIndexPath}${key}.json`, data !== undefined ? data : '');
     });
   }
@@ -53,6 +56,6 @@ export default async function BlogSearch(props: BlogSearchProps) {
   await exporting();
   // const data = await exporting();
 
-  // console.log({data});
+  // console.debug({data});
   return;
 }

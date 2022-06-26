@@ -59,3 +59,5 @@ scripts/memory/project/src/pages/
 packages/astro/src/**/*.prebuilt.ts
 !packages/astro/vendor/vite/dist
 packages/integrations/**/.netlify/
+
+/public/search-index/**/*

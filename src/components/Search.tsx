@@ -6,12 +6,12 @@ export default function Search({keys}: {keys: string[]}) {
   const [doc, setDoc] = createSignal<FlexSearch.Document<unknown, false>>();
   const [searchResult, setSearchResult] = createSignal<DocumentSearchResult<{title: string}, true, true>>([]);
 
-  // console.log(props);
+  // console.debug(props);
   createEffect(() => {
     // TODO : 디바운싱 구현할 것
 
     (async function () {
-      console.log({keys});
+      // console.debug({keys});
       const flexSearchDoc = new FlexSearch.Document({
         document: {
           id: 'id',
@@ -19,12 +19,12 @@ export default function Search({keys}: {keys: string[]}) {
         },
       });
 
-      console.log(keys);
+      // console.debug(keys);
       for (let i = 0, key; i < keys.length; i++) {
         key = keys[i];
         const data = await fetch(`/search-index/${key}.json`).then(res => res.text());
 
-        // console.log({ key, data, url:  `/search-index/${key}.json`});
+        // console.debug({ key, data, url:  `/search-index/${key}.json`});
         flexSearchDoc.import(key, data ?? null);
       }
 
@@ -36,13 +36,13 @@ export default function Search({keys}: {keys: string[]}) {
 
   createEffect(() => {
     if (doc()) {
-      // console.log({doc: doc()});
+      // console.debug({doc: doc()});
       const results = doc().search(keyword(), {
         enrich: true,
         suggest: true,
       });
       setSearchResult(results as unknown as typeof searchResult);
-      // console.log({results});
+      // console.debug({results});
     }
   }, keyword);
 
