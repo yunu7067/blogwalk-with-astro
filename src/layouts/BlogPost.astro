@@ -23,7 +23,7 @@ const headers = parse(astro?.html || '').querySelectorAll("h1, h2, h3");
 <BaseLayout seo={{title: title, description: description}} config={config}>
 
 	<main class="wrapper w-full">
-		<div class="max-w-3xl w-full mx-auto">
+		<div class="max-w-3xl w-full mx-auto px-4 md:px-3 lg:px-0">
 			<BlogHeader title={config.title} />
 			<BlogPost title={title} publishDate={publishDate} locale={config.locale.languageCode} tags={tags}
 				description={description} heroImage={heroImage}>
