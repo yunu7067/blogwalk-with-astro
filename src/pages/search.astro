@@ -6,7 +6,7 @@ import BlogHeader from "@components/BlogHeader.astro";
 import BlogSearch from "src/utils/BlogSearch";
 import Search from "@components/Search";
 
-let allPosts = await Astro.glob('./p/*.md');
+let allPosts = await Astro.glob('./p/**/*.md');
 const posts = allPosts.map(p => {
 	return {
 		id: p.url,
