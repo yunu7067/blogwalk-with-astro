@@ -8,9 +8,9 @@ export interface Props {
 const { title } = Astro.props as Props;
 ---
 
-<header class="w-full flex flex-row items-center justify-between">
-	<h1>
-		<a href="/">
+<header class="py-5 w-full flex flex-row items-center justify-between">
+	<h1 class="m-0 text-2xl">
+		<a href="/" aria-label="Home">
 			<span>{title || "Home"}</span>
 		</a>
 	</h1>
@@ -22,65 +22,3 @@ const { title } = Astro.props as Props;
 		</a>
 	</nav>
 </header>
-
-<style>
-	header {
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-		height: 5rem;
-	}
-
-	article {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	.header-subitem {
-		display: flex;
-		flex-grow: 0;
-		gap: 0.5em;
-		align-items: center;
-		justify-content: center;
-		color: var(--theme-text-lighter);
-		font-size: initial;
-		padding: 0.5rem;
-	}
-
-	.header-subitem:hover {
-		color: var(--theme-accent);
-	}
-
-	.header-subitem svg {
-		width: 1.5rem;
-		height: 1.5rem;
-	}
-
-	@media (max-width: 32em) {
-		.header-subitem {
-			display: none;
-		}
-	}
-
-	h1 {
-		margin: 0;
-		font-size: 1.5rem;
-		max-width: 100%;
-		display: flex;
-		flex-grow: 1;
-	}
-
-	.logo {
-		transform: translateY(0.25rem);
-	}
-
-	svg {
-		width: 2.5rem;
-		height: 2.5rem;
-	}
-
-	h1 a {
-		text-decoration: none;
-		display: inline-flex;
-	}
-</style>
