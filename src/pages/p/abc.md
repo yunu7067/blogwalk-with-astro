@@ -1,7 +1,6 @@
 ---
 setup: |
   import Layout from '../../layouts/BlogPost.astro'
-  import Cool from '../../components/Author.astro'
 title: Hello world!
 publishDate: 12 Sep 2022
 heroImage: '/public/assets/profile/dscf0346.jpg'
