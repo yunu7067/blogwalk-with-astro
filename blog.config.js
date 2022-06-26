@@ -39,22 +39,25 @@ const blogConfig = {
   //     default: '',
   //   },
   // },
-  // comments: {
-  //   enabled: true,
-  //   provider: 'giscus',
-  //   giscus: {
-  //     repo: 'yunu7067/yunu7067.github.io',
-  //     repoId: 'MDEwOlJlcG9zaXRvcnkzNTMzNjU1MjQ=',
-  //     category: 'giscus',
-  //     categoryId: 'DIC_kwDOFQ_uFM4CADJ2',
-  //     mapping: 'pathname',
-  //     reactionsEnabled: '1',
-  //     emitMetadata: '0',
-  //     lightTheme: 'light',
-  //     darkTheme: 'dark',
-  //   },
-  // },
+  comments: {
+    enabled: true,
+    provider: 'giscus',
+
+    // https://giscus.app/
+    giscus: {
+      repo: 'yunu7067/astro-blog',
+      repoId: 'R_kgDOG92tFg',
+      category: 'giscus',
+      categoryId: 'DIC_kwDOG92tFs4CP4r0',
+      mapping: 'pathname',
+      reactionsEnabled: '1',
+      emitMetadata: '0',
+      inputPosition: 'bottom',
+      theme: 'light',
+      lang: 'ko',
+      loading: 'lazy ',
+    },
+  },
 };
 
-// module.exports = blogConfig;
 export default blogConfig;

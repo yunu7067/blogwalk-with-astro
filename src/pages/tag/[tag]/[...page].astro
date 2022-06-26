@@ -25,7 +25,7 @@ export async function getStaticPaths({ paginate }) {
 
 		return paginate(filteredPosts, {
 			params: { tag },
-			pageSize: 10
+			pageSize: 7
 		});
 	});
 }
