@@ -23,6 +23,12 @@
       ],
       "@layouts/*": [
         "src/layouts/*"
+      ],
+      "@types": [
+        "src/types"
+      ],
+      "@utils": [
+        "src/utils"
       ]
     }
   },

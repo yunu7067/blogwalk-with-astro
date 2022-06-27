@@ -1,4 +1,4 @@
-export const timeFormatter = (time: string, locale: string): string => {
+export const timeFormatter = (time: string | number, locale: string): string => {
   const intl = new Intl.DateTimeFormat(locale);
   const inputTime = new Date(time);
 

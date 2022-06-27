@@ -1,5 +1,5 @@
 ---
-import { SearchLine } from "./icons";
+import { SearchLine, StackLine } from "./icons";
 import { btn } from '../components/classes';
 import { AuthorConfigType } from "src/types";
 
@@ -22,7 +22,11 @@ const { author } = Astro.props as Props;
 	</article>
 </div>
 <div class="mb-1 text-right">
-	<a class={btn + " rounded-md bg-gray-50" } href="/search/">
+	<a class={btn + " rounded-md bg-slate-100 hover:bg-slate-200" } href="/series/">
+		Series
+		<StackLine />
+	</a>
+	<a class={btn + " rounded-md bg-slate-100 hover:bg-slate-200 ml-4" } href="/search/">
 		Search
 		<SearchLine />
 	</a>

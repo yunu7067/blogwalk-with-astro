@@ -11,3 +11,4 @@ export {default as Npmjs} from './Npmjs';
 export {default as SearchLine} from './SearchLine';
 export {default as Twitter} from './Twitter';
 export {default as YouTube} from './YouTube';
+export {default as StackLine} from './StackLine';
