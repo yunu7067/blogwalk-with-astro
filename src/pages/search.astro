@@ -33,7 +33,7 @@ const seo: AstroSeoProps = {
 <BaseLayout config={config} seo={seo}>
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto">
-			<BlogHeader title={config.title} />
+			<BlogHeader title={config.title} theme={config.theme} />
 
 
 			<Search client:only keys={flexSearchIndexKeys} />

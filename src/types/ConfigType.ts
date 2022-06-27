@@ -27,7 +27,7 @@ export interface AuthorConfigType {
   comment: string;
 }
 
-// export type ThemeIdentifiers = 'auto' | 'light' | 'dark' | 'system';
+export type ThemeIdentifiers = 'auto' | 'light' | 'dark' | 'system';
 
 export interface BlogConfigType {
   title: string;
@@ -39,5 +39,5 @@ export interface BlogConfigType {
   social?: SocialConfigType[];
   // post: PostConfigType;
   comments: CommentsType;
-  // theme: ThemeIdentifiers;
+  theme: ThemeIdentifiers;
 }

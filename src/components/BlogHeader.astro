@@ -1,11 +1,13 @@
 ---
+import { BlogConfigType, ThemeIdentifiers } from "@types";
 import { btn } from "./classes";
-import { SearchLine, StackLine } from "./icons";
+import { MoonLine, SearchLine, StackLine, SunLine } from "./icons";
 
 export interface Props {
 	title: string;
+	theme: ThemeIdentifiers
 }
-const { title } = Astro.props as Props;
+const { title, theme } = Astro.props as Props;
 ---
 
 <header class="py-5 w-full flex flex-row items-center justify-between">
@@ -15,6 +17,15 @@ const { title } = Astro.props as Props;
 		</a>
 	</h1>
 	<nav class="flex-none flex flex-row gap-2">
+		{
+		theme === "auto" && (
+		<a href="#light-mode" class={btn}>
+			<!-- Search -->
+			<SunLine />
+			<MoonLine />
+		</a>)
+		}
+
 		<a href="/about/" class={btn}>
 			About
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em">

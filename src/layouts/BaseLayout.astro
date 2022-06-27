@@ -19,13 +19,13 @@ const defaultSeo: AstroSeoProps = {
 };
 ---
 
-<html lang={props.config?.locale.languageCode || 'ko' }>
+<html lang={props.config?.locale.languageCode || 'ko' } class={props.config.theme}>
 
 <Head>
 	<AstroSeo {...{...defaultSeo, ...(props?.seo || {})}} />
 </Head>
 
-<body class="overflow-y-scroll">
+<body class=" overflow-y-scroll dark:bg-gradient-to-tr dark:from-gray-900 dark:to-slate-900 dark:text-gray-50">
 	<slot />
 
 	<Footer />

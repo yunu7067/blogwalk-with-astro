@@ -28,7 +28,7 @@ const blogConfig = {
     {identifier: 'email', name: 'email test', url: 'mailto:yunu7067@gmail.com'},
     {identifier: 'default', name: 'Default test', url: 'https://github.com/yunu7067/'},
   ],
-  // theme: 'auto',
+  theme: 'dark',
   // post: {
   //   math: true,
   //   mermaid: true,
