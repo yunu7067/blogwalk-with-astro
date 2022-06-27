@@ -1,11 +1,12 @@
 ---
-import { CommentsType } from "@types";
+import { CommentsType, ThemeIdentifiers } from "@types";
 
 export interface Props {
 	comments: CommentsType
+	theme: ThemeIdentifiers
 };
 
-const { comments } = Astro.props as Props;
+const { comments, theme } = Astro.props as Props;
 
 ---
 
@@ -17,8 +18,8 @@ const { comments } = Astro.props as Props;
 	data-repo-id={comments.giscus.repoId} data-category={comments.giscus.category}
 	data-category-id={comments.giscus?.categoryId} data-mapping={comments.giscus?.mapping || "pathname" }
 	data-reactions-enabled={comments.giscus?.reactionsEnabled || "1" } data-emit-metadata={comments.giscus?.emitMetadata
-	|| "0" } data-input-position={comments.giscus?.inputPosition || "bottom" } data-theme={comments.giscus?.theme
-	|| "light" } data-lang={comments.giscus?.lang || "ko" } data-loading={comments.giscus?.loading || "lazy" }
+	|| "0" } data-input-position={comments.giscus?.inputPosition || "bottom" } data-theme={theme || comments.giscus?.theme
+	} data-lang={comments.giscus?.lang || "ko" } data-loading={comments.giscus?.loading || "lazy" }
 	crossorigin="anonymous" async>
-</script>
+	</script>
 )}

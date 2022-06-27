@@ -12,9 +12,9 @@ export default function SeriesPreview({series, count, lastUpdated, locale}: Seri
     <article class='mb-8 tracking-tight'>
       <header class='mb-3 flex flex-col items-start justify-center gap-1 text-start'>
         <a href={`/series/${series}` || '#error'}>
-          <h1 class='text-4xl font-bold'>{series}</h1>
+          <h1 class='text-4xl font-bold hover:underline underline-offset-1'>{series}</h1>
         </a>
-        <p class='text-sm font-light text-gray-700'>
+        <p class='text-sm font-light text-gray-700 dark:text-gray-300'>
           <span class="after:content-['|'] after:mx-2">{count || 0} Posts</span>
           <span>Last updated on {timeFormatter(lastUpdated, locale || 'ko-KR')}</span>
         </p>

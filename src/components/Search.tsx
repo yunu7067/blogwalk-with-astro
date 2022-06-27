@@ -66,7 +66,7 @@ export default function Search({keys}: {keys: string[]}) {
         <input
           id='input-search'
           type='text'
-          class='bg-gray-100 mb-4 p-4 pr-14 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md text-sm border-gray-300'
+          class='bg-gray-100 dark:bg-gray-700 mb-4 p-4 pr-14 focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-indigo-800 dark:focus:border-indigo-800 flex-1 block w-full rounded-none rounded-r-md text-sm'
           onInput={e => {
             setKeyword(e.currentTarget.value);
             trigger();
@@ -74,7 +74,7 @@ export default function Search({keys}: {keys: string[]}) {
           placeholder='여기에 검색어를 입력하세요.'
           maxLength={30}
         />
-        <label for='input-search' class='absolute p-4 mb-4 top-0 right-0 text-sm'>
+        <label for='input-search' class='absolute p-4 mb-4 top-0 right-0 text-sm dark:text-gray-200'>
           <SearchLine width='20' height='20' />
         </label>
         <p class='mb-5'>(검색 필드: title, description, tags)</p>
@@ -84,7 +84,7 @@ export default function Search({keys}: {keys: string[]}) {
         <div>
           {searchResult() &&
             searchResult().map(({id, doc}) => (
-              <div class='p-8 border rounded-md mb-2x'>
+              <div class='p-8 border rounded-md mb-2x dark:border-gray-600'>
                 <a href={id as unknown as string}>
                   <h1 class='mb-1.5 text-2xl font-bold hover:underline hover:underline-offset-1'>{doc.title}</h1>
                 </a>

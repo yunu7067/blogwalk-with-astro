@@ -10,7 +10,7 @@ export interface Props {
 const { author } = Astro.props as Props;
 ---
 
-<div class="mb-8 px-8 py-8 rounded-md  bg-gray-100">
+<div class="mb-8 px-8 py-8 rounded-md bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100">
 	<article class="mb-2 flex flex-col items-start justify-center text-start">
 		<a href="/about/">
 			<h1 class="text-4xl font-bold mb-3">About Me</h1>
@@ -22,11 +22,11 @@ const { author } = Astro.props as Props;
 	</article>
 </div>
 <div class="mb-1 text-right">
-	<a class={btn + " rounded-md bg-slate-100 hover:bg-slate-200" } href="/series/">
+	<a class={btn } href="/series/">
 		Series
 		<StackLine />
 	</a>
-	<a class={btn + " rounded-md bg-slate-100 hover:bg-slate-200 ml-4" } href="/search/">
+	<a class={btn + " ml-4" } href="/search/">
 		Search
 		<SearchLine />
 	</a>

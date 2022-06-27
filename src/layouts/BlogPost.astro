@@ -37,7 +37,7 @@ const headers = parse(astro?.html || '').querySelectorAll("h1, h2, h3");
 				<BlogViews client:load namespace={config.baseurl} key={decodeURI(pathname)} />
 			</div>
 			<Author avatar={config.avatar} name={config.author.name} href="/" description={config.author.comment} />
-			<BlogComment comments={config.comments} />
+			<BlogComment comments={config.comments} theme={config.theme} />
 		</div>
 	</main>
 </BaseLayout>
