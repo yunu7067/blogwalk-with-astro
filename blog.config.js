@@ -25,7 +25,7 @@ const blogConfig = {
     {identifier: 'linkedin', name: 'Linkedin test', url: 'https://github.com/yunu7067/'},
     {identifier: 'npmjs', name: 'Npmjs test', url: 'https://github.com/yunu7067/'},
     {identifier: 'youtube', name: 'Youtube test', url: 'https://github.com/yunu7067/'},
-    {identifier: 'email', name: 'email test', url: 'https://github.com/yunu7067/'},
+    {identifier: 'email', name: 'email test', url: 'mailto:yunu7067@gmail.com'},
     {identifier: 'default', name: 'Default test', url: 'https://github.com/yunu7067/'},
   ],
   // theme: 'auto',

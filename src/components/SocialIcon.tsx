@@ -1,6 +1,6 @@
 import {Component, JSX} from 'solid-js';
 import {SocialConfigType, SocialIdentifiers} from '../types';
-import {Discord, Earth, Facebook, GitHub, Instagram, LinkedIn, Mail, Npmjs, Twitter, YouTube} from './icons';
+import {AtLine, Discord, Earth, Facebook, GitHub, Instagram, LinkedIn, Mail, Npmjs, Twitter, YouTube} from './icons';
 
 interface SocialIconProps {
   social: SocialConfigType;
@@ -31,7 +31,7 @@ const IconSwitcher = (identifier: SocialIdentifiers): JSX.Element => {
     case 'youtube':
       return <YouTube />;
     case 'email':
-      return <Mail />;
+      return <AtLine />;
 
     default:
       return <Earth />;
