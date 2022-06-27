@@ -18,10 +18,10 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
+      "@coms/*": [
         "src/components/*"
       ],
-      "@layouts/*": [
+      "@lays/*": [
         "src/layouts/*"
       ],
       "@types": [

@@ -1,6 +1,6 @@
 ---
 setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+  import Layout from '@lays/BlogPost.astro'
 title: Hello world!
 publishDate: 12 Sep 2022
 heroImage: '/public/assets/profile/hero.jpg'

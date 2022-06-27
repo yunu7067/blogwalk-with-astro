@@ -1,13 +1,10 @@
 ---
-import BlogPostPreview from '@components/PostPreview.astro';
-import Pagination from '@components/Pagination.astro';
-import BaseLayout from '@layouts/BaseLayout.astro';
-import { AstroSeoProps } from '@components/AstroSeo';
-import BlogHeader from '@components/BlogHeader.astro';
-import config from '../../../blog.config.js';
 import { MarkdownInstance } from 'astro';
-import { valid } from 'node-html-parser';
-import PostPreview from '@components/PostPreview.astro';
+import BaseLayout from '@lays/BaseLayout.astro';
+import { AstroSeoProps } from '@coms/AstroSeo';
+import BlogHeader from '@coms/BlogHeader.astro';
+import PostPreview from '@coms/PostPreview.astro';
+import config from '../../../blog.config.js';
 
 interface SeriesProps {
 	count: number;

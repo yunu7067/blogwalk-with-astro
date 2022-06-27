@@ -1,5 +1,5 @@
 import {createSignal, onMount} from 'solid-js';
-import {hit, ViewRequestProps} from 'src/utils/BlowViews';
+import {hit, ViewRequestProps} from '@utils';
 
 export interface BlogViewsProps extends ViewRequestProps {}
 

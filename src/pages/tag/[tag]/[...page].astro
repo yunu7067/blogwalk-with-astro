@@ -1,9 +1,9 @@
 ---
-import BlogPostPreview from '@components/PostPreview.astro';
-import Pagination from '@components/Pagination.astro';
-import BaseLayout from '@layouts/BaseLayout.astro';
-import { AstroSeoProps } from '@components/AstroSeo';
-import BlogHeader from '@components/BlogHeader.astro';
+import BaseLayout from '@lays/BaseLayout.astro';
+import BlogPostPreview from '@coms/PostPreview.astro';
+import Pagination from '@coms/Pagination.astro';
+import { AstroSeoProps } from '@coms/AstroSeo';
+import BlogHeader from '@coms/BlogHeader.astro';
 import config from '../../../../blog.config.js';
 
 export async function getStaticPaths({ paginate }) {

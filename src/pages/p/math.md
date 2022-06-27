@@ -1,6 +1,6 @@
 ---
 setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+  import Layout from '@lays/BlogPost.astro'
 title: latex test
 publishDate: 2022-06-24
 description: LaTeX test blog;

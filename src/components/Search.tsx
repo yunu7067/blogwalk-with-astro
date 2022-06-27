@@ -1,8 +1,8 @@
 import {createEffect, createSignal} from 'solid-js';
 import * as FlexSearch from 'flexsearch';
-import createDebounce from 'src/utils/createDebounce';
-import {SearchLine} from '@components/icons';
-import Tags from '@components/Tags';
+import {createDebounce} from '@utils';
+import {SearchLine} from '@coms/icons';
+import Tags from '@coms/Tags';
 
 export default function Search({keys}: {keys: string[]}) {
   const [keyword, setKeyword] = createSignal<string>('');

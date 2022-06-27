@@ -1,4 +1,4 @@
-import {GiscusProps} from 'src/types/giscus';
+import {GiscusProps} from '@types';
 
 export interface GiscusConfigProps extends GiscusProps {}
 

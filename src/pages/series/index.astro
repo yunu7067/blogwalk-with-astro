@@ -1,10 +1,10 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import { AstroSeoProps } from '@components/AstroSeo';
-import BlogHeader from '@components/BlogHeader.astro';
+import BaseLayout from '@lays/BaseLayout.astro';
+import { AstroSeoProps } from '@coms/AstroSeo';
+import SeriesPreview from '@coms/SeriesPreview';
+import BlogHeader from '@coms/BlogHeader.astro';
+import { PostMetadata } from '@types';
 import config from '../../../blog.config.js';
-import { PostMetadata } from 'src/types';
-import SeriesPreview from '@components/SeriesPreview';
 
 const allPosts = await Astro.glob('../p/**/*.md');
 // 최신 게시글 먼저 탐색해 최근에 글이 추가된 시리즈가 위로 갈 수 있도록 함.

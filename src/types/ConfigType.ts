@@ -1,4 +1,4 @@
-import {CommentsType} from 'src/types/CommentsConfigType';
+import {CommentsType} from '@types';
 import {LocaleConfigType} from './LocaleConfigType';
 
 export type SocialIdentifiers =
