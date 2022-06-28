@@ -17,13 +17,42 @@ const defaultSeo: AstroSeoProps = {
 		cardType: 'summary',
 	}
 };
+const blogTheme = () => {
+	if (props.config.theme === 'light' || props.config.theme === 'dark')
+		return props.config.theme;
+	else
+		return undefined;
+}
+
 ---
 
-<html lang={props.config?.locale.languageCode || 'ko' } class={props.config.theme}>
+<html lang={props.config?.locale.languageCode || 'ko' } class={blogTheme()}>
 
 <Head>
 	<AstroSeo {...{...defaultSeo, ...(props?.seo || {})}} />
+	<script define:vars={{ configTheme : props.config.theme }}>
+		(function () {
+			if (configTheme === "system") {
+				const htmlEl = document.getElementsByTagName('html')[0];
+				/* 시스템 테마가 다크이면 */
+				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					htmlEl.classList.add("dark");
+				}
+				/* 그 외엔 지정 안함 */
+			} else {
+				if (configTheme === 'auto') {
+					window.localStorage.setItem("theme", "dark");
+					const theme = window.localStorage.getItem("theme");
+					if (theme) {
+						const htmlEl = document.getElementsByTagName('html')[0];
+						htmlEl.classList.add(theme);
+					}
+				}
+			}
+		})();
+	</script>
 </Head>
+
 
 <body class=" overflow-y-scroll dark:bg-gradient-to-tr dark:from-gray-900 dark:to-slate-900 dark:text-gray-50">
 	<slot />
