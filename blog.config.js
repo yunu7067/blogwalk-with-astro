@@ -28,17 +28,7 @@ const blogConfig = {
     {identifier: 'email', name: 'email test', url: 'mailto:yunu7067@gmail.com'},
     {identifier: 'default', name: 'Default test', url: 'https://github.com/yunu7067/'},
   ],
-  theme: 'system',
-  // post: {
-  //   math: true,
-  //   mermaid: true,
-  //   readingTime: false,
-  //   toc: true,
-  //   license: {
-  //     enable: false,
-  //     default: '',
-  //   },
-  // },
+  theme: 'auto',
   comments: {
     enabled: true,
     provider: 'giscus',
@@ -53,9 +43,10 @@ const blogConfig = {
       reactionsEnabled: '1',
       emitMetadata: '0',
       inputPosition: 'bottom',
-      theme: 'light',
       lang: 'ko',
       loading: 'lazy ',
+      lightTheme: 'light',
+      darkTheme: 'dark_dimmed',
     },
   },
 };

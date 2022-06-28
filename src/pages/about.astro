@@ -13,7 +13,7 @@ const seo: AstroSeoProps = {
 <BaseLayout config={config} seo={seo}>
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto">
-			<BlogHeader title={config.title} theme={config.theme} />
+			<BlogHeader config={config} />
 
 			<div class="w-fit shadow-sm">
 				<Picture src="/public/social.png" alt="social" w={300} h={112} />
