@@ -1452,13 +1452,13 @@ __metadata:
     "@astropub/webapi": ^0.10.14
     "@tailwindcss/line-clamp": ^0.4.0
     "@types/flexsearch": ^0.7.3
-    astro: ^1.0.0-beta.56
+    astro: ^1.0.0-beta.57
     astro-imagetools: ^0.6.10
     flexsearch: ^0.7.21
     node-html-parser: ^5.3.3
     reading-time: 1.5.0
     sass: ^1.53.0
-    solid-js: ^1.4.4
+    solid-js: ^1.4.5
   languageName: unknown
   linkType: soft
 
@@ -1482,9 +1482,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^1.0.0-beta.56":
-  version: 1.0.0-beta.56
-  resolution: "astro@npm:1.0.0-beta.56"
+"astro@npm:^1.0.0-beta.57":
+  version: 1.0.0-beta.57
+  resolution: "astro@npm:1.0.0-beta.57"
   dependencies:
     "@astrojs/compiler": ^0.17.0
     "@astrojs/language-server": ^0.13.4
@@ -1543,7 +1543,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: d1ccdfc51c09db61b084ece890cc668a6df7b0327d318aa3d7e7446d72db794f5419083a2c2a4fb82853101dc4baa017b9ddbaf6e7f1ab120d131f4bb1dd5959
+  checksum: 411066972578b68b5dd2d36ab8e7f6b35f277afdf1ec39d6352afdb7d7050b3d5754f47f01ea3c10d34868490efcc63a86b62b8752e86d9479539ca4d2062dac
   languageName: node
   linkType: hard
 
@@ -6230,10 +6230,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solid-js@npm:^1.4.4":
-  version: 1.4.4
-  resolution: "solid-js@npm:1.4.4"
-  checksum: 8daeac24ef87b228e00c1080ba307a969cfd01812ece13f43bfedbcbc7f4ad9c0d7e4bd0cf5e279ef5342d4e0e8a9dcfc4f789ae669ad5e5d759639a5a917275
+"solid-js@npm:^1.4.5":
+  version: 1.4.5
+  resolution: "solid-js@npm:1.4.5"
+  checksum: ef1b2140d27e9537b859bb9af925a11454af3926b189bcfe0eae914ece70ffeec5d9d7e653c35b704de936b85ac63ae6e7d4e7d43dd2b25712d30eecf5d5bc6f
   languageName: node
   linkType: hard
 
