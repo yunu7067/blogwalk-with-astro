@@ -1,14 +1,14 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import BlogHeader from '../components/BlogHeader.astro';
-import BlogPost from '../components/BlogPost.astro';
-import Author from '@components/Author.astro'
-import config from '../../blog.config.js';
+import BlogHeader from '@coms/BlogHeader.astro';
+import BlogPost from '@coms/BlogPost.astro';
+import Author from '@coms/Author.astro'
 import { parse } from 'node-html-parser';
-import BlogToc from '@components/BlogToc.astro';
-import { PostContent } from 'src/types';
-import BlogComment from '@components/BlogComment.astro';
-import BlogViews from '@components/BlogViews';
+import BlogToc from '@coms/BlogToc.astro';
+import BlogComment from '@coms/BlogComment.astro';
+import BlogViews from '@coms/BlogViews';
+import { PostContent } from '@types';
+import config from '../../blog.config.js';
 
 const { content } = Astro.props;
 const { pathname } = Astro.canonicalURL;
@@ -24,7 +24,7 @@ const headers = parse(astro?.html || '').querySelectorAll("h1, h2, h3");
 
 	<main class="wrapper w-full">
 		<div class="max-w-3xl w-full mx-auto px-4 md:px-3 lg:px-0">
-			<BlogHeader title={config.title} />
+			<BlogHeader config={config} />
 			<BlogPost title={title} publishDate={publishDate} locale={config.locale.languageCode} tags={tags}
 				description={description} heroImage={heroImage}>
 				{headers && headers.length !== 0 &&
@@ -37,7 +37,7 @@ const headers = parse(astro?.html || '').querySelectorAll("h1, h2, h3");
 				<BlogViews client:load namespace={config.baseurl} key={decodeURI(pathname)} />
 			</div>
 			<Author avatar={config.avatar} name={config.author.name} href="/" description={config.author.comment} />
-			<BlogComment comments={config.comments} />
+			<BlogComment comments={config.comments} theme={config.theme} />
 		</div>
 	</main>
 </BaseLayout>

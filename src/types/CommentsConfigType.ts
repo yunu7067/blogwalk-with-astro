@@ -1,6 +1,9 @@
-import {GiscusProps} from 'src/types/giscus';
+import {GiscusProps, Theme} from '@types';
 
-export interface GiscusConfigProps extends GiscusProps {}
+export interface GiscusConfigProps extends GiscusProps {
+  lightTheme: Theme;
+  darkTheme: Theme;
+}
 
 export type CommentsProvider = 'giscus';
 
