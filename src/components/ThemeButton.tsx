@@ -56,7 +56,7 @@ export default function ThemeButton({config}: ThemeButtonProps) {
   };
 
   return (
-    <button class={btn} onClick={toggleTheme}>
+    <button class={btn} onClick={toggleTheme} aria-label='dark mode toggle'>
       {isDarkMode ? <SunLine /> : <MoonLine />}
     </button>
   );

@@ -11,6 +11,8 @@ export interface Props {
 
 const props = Astro.props as Props;
 const defaultSeo: AstroSeoProps = {
+	title: props.config.title  || '',
+	description: props.config.description || '',
 	twitter: {
 		site: '@site',
 		handle: '@handle',
