@@ -24,7 +24,7 @@ let firstPage = allPosts.slice(0, 3);
 	canonical: canonicalURL.toString() }}>
 	<LargeHeader avatar={avatar} title={title} description={description} socials={social} />
 
-	<main class="wrapper w-full">
+	<main class="w-full">
 		<div class="max-w-3xl w-full mx-auto">
 			<AboutContainer author={config.author} />
 			{firstPage.map((post) => (

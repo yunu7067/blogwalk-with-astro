@@ -42,12 +42,12 @@ const seo: AstroSeoProps = {
 ---
 
 <BaseLayout config={config} seo={seo}>
-	<main class="wrapper w-full">
+	<main class="w-full">
 		<div class="max-w-3xl w-full mx-auto">
 			<BlogHeader config={config} />
 
-			<main class="wrapper">
-				<h2 class="mt-8 mb-0 text-5xl tracking-tight text-center">Series</h2>
+			<main>
+				<h2 class="mt-8 mb-6 text-5xl tracking-tight text-center">Series</h2>
 				<!-- <small class="block text-base text-center mb-3">{page.start + 1}–{page.end + 1} of {page.total}</small> -->
 				{seriesList.map((series) => (
 				<SeriesPreview series={series} count={seriesData[series].count} lastUpdated={seriesData[series].lastUpdated}

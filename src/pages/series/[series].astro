@@ -51,13 +51,13 @@ const seo: AstroSeoProps = {
 ---
 
 <BaseLayout config={config} seo={seo}>
-	<main class="wrapper w-full">
+	<main class="w-full">
 		<div class="max-w-3xl w-full mx-auto">
 			<BlogHeader config={config} />
 
-			<main class="wrapper">
-				<h2 class="mt-8 mb-0 text-5xl tracking-tight text-center">{seo.title}</h2>
-				<small class="block text-base text-center mb-3">{count} Posts</small>
+			<main>
+				<h2 class="mt-8 mb-1 text-5xl tracking-tight text-center">{seo.title}</h2>
+				<small class="block text-base text-center mb-6">{count} Posts</small>
 
 				{posts.map((post) => (
 				<PostPreview post={post} />
