@@ -391,21 +391,37 @@ export interface AdditionalRobotsProps {
 }
 
 interface DefaultSeoProps {
+  /** \<title\>{value}\</title\> */
   title?: string;
-  titleTemplate?: string;
-  defaultTitle?: string;
+  /**
+   * default value : `false`
+   *
+   * \<meta name='robots' content={noindex|index} \/\>
+   */
   noindex?: boolean;
+  /**
+   * default value : `false`
+   *
+   * \<meta name='robots' content={nofollow|follow} \/\>
+   */
   nofollow?: boolean;
-  robotsProps?: AdditionalRobotsProps;
+  // robotsProps?: AdditionalRobotsProps;
+  /**
+   *  \<meta name="description" content={value} \/\>
+   */
   description?: string;
   canonical?: string;
-  mobileAlternate?: MobileAlternate;
-  languageAlternates?: ReadonlyArray<LanguageAlternate>;
+  // mobileAlternate?: MobileAlternate;
+  // languageAlternates?: ReadonlyArray<LanguageAlternate>;
   openGraph?: OpenGraph;
   facebook?: {appId: string};
   twitter?: Twitter;
-  additionalMetaTags?: ReadonlyArray<MetaTag>;
-  additionalLinkTags?: ReadonlyArray<LinkTag>;
+  // additionalMetaTags?: ReadonlyArray<MetaTag>;
+  // additionalLinkTags?: ReadonlyArray<LinkTag>;
+  // defaultOpenGraphImageWidth?: number;
+  // defaultOpenGraphImageHeight?: number;
+  // defaultOpenGraphVideoWidth?: number;
+  // defaultOpenGraphVideoHeight?: number;
 }
 
 interface BlogSeoProps {
@@ -428,6 +444,8 @@ function AstroSeo(seo: AstroSeoProps) {
       {/* Common */}
       {seo.title && <title>{seo.title}</title>}
       {seo.description && <meta name='description' content={seo.description} />}
+      {/* Robots */}
+      <meta name='robots' content={`${seo.noindex ? 'noindex' : 'index'},${seo.nofollow ? 'nofollow' : 'follow'}`} />
 
       {/* SEO */}
       {seo.canonical && <link rel='canonical' href={seo.canonical} />}
@@ -435,8 +453,129 @@ function AstroSeo(seo: AstroSeoProps) {
       {seo.prev && <link rel='prev' aria-label='Next Page' href={new URL(seo.prev, seo.canonical).href} />}
 
       {/* OpenGraph */}
-      {seo.title && <meta property='og:title' content={seo.title} />}
-      {seo.description && <meta property='og:description' content={seo.description} />}
+      {(seo.openGraph?.title || seo.title) && <meta property='og:title' content={seo.openGraph.title || seo.title} />}
+      {(seo.openGraph?.description || seo.description) && (
+        <meta property='og:description' content={seo.openGraph.description || seo.description} />
+      )}
+      {(seo.openGraph?.url || seo.canonical) && (
+        <meta property='og:url' content={seo.openGraph?.url || seo.canonical} />
+      )}
+      {seo.openGraph?.type && <meta property='og:type' content={seo.openGraph.type.toLowerCase()} />}
+      {seo.openGraph?.type && seo.openGraph.type.toLowerCase() === 'profile' && seo.openGraph?.profile && (
+        <>
+          <meta property='profile:first_name' content={seo.openGraph.profile.firstName} />
+          <meta property='profile:last_name' content={seo.openGraph.profile.lastName} />
+          <meta property='profile:username' content={seo.openGraph.profile.username} />
+          <meta property='profile:gender' content={seo.openGraph.profile.gender} />
+        </>
+      )}
+      {seo.openGraph?.type && seo.openGraph.type.toLowerCase() === 'book' && seo.openGraph?.book && (
+        <>
+          {seo.openGraph.book?.authors &&
+            seo.openGraph.book?.authors.length &&
+            seo.openGraph.book.authors.map(author => <meta property='book:author' content={author} />)}
+          {seo.openGraph.book?.isbn && <meta property='book:isbn' content={seo.openGraph.book.isbn} />}
+          {seo.openGraph.book?.releaseDate && (
+            <meta property='book:release_date' content={seo.openGraph.book.releaseDate} />
+          )}
+          {seo.openGraph.book?.tags &&
+            seo.openGraph.book.tags.length &&
+            seo.openGraph.book.tags.map(tag => <meta property='book:tag' content={tag} />)}
+        </>
+      )}
+      {seo.openGraph?.type && seo.openGraph.type.toLowerCase() === 'article' && seo.openGraph?.article && (
+        <>
+          {seo.openGraph.article?.publishedTime && (
+            <meta property='article:published_time' content={seo.openGraph.article.publishedTime} />
+          )}
+          {seo.openGraph.article?.modifiedTime && (
+            <meta property='article:modified_time' content={seo.openGraph.article.modifiedTime} />
+          )}
+          {seo.openGraph.article?.expirationTime && (
+            <meta property='article:expiration_time' content={seo.openGraph.article.expirationTime} />
+          )}
+          {seo.openGraph.article?.authors &&
+            seo.openGraph.article.authors?.length &&
+            seo.openGraph.article.authors.map(author => <meta property='article:author' content={author} />)}
+          {seo.openGraph.article?.section && (
+            <meta property='article:section' content={seo.openGraph.article.section} />
+          )}
+          {seo.openGraph.article?.tags &&
+            seo.openGraph.article.tags?.length &&
+            seo.openGraph.article.tags.map(tag => <meta property='article:tag' content={tag} />)}
+        </>
+      )}
+
+      {seo.openGraph?.type &&
+        /video\.movie|video\.episode|video\.tv_show|video\.other/.test(seo.openGraph?.type.toLowerCase()) &&
+        seo.openGraph?.video && (
+          <>
+            {seo.openGraph.video.actors &&
+              seo.openGraph.video.actors?.length &&
+              seo.openGraph.video.actors.map(actor => (
+                <>
+                  {actor.profile && <meta property='video:actor' content={actor.profile} />}
+                  {actor?.role && <meta property='video:actor:role' content={actor.role} />}
+                </>
+              ))}
+            {seo.openGraph.video.directors &&
+              seo.openGraph.video.directors?.length &&
+              seo.openGraph.video.directors.map(director => <meta property='video:director' content={director} />)}
+            {seo.openGraph.video.writers &&
+              seo.openGraph.video.writers?.length &&
+              seo.openGraph.video.writers.map(writer => <meta property='video:writer' content={writer} />)}
+            {seo.openGraph.video?.duration && (
+              <meta property='video:duration' content={seo.openGraph.video.duration.toString()} />
+            )}
+            {seo.openGraph.video?.releaseDate && (
+              <meta property='video:release_date' content={seo.openGraph.video.releaseDate} />
+            )}
+            {seo.openGraph.video.tags &&
+              seo.openGraph.video.tags?.length &&
+              seo.openGraph.video.tags.map(tag => <meta property='video:tag' content={tag} />)}
+            {seo.openGraph.video?.series && <meta property='video:series' content={seo.openGraph.video.series} />}
+          </>
+        )}
+
+      {/* 
+    // images
+    if (config.defaultOpenGraphImageWidth) {
+      defaults.defaultOpenGraphImageWidth = config.defaultOpenGraphImageWidth;
+    }
+
+    if (config.defaultOpenGraphImageHeight) {
+      defaults.defaultOpenGraphImageHeight = config.defaultOpenGraphImageHeight;
+    }
+
+    if (config.openGraph.images && config.openGraph.images.length) {
+      tagsToRender.push(
+        ...buildOpenGraphMediaTags('image', config.openGraph.images, {
+          defaultWidth: defaults.defaultOpenGraphImageWidth,
+          defaultHeight: defaults.defaultOpenGraphImageHeight,
+        }),
+      );
+    }
+
+    // videos
+    if (config.defaultOpenGraphVideoWidth) {
+      defaults.defaultOpenGraphVideoWidth = config.defaultOpenGraphVideoWidth;
+    }
+
+    if (config.defaultOpenGraphVideoHeight) {
+      defaults.defaultOpenGraphVideoHeight = config.defaultOpenGraphVideoHeight;
+    }
+
+    if (config.openGraph.videos && config.openGraph.videos.length) {
+      tagsToRender.push(
+        ...buildOpenGraphMediaTags('video', config.openGraph.videos, {
+          defaultWidth: defaults.defaultOpenGraphVideoWidth,
+          defaultHeight: defaults.defaultOpenGraphVideoHeight,
+        }),
+      );
+    }
+  */}
+      {seo.openGraph?.locale && <meta property='og:locale' content={seo.openGraph.locale} />}
+      {seo.openGraph.site_name && <meta property='og:site_name' content={seo.openGraph.site_name} />}
       {seo.image && <meta property='og:image' content={new URL(seo.image, seo.canonical).toString()} />}
 
       {/* Twitter */}
@@ -444,9 +583,9 @@ function AstroSeo(seo: AstroSeoProps) {
       {seo.twitter?.site && <meta name='twitter:site' content={seo.twitter.site} />}
       {seo.twitter?.cardType && <meta name='twitter:card' content={seo.twitter.cardType} />}
       {seo.twitter?.handle && <meta name='twitter:creator' content={seo.twitter.handle} />}
-      {seo.title && <meta name='twitter:title' content={seo.title} />}
-      {seo.description && <meta name='twitter:description' content={seo.description} />}
-      {seo.image && <meta name='twitter:image' content={seo.image} />}
+
+      {/* Facebook */}
+      {seo.facebook?.appId && <meta property='fb:app_id' content={seo.facebook.appId} />}
     </>
   );
 }

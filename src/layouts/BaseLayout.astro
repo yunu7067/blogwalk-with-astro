@@ -13,11 +13,6 @@ const props = Astro.props as Props;
 const defaultSeo: AstroSeoProps = {
 	title: props.config.title  || '',
 	description: props.config.description || '',
-	twitter: {
-		site: '@site',
-		handle: '@handle',
-		cardType: 'summary',
-	}
 };
 const blogTheme = () => {
 	if (props.config.theme === 'light' || props.config.theme === 'dark')
@@ -25,7 +20,6 @@ const blogTheme = () => {
 	else
 		return '';
 }
-
 ---
 
 <html lang={props.config?.locale.languageCode || 'ko' } class={"bg-transparent " + blogTheme()}>
