@@ -453,9 +453,9 @@ function AstroSeo(seo: AstroSeoProps) {
       {seo.prev && <link rel='prev' aria-label='Next Page' href={new URL(seo.prev, seo.canonical).href} />}
 
       {/* OpenGraph */}
-      {(seo.openGraph?.title || seo.title) && <meta property='og:title' content={seo.openGraph.title || seo.title} />}
+      {(seo.openGraph?.title || seo.title) && <meta property='og:title' content={seo.openGraph?.title || seo.title} />}
       {(seo.openGraph?.description || seo.description) && (
-        <meta property='og:description' content={seo.openGraph.description || seo.description} />
+        <meta property='og:description' content={seo.openGraph?.description || seo.description} />
       )}
       {(seo.openGraph?.url || seo.canonical) && (
         <meta property='og:url' content={seo.openGraph?.url || seo.canonical} />
@@ -575,7 +575,7 @@ function AstroSeo(seo: AstroSeoProps) {
     }
   */}
       {seo.openGraph?.locale && <meta property='og:locale' content={seo.openGraph.locale} />}
-      {seo.openGraph.site_name && <meta property='og:site_name' content={seo.openGraph.site_name} />}
+      {seo.openGraph?.site_name && <meta property='og:site_name' content={seo.openGraph.site_name} />}
       {seo.image && <meta property='og:image' content={new URL(seo.image, seo.canonical).toString()} />}
 
       {/* Twitter */}
