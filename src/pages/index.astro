@@ -6,6 +6,7 @@ import LargeHeader from '@coms/LargeHeader.astro';
 import AboutContainer from '@coms/AboutContainer.astro';
 import { ArrowRightCircleLine } from '@coms/icons';
 import config from '../../blog.config.js';
+import { PostMetadata } from 'src/types/PostType.js';
 
 const {
 	title,
@@ -15,12 +16,12 @@ const {
 } = config;
 let canonicalURL = Astro.canonicalURL;
 
-let allPosts = await Astro.glob('./p/**/*.md');
+let allPosts = await Astro.glob<PostMetadata>('./p/**/*.md');
 allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
 let firstPage = allPosts.slice(0, 3);
 ---
 
-<BaseLayout config={config} seo={{ title: title, description: description, image:allPosts[0].frontmatter.image,
+<BaseLayout config={config} seo={{ title: title, description: description, image: allPosts[0].frontmatter?.heroImage,
 	canonical: canonicalURL.toString() }}>
 	<LargeHeader avatar={avatar} title={title} description={description} socials={social} />
 
