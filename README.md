@@ -15,21 +15,22 @@
 
 이 저장소는 `yarn berry`를 사용합니다. 따라서 실행 전에 `npm install -g yarn` 명령어를 사용하여 `yarn`을 사용할 수 있도록 준비합니다.
 
-| 명령어                          | 동작                                                                   |
-| :------------------------------ | :--------------------------------------------------------------------- |
-| yarn install                    | Install dependencies.                                                  |
-| yarn dev                        | ev                                                                     |
-| Runs Astro’s dev server. server |
-| yarn build                      | Builds your site for production.                                       |
-| yarn preview                    | Starts a local static file server to serve your built dist/ directory. |
+| 명령어       | 동작                                                                   |
+| :----------- | :--------------------------------------------------------------------- |
+| yarn install | Install dependencies.                                                  |
+| yarn dev     | Runs Astro’s dev server. server                                        |
+| yarn build   | Builds your site for production.                                       |
+| yarn preview | Starts a local static file server to serve your built dist/ directory. |
 
 더 자세한 사용법은 [Astro 공식 문서](https://docs.astro.build/en/reference/cli-reference/#astro-preview)를 참조합니다.
 
+## 게시글 작성
+
+새로운 게시글은 `/src/pages/p/`에 `./[slug].md` 혹은 `./[slug]/index.md` 파일명으로 작성한 후 서버를 재시작시켜줍니다.
+
+이미지 파일도 같은 폴더에 넣어둘 수 있습니다.
+
 ## 주의사항
-
-## 게시글 작성 요령
-
-새로운 게시글은 `/src/pages/p/`에 `./[slug].md` 혹은 `./[slug]/index.md` 파일명으로 작성한 후 서버를 재시작심켜줍니다.
 
 ### About 페이지
 
