@@ -2,6 +2,7 @@
 
 ## 기능
 
+- [x] 사이트 맵 xml (Using by @astrojs/sitemap)
 - [x] 이미지 자동 최적화 (Using by [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools))
 - [x] 게시글 태그
 - [x] 게시글 검색
