@@ -2,6 +2,7 @@
 
 ## 기능
 
+- [x] 이미지 자동 최적화 (Using by [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools))
 - [x] 게시글 태그
 - [x] 게시글 검색
 - [x] 조회수 (Using by [CountAPI](https://countapi.xyz/))
@@ -10,6 +11,11 @@
   - [x] 고정 테마(라이트/다크)
   - [x] 가변 테마(자동/시스템)
 - [x] 모바일 디바이스 스타일링
+
+### 검토중인 기능
+
+- [ ] [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools)을 [@astrojs/image](https://github.com/withastro/astro/tree/main/packages/integrations/image) 로 변경
+- [ ] astro/rss
 
 ## 사용법
 
