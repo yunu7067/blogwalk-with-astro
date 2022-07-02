@@ -15,7 +15,7 @@
 ### 검토중인 기능
 
 - [ ] [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools)을 [@astrojs/image](https://github.com/withastro/astro/tree/main/packages/integrations/image) 로 변경
-- [ ] astro/rss
+- [ ] rss 제공
 
 ## 사용법
 
