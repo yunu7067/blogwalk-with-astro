@@ -2,7 +2,7 @@
 
 /** @type {import('./src/types').BlogConfigType} */
 const blogConfig = {
-  baseurl: 'https://yunu7067.github.io',
+  baseurl: 'https://example.com.github.io',
   title: 'tololo://',
   description: 'An example blog on Astro',
   locale: {
