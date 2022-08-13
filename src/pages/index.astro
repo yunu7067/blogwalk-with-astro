@@ -14,7 +14,7 @@ const {
 	avatar,
 	social
 } = config;
-let canonicalURL = Astro.canonicalURL;
+let canonicalURL = Astro.url;
 
 let allPosts = await Astro.glob<PostMetadata>('./p/**/*.md');
 allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());

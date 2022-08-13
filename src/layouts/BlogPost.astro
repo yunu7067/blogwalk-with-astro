@@ -11,7 +11,7 @@ import { PostContent } from '@types';
 import config from '../../blog.config.js';
 
 const { content } = Astro.props;
-const { pathname } = Astro.canonicalURL;
+const { pathname } = Astro.url;
 const { title, description, publishDate, heroImage, tags, astro } = content as PostContent;
 
 // console.debug({ test: Astro.request });
