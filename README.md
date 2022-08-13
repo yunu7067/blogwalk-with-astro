@@ -3,7 +3,7 @@
 ## 기능
 
 - [x] 사이트 맵 xml (Using by @astrojs/sitemap)
-- [x] 이미지 자동 최적화 (Using by [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools))
+- [x] 이미지 자동 최적화 (Using by [@astrojs/image](https://github.com/withastro/astro/tree/main/packages/integrations/image))
 - [x] 게시글 태그
 - [x] 게시글 검색
 - [x] 조회수 (Using by [CountAPI](https://countapi.xyz/))
@@ -15,8 +15,7 @@
 
 ### 검토중인 기능
 
-- [ ] [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools)을 [@astrojs/image](https://github.com/withastro/astro/tree/main/packages/integrations/image) 로 변경
-- [ ] rss 제공
+- [ ] rss 제공 (Using by @astro/rss)
 
 ## 사용법
 

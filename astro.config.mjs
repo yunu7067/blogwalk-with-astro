@@ -1,7 +1,7 @@
 import {defineConfig} from 'astro/config';
-import {astroImageTools} from 'astro-imagetools';
 import solid from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
+import image from '@astrojs/image';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
@@ -13,7 +13,6 @@ export default defineConfig({
   },
   experimental: {
     ssr: false,
-    integrations: true,
   },
-  integrations: [solid(), tailwind(), sitemap(), astroImageTools],
+  integrations: [solid(), tailwind(), sitemap(), image()],
 });

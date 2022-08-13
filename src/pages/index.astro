@@ -19,6 +19,7 @@ let canonicalURL = Astro.canonicalURL;
 let allPosts = await Astro.glob<PostMetadata>('./p/**/*.md');
 allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
 let firstPage = allPosts.slice(0, 3);
+
 ---
 
 <BaseLayout config={config} seo={{ title: title, description: description, image: allPosts[0].frontmatter?.heroImage,

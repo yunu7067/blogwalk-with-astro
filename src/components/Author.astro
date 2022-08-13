@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro-imagetools/components";
+import { Image } from '@astrojs/image/components';
 import { AvatarConfigType } from "../types";
 
 export interface Props {
@@ -10,6 +10,7 @@ export interface Props {
 }
 
 const { avatar, name, href = '', description = '' } = Astro.props as Props;
+
 ---
 
 <div
@@ -22,7 +23,7 @@ const { avatar, name, href = '', description = '' } = Astro.props as Props;
 	<div class="flex-none">
 		{avatar?.enabled &&
 		<div class="w-fit shadow-sm  overflow-hidden">
-			<Picture src={avatar.src} alt={name} w={145} h={104} />
+			<Image src={import(avatar.src)} alt={name} format='webp' width={145} height={104} />
 		</div>}
 	</div>
 </div>

@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro-imagetools/components";
+import { Image } from '@astrojs/image/components';
 import { PostMetadata } from '@types';
 import { timeFormatter } from '@utils';
 import Tags from './Tags';
@@ -18,7 +18,7 @@ const { title, publishDate, locale, description, heroImage, tags } = Astro.props
 			<header class="pb-8 mb-8 flex flex-col items-center justify-center text-center ">
 				{heroImage &&
 				<div class="mt-8 mb-16 rounded-sm shadow-sm overflow-hidden">
-					<Picture w={768} h={324} src={heroImage} alt="HeroImage" objectFit={"cover"} objectPosition="center" />
+					<Image src={heroImage} alt="HeroImage" width={768} height={324} format="webp" />
 				</div>
 				}
 				<p class="m-0">{timeFormatter(publishDate, locale || "ko-KR")}</p>
