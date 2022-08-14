@@ -1,0 +1,17 @@
+---
+title: about me
+---
+
+import {Image, Picture} from '@astrojs/image/components';
+
+# about me
+
+## test
+
+<Image src={import('/public/assets/social.png')} alt='test' width={300} />
+<Picture
+  src={import('/public/assets/social.png')}
+  alt='test'
+  sizes='(max-width: 800px) 100vw, 800px'
+  widths={[200, 400, 800]}
+/>

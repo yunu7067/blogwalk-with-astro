@@ -14,7 +14,6 @@
     "isolatedModules": true,
     // Add type definitions for our Vite runtime.
     "types": [
-      "vite/client",
       // Replace `astro/client` with `@astrojs/image/client`
       "@astrojs/image/client"
     ],
