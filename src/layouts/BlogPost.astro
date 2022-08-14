@@ -17,7 +17,7 @@ const { title, description, publishDate, heroImage, tags, astro } = content as P
 // console.debug({ test: Astro.request });
 // 목차 (h1, h2, h3 까지만 추출)
 // 기본적으로 제공하는 헤더는 마크다운만 추출되고 html 태그는 추출되지 않아 따로 구현함.
-const headers = parse(astro?.html || '').querySelectorAll("h1, h2, h3");
+const headers = parse(Astro?.props?.compiledContent() || '').querySelectorAll("h1, h2, h3");
 ---
 
 <BaseLayout seo={{title: title, description: description}} config={config}>

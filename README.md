@@ -15,7 +15,8 @@
 
 ### 검토중인 기능
 
-- [ ] rss 제공 (Using by @astro/rss)
+- [ ] RSS (Using by @astrojs/rss)
+- [ ] JSON Feed
 
 ## 사용법
 

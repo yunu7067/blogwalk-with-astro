@@ -1,7 +1,5 @@
 ---
-setup: |
-  import Layout from '@lays/BlogPost.astro'
-  import { Picture } from '@astrojs/image/components'
+layout: '@lays/BlogPost.astro'
 title: 'About this blog.'
 publishDate: 2022-07-01
 description: 'Description about this blog.'
@@ -11,11 +9,16 @@ series: 'Blog Guide'
 
 # About Page
 
+```html
 <!-- ![social](/src/assets/social.png)
 ![social](/src/assets/introducing-astro.jpg) -->
+```
 
 ![social](/assets/social.png)
+
 ![social](/assets/introducing-astro.jpg)
+
+```
 
 <p>
   <Picture src={import("/src/assets/social.png")} alt="social" widths={[320, 768]} />
@@ -23,6 +26,7 @@ series: 'Blog Guide'
 <p>
   <Picture src={import("/src/assets/introducing-astro.jpg")} alt="social" widths={[320, 768]} />
 </p>
+```
 
 ```markdown {5}
 ---
@@ -42,7 +46,3 @@ b : String;
   sdf
 
   sadfas
-
-```
-
-```
