@@ -7,8 +7,15 @@ import { parse } from 'node-html-parser';
 import BlogToc from '@coms/BlogToc.astro';
 import BlogComment from '@coms/BlogComment.astro';
 import BlogViews from '@coms/BlogViews';
-import { PostContent } from '@types';
+import { PostContent, PostMetadata } from '@types';
 import config from '../../blog.config.js';
+import RightSidebar from '@coms/RightSidebar/RightSidebar.astro';
+import { MarkdownLayoutProps } from 'astro';
+
+
+const props = Astro.props as MarkdownLayoutProps<PostMetadata>;
+
+
 
 const { content } = Astro.props;
 const { pathname } = Astro.url;
@@ -17,7 +24,10 @@ const { title, description, publishDate, heroImage, tags, astro } = content as P
 // console.debug({ test: Astro.request });
 // 목차 (h1, h2, h3 까지만 추출)
 // 기본적으로 제공하는 헤더는 마크다운만 추출되고 html 태그는 추출되지 않아 따로 구현함.
-const headers = parse(Astro?.props?.compiledContent() || '').querySelectorAll("h1, h2, h3");
+const headers = parse(props?.compiledContent || '').querySelectorAll("h1, h2, h3");
+console.error({ props });
+
+
 ---
 
 <BaseLayout seo={{title: title, description: description}} config={config}>
@@ -29,6 +39,7 @@ const headers = parse(Astro?.props?.compiledContent() || '').querySelectorAll("h
 				description={description} heroImage={heroImage}>
 				{headers && headers.length !== 0 &&
 				<BlogToc contents={headers} />}
+				<RightSidebar />
 
 				<slot />
 

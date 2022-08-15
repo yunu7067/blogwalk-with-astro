@@ -1,11 +1,14 @@
 # astro 정적 블로그
 
-## 기능
+## Features
 
 - [x] 사이트 맵 xml (Using by @astrojs/sitemap)
-- [x] 이미지 자동 최적화 (Using by [@astrojs/image](https://github.com/withastro/astro/tree/main/packages/integrations/image))
+- [ ] 이미지 자동 최적화 (Using by [@astrojs/image](https://github.com/withastro/astro/tree/main/packages/integrations/image))
+
+  - Astro 1.0 버전이 되면서 마크다운에는 JSX 컴포넌트를 사용할 수 없게 변경되었음. 따라서 MDX를 사용하거나 별도의 integrations를 만들어 처리해야 함. 그렇기 때문에 일단은 이미지 최적화 기능은 비활성화시킴.
+
 - [x] 게시글 태그
-- [x] 게시글 검색
+- [x] 게시글 검색 (Using by flexsearch)
 - [x] 조회수 (Using by [CountAPI](https://countapi.xyz/))
 - [x] 게시글 시리즈
 - [x] 다크모드
@@ -13,7 +16,7 @@
   - [x] 가변 테마(자동/시스템)
 - [x] 모바일 디바이스 스타일링
 
-### 검토중인 기능
+### Plan
 
 - [ ] RSS (Using by @astrojs/rss)
 - [ ] JSON Feed

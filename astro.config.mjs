@@ -3,7 +3,6 @@ import solid from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import image from '@astrojs/image';
 import sitemap from '@astrojs/sitemap';
-import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,9 +10,9 @@ export default defineConfig({
   site: 'https://yunu7067.github.io', // sitemap
   markdown: {
     syntaxHighlight: 'shiki',
+    shikiConfig: {
+      theme: 'dracula',
+    },
   },
-  experimental: {
-    ssr: false,
-  },
-  integrations: [solid(), tailwind(), image(), mdx(), sitemap()],
+  integrations: [solid(), tailwind(), image(), sitemap()],
 });
