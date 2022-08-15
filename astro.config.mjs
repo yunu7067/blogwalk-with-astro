@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   vite: {},
-  site: 'https://yunu7067.github.io', // sitemap
+  site: 'https://yunu7067.example.com', // sitemap
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
