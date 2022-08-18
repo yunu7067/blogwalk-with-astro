@@ -2,6 +2,7 @@
 import ContentLayout from "@lays/ContentLayout.astro";
 import { PostInstance } from "@types";
 import { resolve } from 'path'
+import file2slug from "src/utils/file2slug";
 
 
 export async function getStaticPaths() {
@@ -9,10 +10,7 @@ export async function getStaticPaths() {
 
 	return contents.map(content => ({
 		params: {
-			slug: content.file
-				.replace(resolve('content/blog'), '')
-				.replace(/(.+?)(?:\/index\.md|\.md)/, '$1')
-				.slice(1)
+			slug: file2slug(content.file, "content/blog")
 		},
 		props: content
 	}));

@@ -11,6 +11,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
+      // https://github.com/shikijs/shiki/blob/main/docs/themes.md#theming-with-css-variables
       theme: 'github-dark',
     },
   },
