@@ -1,6 +1,4 @@
 ---
-setup: |
-  import Layout from '@lays/BlogPost.astro'
 title: Nice Astro3!
 publishDate: 2022-06-24
 description: Just a Hello World Post!

@@ -1,5 +1,4 @@
 ---
-layout: '@lays/BlogPost.astro'
 title: 아스트로 블로그 개발일지
 publishDate: 2023-06-26
 description: 아스트로로 블로그를 개발하면서 생긴 일들입니다.
