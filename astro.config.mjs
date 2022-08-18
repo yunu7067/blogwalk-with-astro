@@ -11,7 +11,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
-      theme: 'dracula',
+      theme: 'github-dark',
     },
   },
   integrations: [solid(), tailwind(), image(), sitemap()],

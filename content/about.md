@@ -27,13 +27,13 @@ description: 'Description about this blog.'
 
 ## test
 
-```markdown {5}
+```ts
 ---
 # src/pages/post/blog-post.md
 ---
 
 interface a {
-b : String;
+        b : String;
 }
 ```
 
