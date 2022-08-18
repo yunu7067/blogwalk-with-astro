@@ -5,11 +5,12 @@ import config from '../../blog.config.js';
 import BlogHeader from "@coms/BlogHeader.astro";
 import BlogSearch from "src/utils/BlogSearch";
 import Search from "@coms/Search";
+import file2slug from "src/utils/file2slug.js";
 
 let allPosts = await Astro.glob('/content/blog/**/*.md');
 const posts = allPosts.map(p => {
 	return {
-		id: p.url,
+		id: file2slug(p.file, "/content/blog"),
 		title: p.frontmatter.title,
 		description: p.frontmatter?.description || '',
 		tags: p.frontmatter?.tags || []
@@ -36,7 +37,7 @@ const seo: AstroSeoProps = {
 			<BlogHeader config={config} />
 
 
-			<Search client:only keys={flexSearchIndexKeys} />
+			<Search client:load keys={flexSearchIndexKeys} />
 		</div>
 	</main>
 </BaseLayout>
