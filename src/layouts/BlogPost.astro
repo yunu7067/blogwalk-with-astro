@@ -7,27 +7,20 @@ import { parse } from 'node-html-parser';
 import BlogToc from '@coms/BlogToc.astro';
 import BlogComment from '@coms/BlogComment.astro';
 import BlogViews from '@coms/BlogViews';
-import { PostContent, PostMetadata } from '@types';
+import { PostContent, PostInstance } from '@types';
 import config from '../../blog.config.js';
 import RightSidebar from '@coms/RightSidebar/RightSidebar.astro';
-import { MarkdownLayoutProps } from 'astro';
-
-
-const props = Astro.props as MarkdownLayoutProps<PostMetadata>;
+import { MarkdownHeading } from 'astro';
 
 
 
-const { content } = Astro.props;
+const { frontmatter, ...props } = Astro.props as PostInstance;
 const { pathname } = Astro.url;
-const { title, description, publishDate, heroImage, tags, astro } = content as PostContent;
+const { title, description, publishDate, heroImage, tags } = frontmatter;
 
-// console.debug({ test: Astro.request });
 // 목차 (h1, h2, h3 까지만 추출)
-// 기본적으로 제공하는 헤더는 마크다운만 추출되고 html 태그는 추출되지 않아 따로 구현함.
-const headers = parse(props?.compiledContent || '').querySelectorAll("h1, h2, h3");
-console.error({ props });
-
-
+// Astro에서 제공하는 headings는 마크다운 문법 기준으로만 추출되고 html 태그는 추출되지 않아 따로 구현함.
+const headings: MarkdownHeading[] = parse(await props.compiledContent() || '').querySelectorAll("h1, h2, h3").map((el) => ({ depth: Number(el.rawTagName[1]), slug: el.id || '', text: el.textContent }))
 ---
 
 <BaseLayout seo={{title: title, description: description}} config={config}>
@@ -37,9 +30,9 @@ console.error({ props });
 			<BlogHeader config={config} />
 			<BlogPost title={title} publishDate={publishDate} locale={config.locale.languageCode} tags={tags}
 				description={description} heroImage={heroImage}>
-				{headers && headers.length !== 0 &&
-				<BlogToc contents={headers} />}
-				<RightSidebar />
+				<!-- {headers && headers.length !== 0 &&
+				<BlogToc contents={headers} />} -->
+				<RightSidebar headings={headings} />
 
 				<slot />
 

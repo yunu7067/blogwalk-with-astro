@@ -1,4 +1,4 @@
-import type {MarkdownContent} from 'astro';
+import type {MarkdownContent, MarkdownInstance} from 'astro';
 
 export interface PostMetadata {
   title: string;
@@ -11,3 +11,10 @@ export interface PostMetadata {
 }
 
 export type PostContent = MarkdownContent<PostMetadata>;
+export type PostInstance = MarkdownInstance<PostMetadata>;
+
+export interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}

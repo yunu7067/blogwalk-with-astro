@@ -1,14 +1,18 @@
 ---
+import TableOfContents from "@coms/RightSidebar/TableOfContents";
+import { MarkdownHeading } from "astro";
+
+export interface Props {
+	headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props as Props;
 
 ---
 
-<nav>
-	<aside>
-		toc
-		<ul>
-			<li>
-				wtf
-			</li>
-		</ul>
-	</aside>
-</nav>
+<aside style="position:sticky;top:0;background:white;">
+
+	{headings &&
+	<TableOfContents headings={headings} client:load />}
+
+</aside>
