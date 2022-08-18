@@ -10,9 +10,11 @@ const { headings } = Astro.props as Props;
 
 ---
 
-<aside style="position:sticky;top:0;background:white;">
+<aside class="h-100">
+	<div class="mx-8 sticky top-4 bg-white">
 
-	{headings &&
-	<TableOfContents headings={headings} client:load />}
+		{headings &&
+		<TableOfContents headings={headings} client:load />}
 
+	</div>
 </aside>

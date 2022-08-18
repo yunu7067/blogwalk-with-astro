@@ -29,10 +29,10 @@ const headings: MarkdownHeading[] = parse(await props.compiledContent() || '').q
 		<div class="max-w-3xl w-full mx-auto px-4 md:px-3 lg:px-0">
 			<BlogHeader config={config} />
 			<BlogPost title={title} publishDate={publishDate} locale={config.locale.languageCode} tags={tags}
-				description={description} heroImage={heroImage}>
+				description={description} heroImage={heroImage} headings={headings}>
 				<!-- {headers && headers.length !== 0 &&
 				<BlogToc contents={headers} />} -->
-				<RightSidebar headings={headings} />
+
 
 				<slot />
 

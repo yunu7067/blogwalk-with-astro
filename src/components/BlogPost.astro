@@ -4,16 +4,19 @@ import { PostMetadata } from '@types';
 import { timeFormatter } from '@utils';
 import Tags from './Tags';
 import 'src/styles/article.scss';
+import { MarkdownHeading } from 'astro';
+import RightSidebar from '@coms/RightSidebar/RightSidebar.astro';
 
 export interface Props extends PostMetadata {
 	locale: string;
+	headings: MarkdownHeading[];
 };
 
-const { title, publishDate, locale, description, heroImage, tags } = Astro.props as Props;
+const { title, publishDate, locale, description, heroImage, tags, headings } = Astro.props as Props;
 ---
 
 <div class="layout">
-	<article class="content">
+	<article class="content flex flex-row">
 		<div>
 			<header class="pb-8 mb-8 flex flex-col items-center justify-center text-center ">
 				{heroImage &&
@@ -29,6 +32,8 @@ const { title, publishDate, locale, description, heroImage, tags } = Astro.props
 				<slot />
 			</main>
 		</div>
+		<RightSidebar headings={headings} />
+
 	</article>
 </div>
 

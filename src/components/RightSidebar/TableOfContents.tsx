@@ -4,35 +4,39 @@ import {Component, createEffect, createSignal} from 'solid-js';
 interface Props {
   headings: MarkdownHeading[];
 }
+
 const TableOfContents: Component<Props> = ({headings}) => {
   const [currentID, setCurrentID] = createSignal('overview');
   const onThisPageID = 'on-this-page-heading';
 
   createEffect(() => {
+    const headerEls = document.querySelectorAll('article :is(h1,h2,h3)');
     const setCurrent: IntersectionObserverCallback = entries => {
       for (const entry of entries) {
-        if (entry.isIntersecting) {
-          const {id} = entry.target;
-          if (id === onThisPageID) continue;
-          setCurrentID(entry.target.id ? entry.target.id : 'overview');
-          break;
+        if (entry.intersectionRect.top < 100) {
+          if (entry.isIntersecting) {
+            let cur = 1;
+            headerEls.forEach((el, index) => {
+              if (el.id !== '') {
+                console.log(index, el.id, currentID());
+                el.id === currentID() && (cur = index);
+              }
+            });
+            console.log({idx: cur - 1});
+            setCurrentID(headerEls[cur - 1].id);
+          } else {
+            const {id} = entry.target;
+            if (id === onThisPageID) continue;
+            setCurrentID(entry.target.id ? entry.target.id : 'overview');
+            break;
+          }
         }
       }
     };
 
-    const observerOptions: IntersectionObserverInit = {
-      // Negative top margin accounts for `scroll-margin`.
-      // Negative bottom margin means heading needs to be towards top of viewport to trigger intersection.
-      rootMargin: '-100px 0% -66%',
-      threshold: 1,
-    };
-
+    const observerOptions: IntersectionObserverInit = {rootMargin: '0px', threshold: 1};
     const headingsObserver = new IntersectionObserver(setCurrent, observerOptions);
-
-    // Observe all the headings in the main page content.
-    document.querySelectorAll('article :is(h1,h2,h3)').forEach(h => headingsObserver.observe(h));
-    console.log(document.querySelectorAll('article :is(h1,h2,h3)'));
-    // Stop observing when the component is unmounte
+    headerEls.forEach(h => headingsObserver.observe(h));
   });
 
   return (
@@ -40,7 +44,14 @@ const TableOfContents: Component<Props> = ({headings}) => {
       <h2>On this page</h2>
       <ul>
         {headings.map(({depth, slug, text}) => (
-          <li class={`depth-${depth} ${currentID() === slug ? 'current-header-link' : ''}`.trim()}>
+          <li
+            class={`w-64 px-2 py-1.5 rounded-md text-sm depth-${depth} ${
+              currentID() === slug
+                ? 'bg-gray-100 after:absolute after:-left-2 after:w-1 ' +
+                  "after:h-6 after:content-[''] after:rounded-md after:bg-sky-500"
+                : ''
+            }`.trim()}
+          >
             <a href={`#${slug}`}>{text}</a>
           </li>
         ))}
