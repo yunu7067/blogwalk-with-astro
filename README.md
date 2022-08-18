@@ -1,4 +1,4 @@
-# astro 정적 블로그
+# BlogWalk
 
 ## Features
 

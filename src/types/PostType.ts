@@ -1,11 +1,14 @@
 import type {MarkdownContent, MarkdownInstance} from 'astro';
 
-export interface PostMetadata {
+export interface ContentMetadata {
   title: string;
   publishDate: string;
   description: string;
   /** 파일명 혹은 확장자에 대문자가 포함되 있으면 오류가 발생할 수도 있습니다. */
   heroImage?: string;
+}
+
+export interface PostMetadata extends ContentMetadata {
   tags: string[];
   series?: string;
 }
