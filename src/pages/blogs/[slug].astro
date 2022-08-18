@@ -1,0 +1,26 @@
+---
+import ContentLayout from "@lays/ContentLayout.astro";
+import { PostInstance } from "@types";
+import { resolve } from 'path'
+
+
+export async function getStaticPaths() {
+	const contents = await Astro.glob('/content/blog/**/*.md');
+
+	return contents.map(content => ({
+		params: {
+			slug: content.file
+				.replace(resolve('content/blog'), '')
+				.replace(/(.+?)(?:\/index\.md|\.md)/, '$1')
+				.slice(1)
+		},
+		props: content
+	}));
+}
+
+const content = Astro.props as PostInstance;
+---
+
+<ContentLayout {...content}>
+	<Fragment set:html={content.compiledContent()} />
+</ContentLayout>

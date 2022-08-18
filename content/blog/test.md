@@ -1,5 +1,5 @@
 ---
-title: about me
+title: Test Article
 publishDate: 2022-06-26
 ---
 
