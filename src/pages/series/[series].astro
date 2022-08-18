@@ -14,13 +14,13 @@ interface SeriesProps {
 const { series } = Astro.params;
 const { count, posts } = Astro.props as SeriesProps;
 
-const allPosts = await Astro.glob('../p/**/*.md');
+const allPosts = await Astro.glob('/content/blog/**/*.md');
 const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
 
 
 
 export async function getStaticPaths({ paginate }) {
-	const allPosts = await Astro.glob('../p/**/*.md');
+	const allPosts = await Astro.glob('/content/blog/**/*.md');
 	const seriesData: { [key: string]: SeriesProps } = {};
 	const seriesList = [];
 

@@ -16,7 +16,7 @@ const {
 } = config;
 let canonicalURL = Astro.url;
 
-let allPosts = await Astro.glob<PostMetadata>('./p/**/*.md');
+let allPosts = await Astro.glob<PostMetadata>('/content/blog/**/*.md');
 allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
 let firstPage = allPosts.slice(0, 3);
 

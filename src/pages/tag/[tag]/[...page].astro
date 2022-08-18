@@ -7,7 +7,7 @@ import BlogHeader from '@coms/BlogHeader.astro';
 import config from '../../../../blog.config.js';
 
 export async function getStaticPaths({ paginate }) {
-	const allPosts = await Astro.glob('../../p/**/*.md');
+	const allPosts = await Astro.glob('/content/blog/**/*.md');
 	const allTagsSet = new Set();
 
 	allPosts.map((post) => {
