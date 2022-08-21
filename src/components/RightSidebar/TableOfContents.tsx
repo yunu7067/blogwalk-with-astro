@@ -7,31 +7,24 @@ interface Props {
 
 const TableOfContents: Component<Props> = ({headings}) => {
   const [currentID, setCurrentID] = createSignal('overview');
-  const onThisPageID = 'on-this-page-heading';
 
   createEffect(() => {
-    const headerEls = document.querySelectorAll('article :is(h1,h2,h3)');
+    const headerEls = document.querySelectorAll('main#article-container :is(h1,h2,h3)');
+    const headerElIDs = Array.from(headerEls).map(el => el.id);
+    let initFlag = true;
+
     const setCurrent: IntersectionObserverCallback = entries => {
-      for (const entry of entries) {
-        if (entry.intersectionRect.top < 100) {
-          if (entry.isIntersecting) {
-            let cur = 1;
-            headerEls.forEach((el, index) => {
-              if (el.id !== '') {
-                console.log(index, el.id, currentID());
-                el.id === currentID() && (cur = index);
-              }
-            });
-            console.log({idx: cur - 1});
-            setCurrentID(headerEls[cur - 1].id);
-          } else {
-            const {id} = entry.target;
-            if (id === onThisPageID) continue;
-            setCurrentID(entry.target.id ? entry.target.id : 'overview');
-            break;
-          }
+      // console.log({initFlag, entries});
+      entries.map(({target, isIntersecting, intersectionRect, intersectionRatio}) => {
+        if (initFlag || intersectionRatio === 0) return;
+        if (isIntersecting && intersectionRect.top > 0) {
+          const idx = headerElIDs.findIndex(id => id === target.id) - 1;
+          setCurrentID(idx < 0 ? 'overview' : headerElIDs[idx]);
+        } else if (!isIntersecting && intersectionRect.top === 0) {
+          setCurrentID(target?.id || 'overview');
         }
-      }
+      });
+      initFlag = false;
     };
 
     const observerOptions: IntersectionObserverInit = {rootMargin: '0px', threshold: 1};
@@ -52,7 +45,9 @@ const TableOfContents: Component<Props> = ({headings}) => {
                 : ''
             }`.trim()}
           >
-            <a href={`#${slug}`}>{text}</a>
+            <a href={`#${slug}`} onClick={() => setCurrentID(slug)}>
+              {text}
+            </a>
           </li>
         ))}
       </ul>
