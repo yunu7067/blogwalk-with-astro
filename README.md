@@ -64,6 +64,10 @@ git pull
 
 서브모듈 폴더로 들어가 `git pull` 명령어를 이용해 최신 커밋을 받아옵니다. 그리고 `./src/pages`와 `./blog.config.js`파일 (그리고 그 이외에 개인이 수정한 파일들)을 제외한 나머지 파일을 프로젝트 폴더의 최상단에 덮어쓰기해줍니다.
 
+### About 페이지
+
+about 페이지는 `/content/about.md`에 작성합니다. 이 폴더를 지우면 안 됩니다!
+
 ### 게시글 작성
 
 새로운 게시글은 `/content/blog/`에 `./[slug].md` 혹은 `./[slug]/index.md` 파일명으로 작성한 후 서버를 재시작시켜줍니다.
@@ -82,14 +86,6 @@ git pull
 | series      | string   | false    | series name       |
 
 ## 주의사항
-
-### About 페이지
-
-about 페이지는 `/src/pages/p/about/index.md`에 작성합니다. 이 폴더를 지우면 안 됩니다!
-
-### 마크다운 작성 시
-
-Astro는 마크다운에서 태그를 인식하기 때문에 `<Tag />`와 유사한 형태를 사용할 경우 오류가 발생합니다. `&lt;` `&gt;`을 사용해도 오류가 발생합니다!
 
 ## Credits
 
