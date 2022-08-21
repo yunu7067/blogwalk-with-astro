@@ -66,9 +66,20 @@ git pull
 
 ### 게시글 작성
 
-새로운 게시글은 `/src/pages/p/`에 `./[slug].md` 혹은 `./[slug]/index.md` 파일명으로 작성한 후 서버를 재시작시켜줍니다.
+새로운 게시글은 `/content/blog/`에 `./[slug].md` 혹은 `./[slug]/index.md` 파일명으로 작성한 후 서버를 재시작시켜줍니다.
 
 이미지 파일도 같은 폴더에 넣어둘 수 있습니다.
+
+#### Frontmatter
+
+| Attribute   | Type     | required | Description       |
+| :---------- | -------- | -------- | :---------------- |
+| title       | string   | true     | post title        |
+| publishDate | string   | true     | post publish date |
+| description | string   | true     | post description  |
+| heroImage   | string   | false    | hero image        |
+| tags        | string[] | false    | tag name list     |
+| series      | string   | false    | series name       |
 
 ## 주의사항
 
