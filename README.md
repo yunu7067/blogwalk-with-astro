@@ -66,7 +66,7 @@ git pull
 
 ### About 페이지
 
-about 페이지는 `/content/about.md`에 작성합니다. 이 폴더를 지우면 안 됩니다!
+about 페이지는 `/content/about.md`에 작성합니다. 이 파일은 지우면 안 됩니다!
 
 ### 게시글 작성
 
