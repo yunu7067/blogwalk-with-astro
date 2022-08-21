@@ -1,20 +1,30 @@
 ---
-import TableOfContents from "@coms/RightSidebar/TableOfContents";
-import { MarkdownHeading } from "astro";
+import TableOfContents from '@coms/RightSidebar/TableOfContents';
+import {MarkdownHeading} from 'astro';
 
 export interface Props {
-	headings: MarkdownHeading[]
+  headings: MarkdownHeading[];
 }
 
-const { headings } = Astro.props as Props;
-
+const {headings} = Astro.props as Props;
 ---
 
-<aside class="h-100">
-	<div class="mx-8 sticky top-4 bg-white">
-
-		{headings &&
-		<TableOfContents headings={headings} client:load />}
-
-	</div>
+<aside class='h-100 xl:block hidden'>
+  <nav class='ml-4 w-64 sticky top-4 bg-white overflow-visible'>
+    {headings && <TableOfContents headings={headings} client:media='(min-width: 50em)' />}
+  </nav>
 </aside>
+
+<style>
+  nav {
+    width: 100%;
+    padding: var(--doc-padding-block) 0;
+    overflow: auto;
+  }
+  /* style applied only on Firefox, this avoids scrollbars overlapping. */
+  @supports (-moz-appearance: none) {
+    .sidebar-nav {
+      padding-inline-end: 1.5rem;
+    }
+  }
+</style>
