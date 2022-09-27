@@ -11,9 +11,9 @@ description: 'Description about this blog.'
 ![social](/src/assets/introducing-astro.jpg) -->
 ```
 
-![social](/assets/social.png)
+![social](/src/assets/social.png)
 
-![social](/assets/introducing-astro.jpg)
+![social](/src/assets/introducing-astro.jpg)
 
 ```
 
