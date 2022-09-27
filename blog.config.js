@@ -14,7 +14,7 @@ const blogConfig = {
   },
   avatar: {
     enabled: true,
-    src: '/public/assets/profile/avatar.jpeg',
+    src: '/assets/profile/avatar.jpeg',
   },
   social: [
     {identifier: 'github', name: 'GitHub test', url: 'https://github.com/yunu7067/'},
