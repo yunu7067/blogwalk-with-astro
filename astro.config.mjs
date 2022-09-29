@@ -15,5 +15,5 @@ export default defineConfig({
       theme: 'github-dark',
     },
   },
-  integrations: [solid(), tailwind(), image(), sitemap()],
+  integrations: [solid(), tailwind(), image({logLevel: 'silent'}), sitemap()],
 });

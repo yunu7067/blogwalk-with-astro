@@ -24,7 +24,7 @@ const {avatar, name, href = '', description = ''} = Astro.props as Props;
     {
       avatar?.enabled && (
         <div class='w-fit shadow-sm  overflow-hidden'>
-          <Image src={avatar.src} alt={name} format='webp' width={145} height={104} />
+          <Image src={avatar.src} width={145} height={104} format='webp' alt={name} />
         </div>
       )
     }

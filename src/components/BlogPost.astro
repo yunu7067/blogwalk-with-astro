@@ -1,10 +1,10 @@
 ---
 import {Image} from '@astrojs/image/components';
-import {PostMetadata} from '@types';
+import type {PostMetadata} from '@types';
 import {timeFormatter} from '@utils';
 import Tags from './Tags';
 import 'src/styles/article.scss';
-import {MarkdownHeading} from 'astro';
+import type {MarkdownHeading} from 'astro';
 import RightSidebar from '@coms/RightSidebar/RightSidebar.astro';
 
 export interface Props extends PostMetadata {
