@@ -23,15 +23,15 @@
 
 ## 사용법
 
-1. `yarn` 패키지 매니저 설치
-   이 저장소는 `yarn berry`를 사용합니다. 따라서 실행 전에 `npm install -g yarn` 명령어를 사용하여 `yarn`을 사용할 수 있도록 준비합니다.
+1. `pnpm` 패키지 매니저 설치
+   이 저장소는 `pnpm`를 사용합니다. 따라서 실행 전에 `npm install -g pnpm` 명령어를 사용하여 `pnpm`을 사용할 수 있도록 준비합니다.
 
    | 명령어       | 동작                                                                   |
    | :----------- | :--------------------------------------------------------------------- |
-   | yarn install | Install dependencies.                                                  |
-   | yarn dev     | Runs Astro’s dev server. server                                        |
-   | yarn build   | Builds your site for production.                                       |
-   | yarn preview | Starts a local static file server to serve your built dist/ directory. |
+   | pnpm install | Install dependencies.                                                  |
+   | pnpm dev     | Runs Astro’s dev server. server                                        |
+   | pnpm build   | Builds your site for production.                                       |
+   | pnpm preview | Starts a local static file server to serve your built dist/ directory. |
 
    더 자세한 사용법은 [Astro 공식 문서](https://docs.astro.build/en/reference/cli-reference/#astro-preview)를 참조합니다.
 
