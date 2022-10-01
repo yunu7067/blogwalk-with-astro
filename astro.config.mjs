@@ -6,7 +6,11 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {},
+  vite: {
+    ssr: {
+      external: ['image-size', 'tiny-glob', 'mime'],
+    },
+  },
   site: 'https://yunu7067.example.com', // sitemap
   markdown: {
     syntaxHighlight: 'shiki',
