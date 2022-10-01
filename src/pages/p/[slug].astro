@@ -1,0 +1,24 @@
+---
+import ContentLayout from "@lays/ContentLayout.astro";
+import { PostInstance } from "@types";
+import { resolve } from 'path'
+import file2slug from "src/utils/file2slug";
+
+
+export async function getStaticPaths() {
+	const contents = await Astro.glob('/content/blog/**/*.md');
+
+	return contents.map(content => ({
+		params: {
+			slug: file2slug(content.file, "content/blog")
+		},
+		props: content
+	}));
+}
+
+const content = Astro.props as PostInstance;
+---
+
+<ContentLayout {...content}>
+	<Fragment set:html={content.compiledContent()} />
+</ContentLayout>

@@ -4,6 +4,7 @@ import { MarkdownInstance } from 'astro';
 import readingTime from 'reading-time';
 import { timeFormatter } from '@utils';
 import { PostMetadata } from '@types';
+import file2slug from 'src/utils/file2slug';
 
 export interface Props {
 	post: MarkdownInstance<PostMetadata>
@@ -14,7 +15,7 @@ const { post } = Astro.props as Props;
 
 <article class="mb-8 tracking-tight">
 	<header class="mb-3 flex flex-col items-start justify-center gap-1 text-start">
-		<a href={post?.url || '#error' }>
+		<a href={post?.file ? `/p/${file2slug(post.file, "content/blog" ) }` : '#error' }>
 			<h1 class="text-4xl font-bold">{post.frontmatter.title}</h1>
 		</a>
 		<p class="text-sm font-light text-gray-700 dark:text-gray-300">

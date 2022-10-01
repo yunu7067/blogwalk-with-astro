@@ -1,19 +1,19 @@
 import {defineConfig} from 'astro/config';
-import {astroImageTools} from 'astro-imagetools';
 import solid from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
+import image from '@astrojs/image';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   vite: {},
-  site: 'https://yunu7067.github.io', // sitemap
+  site: 'https://yunu7067.example.com', // sitemap
   markdown: {
     syntaxHighlight: 'shiki',
+    shikiConfig: {
+      // https://github.com/shikijs/shiki/blob/main/docs/themes.md#theming-with-css-variables
+      theme: 'github-dark',
+    },
   },
-  experimental: {
-    ssr: false,
-    integrations: true,
-  },
-  integrations: [solid(), tailwind(), sitemap(), astroImageTools],
+  integrations: [solid(), tailwind(), image({logLevel: 'silent'}), sitemap()],
 });

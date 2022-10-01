@@ -3,7 +3,7 @@
 /** @type {import('./src/types').BlogConfigType} */
 const blogConfig = {
   baseurl: 'https://example.com.github.io',
-  title: 'tololo://',
+  title: 'BlogWalk',
   description: 'An example blog on Astro',
   locale: {
     languageCode: 'ko-KR',
@@ -14,7 +14,7 @@ const blogConfig = {
   },
   avatar: {
     enabled: true,
-    src: '/public/assets/profile/avatar.jpeg',
+    src: '/images/avatar.jpeg',
   },
   social: [
     {identifier: 'github', name: 'GitHub test', url: 'https://github.com/yunu7067/'},

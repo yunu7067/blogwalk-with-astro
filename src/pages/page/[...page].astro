@@ -7,7 +7,7 @@ import BlogHeader from '@coms/BlogHeader.astro';
 import config from '../../../blog.config.js';
 
 export async function getStaticPaths({ paginate }) {
-	let allPosts = await Astro.glob('../p/**/*.md');
+	let allPosts = await Astro.glob('/content/blog/**/*.md');
 	const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
 
 	// Return a paginated collection of paths for all posts

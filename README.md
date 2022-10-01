@@ -1,11 +1,14 @@
-# astro 정적 블로그
+# BlogWalk
 
-## 기능
+## Features
 
 - [x] 사이트 맵 xml (Using by @astrojs/sitemap)
-- [x] 이미지 자동 최적화 (Using by [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools))
+- [ ] 이미지 자동 최적화 (Using by [@astrojs/image](https://github.com/withastro/astro/tree/main/packages/integrations/image))
+
+  - Astro 1.0 버전이 되면서 마크다운에는 JSX 컴포넌트를 사용할 수 없게 변경되었음. 따라서 MDX를 사용하거나 별도의 integrations를 만들어 처리해야 함. 그렇기 때문에 일단은 이미지 최적화 기능은 비활성화시킴.
+
 - [x] 게시글 태그
-- [x] 게시글 검색
+- [x] 게시글 검색 (Using by flexsearch)
 - [x] 조회수 (Using by [CountAPI](https://countapi.xyz/))
 - [x] 게시글 시리즈
 - [x] 다크모드
@@ -13,10 +16,10 @@
   - [x] 가변 테마(자동/시스템)
 - [x] 모바일 디바이스 스타일링
 
-### 검토중인 기능
+### Plan
 
-- [ ] [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools)을 [@astrojs/image](https://github.com/withastro/astro/tree/main/packages/integrations/image) 로 변경
-- [ ] rss 제공
+- [ ] RSS (Using by @astrojs/rss)
+- [ ] JSON Feed
 
 ## 사용법
 
@@ -61,21 +64,28 @@ git pull
 
 서브모듈 폴더로 들어가 `git pull` 명령어를 이용해 최신 커밋을 받아옵니다. 그리고 `./src/pages`와 `./blog.config.js`파일 (그리고 그 이외에 개인이 수정한 파일들)을 제외한 나머지 파일을 프로젝트 폴더의 최상단에 덮어쓰기해줍니다.
 
+### About 페이지
+
+about 페이지는 `/content/about.md`에 작성합니다. 이 파일은 지우면 안 됩니다!
+
 ### 게시글 작성
 
-새로운 게시글은 `/src/pages/p/`에 `./[slug].md` 혹은 `./[slug]/index.md` 파일명으로 작성한 후 서버를 재시작시켜줍니다.
+새로운 게시글은 `/content/blog/`에 `./[slug].md` 혹은 `./[slug]/index.md` 파일명으로 작성한 후 서버를 재시작시켜줍니다.
 
 이미지 파일도 같은 폴더에 넣어둘 수 있습니다.
 
+#### Frontmatter
+
+| Attribute   | Type     | required | Description       |
+| :---------- | -------- | -------- | :---------------- |
+| title       | string   | true     | post title        |
+| publishDate | string   | true     | post publish date |
+| description | string   | true     | post description  |
+| heroImage   | string   | false    | hero image        |
+| tags        | string[] | false    | tag name list     |
+| series      | string   | false    | series name       |
+
 ## 주의사항
-
-### About 페이지
-
-about 페이지는 `/src/pages/p/about/index.md`에 작성합니다. 이 폴더를 지우면 안 됩니다!
-
-### 마크다운 작성 시
-
-Astro는 마크다운에서 태그를 인식하기 때문에 `<Tag />`와 유사한 형태를 사용할 경우 오류가 발생합니다. `&lt;` `&gt;`을 사용해도 오류가 발생합니다!
 
 ## Credits
 

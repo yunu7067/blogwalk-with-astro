@@ -6,7 +6,7 @@ import BlogHeader from '@coms/BlogHeader.astro';
 import { PostMetadata } from '@types';
 import config from '../../../blog.config.js';
 
-const allPosts = await Astro.glob('../p/**/*.md');
+const allPosts = await Astro.glob('/content/blog/**/*.md');
 // 최신 게시글 먼저 탐색해 최근에 글이 추가된 시리즈가 위로 갈 수 있도록 함.
 const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
 
