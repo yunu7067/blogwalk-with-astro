@@ -1,4 +1,4 @@
-name: Github Pages Astro CI
+name: Test Astro CI
 
 on:
   # Trigger the workflow every time you push to the `main` branch
@@ -22,16 +22,3 @@ jobs:
         uses: actions/checkout@v2
       - name: Install, build, and upload your site
         uses: withastro/action@v0
-      - name: Copy Search Index Files
-        run: cp -rf ./public/search-index ./dist/
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
