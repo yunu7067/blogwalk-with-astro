@@ -9,6 +9,7 @@ specifiers:
   '@types/flexsearch': ^0.7.3
   astro: 1.4.2
   flexsearch: ^0.7.21
+  http-cache-semantics: ^4.1.0
   node-html-parser: 6.1.1
   reading-time: 1.5.0
   sass: 1.55.0
@@ -24,6 +25,7 @@ devDependencies:
   '@types/flexsearch': 0.7.3
   astro: 1.4.2_sass@1.55.0
   flexsearch: 0.7.21
+  http-cache-semantics: 4.1.0
   node-html-parser: 6.1.1
   reading-time: 1.5.0
   sass: 1.55.0
@@ -2106,6 +2108,10 @@ packages:
 
   /html-void-elements/2.0.1:
     resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
+    dev: true
+
+  /http-cache-semantics/4.1.0:
+    resolution: {integrity: sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==}
     dev: true
 
   /human-signals/3.0.1:
