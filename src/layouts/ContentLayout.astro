@@ -16,7 +16,7 @@ const {title, description, publishDate, heroImage, heroImageSrc, tags} = frontma
 
 // 목차 (h1, h2, h3 까지만 추출)
 // Astro에서 제공하는 headings는 마크다운 문법 기준으로만 추출되고 html 태그는 추출되지 않아 따로 구현함.
-console.log(Astro.props);
+// console.log(Astro.props);
 const headings: MarkdownHeading[] = Astro.props.headings;
 //  parse((await props) || '')
 //   .querySelectorAll('h1, h2, h3')

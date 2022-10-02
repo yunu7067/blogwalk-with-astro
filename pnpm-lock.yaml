@@ -11,6 +11,7 @@ specifiers:
   '@types/flexsearch': ^0.7.3
   astro: 1.4.2
   flexsearch: ^0.7.21
+  http-cache-semantics: ^4.1.0
   image-size: ^1.0.2
   mdast-util-to-string: ^3.1.0
   mime: ^3.0.0
@@ -33,6 +34,7 @@ devDependencies:
   '@types/flexsearch': 0.7.3
   astro: 1.4.2_sass@1.55.0
   flexsearch: 0.7.21
+  http-cache-semantics: 4.1.0
   image-size: 1.0.2
   mdast-util-to-string: 3.1.0
   mime: 3.0.0

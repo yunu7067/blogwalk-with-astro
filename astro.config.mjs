@@ -13,7 +13,10 @@ export default defineConfig({
   vite: {},
   site: 'https://yunu7067.example.com', // sitemap
   markdown: {
-    remarkPlugins: [remarkReadingTime],
+    // Applied to .md and .mdx files
+    extendDefaultPlugins: true,
+    remarkPlugins: [remarkReadingTime, remarkMath],
+    rehypePlugins: [rehypeKatex],
     syntaxHighlight: 'shiki',
     shikiConfig: {
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md#theming-with-css-variables
@@ -21,15 +24,5 @@ export default defineConfig({
       wrap: true,
     },
   },
-  integrations: [
-    mdx({
-      remarkPlugins: [remarkReadingTime, remarkMath],
-      rehypePlugins: [rehypeKatex],
-      extendDefaultPlugins: true,
-    }),
-    solid(),
-    tailwind(),
-    image({logLevel: 'silent'}),
-    sitemap(),
-  ],
+  integrations: [mdx({}), solid(), tailwind(), image({logLevel: 'silent'}), sitemap()],
 });
