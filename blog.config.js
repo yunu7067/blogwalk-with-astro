@@ -8,6 +8,7 @@ const blogConfig = {
   locale: {
     languageCode: 'ko-KR',
   },
+  rss: false,
   author: {
     name: 'YUNU7067',
     comment: '여기에는 이 글쓴이에 대한 간단한 설명을 기입해줍니다.',

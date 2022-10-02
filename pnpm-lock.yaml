@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/image': 0.9.1
   '@astrojs/mdx': ^0.11.3
+  '@astrojs/rss': ^1.0.2
   '@astrojs/sitemap': 1.0.0
   '@astrojs/solid-js': 1.1.0
   '@astrojs/tailwind': 2.0.2
@@ -10,7 +11,6 @@ specifiers:
   '@types/flexsearch': ^0.7.3
   astro: 1.4.2
   flexsearch: ^0.7.21
-  http-cache-semantics: ^4.1.0
   image-size: ^1.0.2
   mdast-util-to-string: ^3.1.0
   mime: ^3.0.0
@@ -25,6 +25,7 @@ specifiers:
 devDependencies:
   '@astrojs/image': 0.9.1
   '@astrojs/mdx': 0.11.3
+  '@astrojs/rss': 1.0.2
   '@astrojs/sitemap': 1.0.0
   '@astrojs/solid-js': 1.1.0_solid-js@1.5.6
   '@astrojs/tailwind': 2.0.2_tailwindcss@3.1.8
@@ -32,7 +33,6 @@ devDependencies:
   '@types/flexsearch': 0.7.3
   astro: 1.4.2_sass@1.55.0
   flexsearch: 0.7.21
-  http-cache-semantics: 4.1.0
   image-size: 1.0.2
   mdast-util-to-string: 3.1.0
   mime: 3.0.0
@@ -175,6 +175,12 @@ packages:
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       prismjs: 1.29.0
+    dev: true
+
+  /@astrojs/rss/1.0.2:
+    resolution: {integrity: sha512-WPMW5a3D+nAbuu/i7LANfp1GnVrdnzcsUNrR7o8IvPJXJMjVGtDqdUqNDj20Rj3rwcWbOL2KVvGPMjCqx0tRWQ==}
+    dependencies:
+      fast-xml-parser: 4.0.10
     dev: true
 
   /@astrojs/sitemap/1.0.0:
@@ -1937,6 +1943,13 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
+    dev: true
+
+  /fast-xml-parser/4.0.10:
+    resolution: {integrity: sha512-mYMMIk7Ho1QOiedyvafdyPamn1Vlda+5n95lcn0g79UiCQoLQ2xfPQ8m3pcxBMpVaftYXtoIE2wrNTjmLQnnkg==}
+    hasBin: true
+    dependencies:
+      strnum: 1.0.5
     dev: true
 
   /fastq/1.13.0:
@@ -3981,6 +3994,10 @@ packages:
   /strip-final-newline/3.0.0:
     resolution: {integrity: sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==}
     engines: {node: '>=12'}
+    dev: true
+
+  /strnum/1.0.5:
+    resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
     dev: true
 
   /style-to-object/0.3.0:
