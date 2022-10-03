@@ -4,7 +4,7 @@ import type {AstroSeoProps} from '@coms/AstroSeo';
 import SeriesPreview from '@coms/SeriesPreview';
 import BlogHeader from '@coms/BlogHeader.astro';
 import type {PostMetadata} from '@types';
-import config from '../../../blog.config.js';
+import config from '$config';
 
 const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
 // 최신 게시글 먼저 탐색해 최근에 글이 추가된 시리즈가 위로 갈 수 있도록 함.

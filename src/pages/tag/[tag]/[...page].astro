@@ -4,7 +4,7 @@ import BlogPostPreview from '@coms/PostPreview.astro';
 import Pagination from '@coms/Pagination.astro';
 import type {AstroSeoProps} from '@coms/AstroSeo';
 import BlogHeader from '@coms/BlogHeader.astro';
-import config from '../../../../blog.config.js';
+import config from '$config';
 
 export async function getStaticPaths({paginate}) {
   const allPosts = await Astro.glob('../../p/**/*.{md,mdx}');

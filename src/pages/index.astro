@@ -5,8 +5,8 @@ import PostPreview from '@coms/PostPreview.astro';
 import LargeHeader from '@coms/LargeHeader.astro';
 import AboutContainer from '@coms/AboutContainer.astro';
 import {ArrowRightCircleLine} from '@coms/icons';
-import config from '../../blog.config.js';
-import type {PostMetadata} from 'src/types/PostType.js';
+import config from '$config';
+import type {PostMetadata} from '$types';
 
 const {title, description, avatar, social} = config;
 let canonicalURL = Astro.url;

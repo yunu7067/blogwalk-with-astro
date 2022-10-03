@@ -7,7 +7,7 @@ import {parse} from 'node-html-parser';
 import BlogComment from '@coms/BlogComment.astro';
 import BlogViews from '@coms/BlogViews';
 import type {PostInstance} from '@types';
-import config from '../../blog.config.js';
+import config from '$config';
 import type {MarkdownHeading} from 'astro';
 
 const {frontmatter, ...props} = Astro.props as PostInstance;

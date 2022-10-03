@@ -31,6 +31,12 @@
       ],
       "@utils": [
         "src/utils"
+      ],
+      "$types": [
+        "src/types/index.ts"
+      ],
+      "$config": [
+        "src/blog.config.js"
       ]
     }
   },
