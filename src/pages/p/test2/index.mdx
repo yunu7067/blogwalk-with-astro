@@ -1,0 +1,31 @@
+---
+layout: '@lays/ContentLayout.astro'
+title: Test Article 2
+publishDate: 2022-06-26
+heroImage: 'hero.jpg'
+---
+
+import {Image} from '@astrojs/image/components';
+
+# test post
+
+<Image src={import('./hero.jpg')} alt='imgtest' width='300' height='100' />
+
+$0 < n_0 < n \le \infty$
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+> LOrem ipsum
+
+## test2
+
+```ts
+interface PostMetadata {
+  title: string;
+  publishDate: string;
+  tags: string[];
+  series: string;
+}
+```
+
+Post metadata

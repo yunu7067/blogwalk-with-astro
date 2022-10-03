@@ -1,0 +1,62 @@
+---
+layout: '@lays/ContentLayout.astro'
+title: 'About this blog.'
+publishDate: 2022-07-01
+description: 'Description about this blog.'
+---
+
+import {Picture} from '@astrojs/image/components';
+
+# About Page
+
+```html
+<!-- ![social](/src/assets/social.png)
+![social](/src/assets/introducing-astro.jpg) -->
+```
+
+<Picture src={'images/social.png'} alt='social' widths={[400, 800, 1200]} aspectRatio={'2:1'} formats={['webp']} />
+
+<Picture
+  src={'/images/introducing-astro.jpg'}
+  alt='social'
+  widths={[400, 800, 1200]}
+  aspectRatio={'3000:2000'}
+  formats={['webp']}
+/>
+
+```
+
+<p>
+  <Picture src={import('/src/assets/social.png')} alt='social' widths={[320, 768]} />
+</p>
+<p>
+  <Picture src={import('/src/assets/introducing-astro.jpg')} alt='social' widths={[320, 768]} />
+</p>
+```
+
+## test
+
+```ts
+---
+# src/pages/post/blog-post.md
+---
+
+interface a {
+        b : String;
+}
+```
+
+### heading-3
+
+- test
+
+  teaklfjlsdjflsd
+  sdfsfs
+  s
+  sdf
+
+  sadfas
+
+```
+
+```
