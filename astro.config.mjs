@@ -10,7 +10,11 @@ import {remarkReadingTime} from './plugins/remark-reading-time.mjs';
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {},
+  vite: {
+    ssr: {
+      external: ['http-cache-semantics', 'image-size', 'mime'],
+    },
+  },
   site: 'https://yunu7067.example.com', // sitemap
   markdown: {
     // Applied to .md and .mdx files

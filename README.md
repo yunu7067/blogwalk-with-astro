@@ -86,14 +86,15 @@ about 페이지는 `/src/pages/about.mdx`에 작성합니다.
 
 #### Frontmatter
 
-| Attribute   | Type     | required | Description       |
-| :---------- | -------- | -------- | :---------------- |
-| title       | string   | true     | post title        |
-| publishDate | string   | true     | post publish date |
-| description | string   | true     | post description  |
-| heroImage   | string   | false    | hero image        |
-| tags        | string[] | false    | tag name list     |
-| series      | string   | false    | series name       |
+| Attribute   | Type     | required | Default | Description       |
+| :---------- | -------- | -------- | :--: | :---------------- |
+| title       | string   | true     |  |  |post title        |
+| description | string   | true     |  | post description  |
+| publishDate | string   | true     |  | post publish date |
+| toc      | boolean   | false    | `true` | series name       |
+| heroImage   | string   | false    |  | hero image        |
+| tags        | string[] | false    |  | tag name list     |
+| series      | string   | false    |  | series name       |
 
 ### RSS
 
