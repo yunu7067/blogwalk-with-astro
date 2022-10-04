@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/image': 0.9.1
-  '@astrojs/mdx': ^0.11.3
+  '@astrojs/mdx': ^0.11.4
   '@astrojs/rss': ^1.0.2
   '@astrojs/sitemap': 1.0.0
   '@astrojs/solid-js': 1.1.0
@@ -12,12 +12,9 @@ specifiers:
   '@types/flexsearch': ^0.7.3
   '@types/node': ^18.8.1
   '@types/prettier': ^2.7.1
-  astro: 1.4.2
+  astro: 1.4.4
   flexsearch: ^0.7.21
-  http-cache-semantics: ^4.1.0
-  image-size: ^1.0.2
   mdast-util-to-string: ^3.1.0
-  mime: ^3.0.0
   node-html-parser: 6.1.1
   reading-time: 1.5.0
   rehype-katex: ^6.0.2
@@ -28,7 +25,7 @@ specifiers:
 
 devDependencies:
   '@astrojs/image': 0.9.1
-  '@astrojs/mdx': 0.11.3
+  '@astrojs/mdx': 0.11.4
   '@astrojs/rss': 1.0.2
   '@astrojs/sitemap': 1.0.0
   '@astrojs/solid-js': 1.1.0_solid-js@1.5.6
@@ -38,12 +35,9 @@ devDependencies:
   '@types/flexsearch': 0.7.3
   '@types/node': 18.8.1
   '@types/prettier': 2.7.1
-  astro: 1.4.2_sass@1.55.0
+  astro: 1.4.4_sass@1.55.0
   flexsearch: 0.7.21
-  http-cache-semantics: 4.1.0
-  image-size: 1.0.2
   mdast-util-to-string: 3.1.0
-  mime: 3.0.0
   node-html-parser: 6.1.1
   reading-time: 1.5.0
   rehype-katex: 6.0.2
@@ -139,8 +133,8 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/mdx/0.11.3:
-    resolution: {integrity: sha512-fK6pgDJGslJYi5PdmCssQzl1corKlKqiBKuGnCR9onisvaRYr+O9NRiGbdY7hIfGAPS1peW0Sbeqz7so1ZfJ7g==}
+  /@astrojs/mdx/0.11.4:
+    resolution: {integrity: sha512-b86Fzd87OCuYUGk7O59mwq0URqLdH40wUJC5UCkFmSquIrk8QNrZ7tdjriBfF+Wq3+2UT5JO4ahxIuP6N3cczQ==}
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       '@astrojs/prism': 1.0.1
@@ -937,8 +931,8 @@ packages:
     hasBin: true
     dev: true
 
-  /astro/1.4.2_sass@1.55.0:
-    resolution: {integrity: sha512-v6GxDQoy8edDEJHopPeQg3TY9ghiJhx/n5mWpXdczPIvft3av6GhDn9yNnEKn6u0vHG9eX0sQxNCwXDlZMExAw==}
+  /astro/1.4.4_sass@1.55.0:
+    resolution: {integrity: sha512-vxuHJ8C/3/NDau6EDUvi83JFDBK5Ylmo6VGAsUkdnutpGw77I4NoapoN56ANmU54ucYiu+x0apEPQvesY6GZiQ==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
