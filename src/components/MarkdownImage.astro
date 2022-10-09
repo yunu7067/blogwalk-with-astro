@@ -3,20 +3,18 @@ import {Image} from '@astrojs/image/components';
 import type {Props as ImageProps} from '@astrojs/image/components/Image.astro';
 
 export type Props = ImageProps & {
-  test: string;
+  imgSrc: string;
 };
 
-const {test, format, ...props} = Astro.props as Props;
-console.log({test, format, props});
-
-// console.log(props);
+const {imgSrc, format, ...props} = Astro.props as Props;
+// console.log({test, format, props});
 
 /*
 	build buf fix
 	https://github.com/withastro/astro/issues/3373 
  */
 const images = import.meta.glob<ImageMetadata>('../assets/blog/**/*', {import: 'default'});
-const imageMeta = await images[test]();
+const imageMeta = await images[imgSrc]();
 ---
 
 <figure>
