@@ -22,28 +22,22 @@
 ### Plan
 - [ ] JSON Feed
 
-## Page structure
-```http
-/
+## URL structure
 
-/portfolio
+| Path                  | Query | Name      |
+| :-------------------- | :---- | :-------- |
+| /                     |       |           |
+| /portfolio/           |       | Portfolio |
+| /search/              |       | Search    |
+| /page/                |       | Page      |
+| /page/{page}          |       | Page      |
+| /p/{slug}             |       | Blog      |
+| /series/              |       | Series    |
+| /series/{series}      |       | Series    |
+| /tag/{tagname}/       |       | Tags      |
+| /tag/{tagname}/{page} |       | Tags      |
+| /rss.xml              |       | RSS       |
 
-/search/
-
-/page/
-/page/{page}
-
-/p/{slug}
-
-/series/
-/series/{series}
-
-/tag/{tagname}/
-/tag/{tagname}/{page}
-
-/rss.xml
-
-```
 ## How to use
 
 1. `pnpm` 패키지 매니저 설치
@@ -117,7 +111,7 @@ rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
 
 ## Changelog
 
-#### 1.0.9
+**1.0.9**
 - Support for rss.
 - Support for MDX using `@astrojs/image`
 - Support for KaTeX math notation in Markdown/MDX.
@@ -125,6 +119,14 @@ rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
 - Change image optimization library from `astro-imagetools` to `@astrojs/image`.
   - Astro 1.0 버전이 되면서 마크다운에는 JSX 컴포넌트를 사용할 수 없게 변경되었음. 따라서 MDX를 사용하거나 별도의 integrations를 만들어 처리해야 함. 그렇기 때문에 일단은 이미지 최적화 기능은 비활성화시킴.
 
+
+**1.0.10**
+- Redesign the site.
+- Now automatically change the `img` to `figure` tag.
+- add MarkdownImage components.
+- remove sidebar
+- Support for RSS
+- Change package manager from `yarn` to `pnpm`.
 
 ## Credits
 
