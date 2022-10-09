@@ -4,9 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import image from '@astrojs/image';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import {remarkReadingTime} from './plugins/remark-reading-time.mjs';
+import {remarkMath, remarkReadingTime, rehypeKatex, rehypeFigure} from './plugins';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,7 +18,7 @@ export default defineConfig({
     // Applied to .md and .mdx files
     extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime, remarkMath],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeKatex, rehypeFigure],
     syntaxHighlight: 'shiki',
     shikiConfig: {
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md#theming-with-css-variables
@@ -28,5 +26,5 @@ export default defineConfig({
       wrap: true,
     },
   },
-  integrations: [mdx({}), solid(), tailwind(), image({logLevel: 'silent'}), sitemap()],
+  integrations: [mdx({}), solid(), tailwind(), image({logLevel: 'error'}), sitemap()],
 });

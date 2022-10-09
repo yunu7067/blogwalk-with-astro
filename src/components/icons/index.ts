@@ -1,10 +1,15 @@
 export {default as ArrowLeftCircleLine} from './ArrowLeftCircleLine';
 export {default as ArrowRightCircleLine} from './ArrowRightCircleLine';
 export {default as AtLine} from './AtLine';
+export {default as BookLine} from './BookLine';
+export {default as Briefcase} from './Briefcase';
+export {default as ChatSmile2Line} from './ChatSmile2Line';
 export {default as Discord} from './Discord';
 export {default as Earth} from './Earth';
 export {default as Facebook} from './Facebook';
 export {default as GitHub} from './GitHub';
+export {default as Hashtag} from './Hashtag';
+export {default as Home} from './Home';
 export {default as Instagram} from './Instagram';
 export {default as LinkedIn} from './LinkedIn';
 export {default as LinkLine} from './LinkLine';

@@ -22,16 +22,28 @@
 ### Plan
 - [ ] JSON Feed
 
-## Changelog
+## Page structure
+```http
+/
 
-#### 1.0.9
-- Support for rss.
-- Support for MDX using `@astrojs/image`
-- Support for KaTeX math notation in Markdown/MDX.
-- Add right side Table of Contents.
-- Change image optimization library from `astro-imagetools` to `@astrojs/image`.
-  - Astro 1.0 버전이 되면서 마크다운에는 JSX 컴포넌트를 사용할 수 없게 변경되었음. 따라서 MDX를 사용하거나 별도의 integrations를 만들어 처리해야 함. 그렇기 때문에 일단은 이미지 최적화 기능은 비활성화시킴.
+/portfolio
 
+/search/
+
+/page/
+/page/{page}
+
+/p/{slug}
+
+/series/
+/series/{series}
+
+/tag/{tagname}/
+/tag/{tagname}/{page}
+
+/rss.xml
+
+```
 ## How to use
 
 1. `pnpm` 패키지 매니저 설치
@@ -91,16 +103,28 @@ about 페이지는 `/src/pages/about.mdx`에 작성합니다.
 | title       | string   | true     |  |  |post title        |
 | description | string   | true     |  | post description  |
 | publishDate | string   | true     |  | post publish date |
-| toc      | boolean   | false    | `true` | series name       |
+| toc      | boolean   | false    | `true` | show table of contents       |
 | heroImage   | string   | false    |  | hero image        |
 | tags        | string[] | false    |  | tag name list     |
 | series      | string   | false    |  | series name       |
+| comments      | boolean   | false    | `true` | show comments system      |
 
 ### RSS
 
 default : true
 
 rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
+
+## Changelog
+
+#### 1.0.9
+- Support for rss.
+- Support for MDX using `@astrojs/image`
+- Support for KaTeX math notation in Markdown/MDX.
+- Add right side Table of Contents.
+- Change image optimization library from `astro-imagetools` to `@astrojs/image`.
+  - Astro 1.0 버전이 되면서 마크다운에는 JSX 컴포넌트를 사용할 수 없게 변경되었음. 따라서 MDX를 사용하거나 별도의 integrations를 만들어 처리해야 함. 그렇기 때문에 일단은 이미지 최적화 기능은 비활성화시킴.
+
 
 ## Credits
 

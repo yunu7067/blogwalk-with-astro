@@ -1,0 +1,31 @@
+---
+import {Image} from '@astrojs/image/components';
+import type {Props as ImageProps} from '@astrojs/image/components/Image.astro';
+
+export type Props = ImageProps & {
+  test: string;
+};
+
+const {test, format, ...props} = Astro.props as Props;
+console.log({test, format, props});
+
+// console.log(props);
+
+/*
+	build buf fix
+	https://github.com/withastro/astro/issues/3373 
+ */
+const images = import.meta.glob<ImageMetadata>('../assets/blog/**/*', {import: 'default'});
+const imageMeta = await images[test]();
+---
+
+<figure>
+  <Image
+    {...props}
+    src={imageMeta.src}
+    width={768}
+    aspectRatio={imageMeta.width / imageMeta.height}
+    format={format || 'webp'}
+  />
+  {props.alt && props.alt.trim().length > 0 && <figcaption>{props.alt}</figcaption>}
+</figure>

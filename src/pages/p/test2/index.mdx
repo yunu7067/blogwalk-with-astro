@@ -1,21 +1,21 @@
 ---
-layout: '@lays/ContentLayout.astro'
+layout: '$lays/BlogLayout.astro'
 title: Test Article 2
 publishDate: 2022-06-26
-heroImage: 'hero.jpg'
+heroImage: '../assets/blog/hero.jpg'
 ---
 
-import {Image} from '@astrojs/image/components';
+import MarkdownImage from '$coms/MarkdownImage.astro';
 
 # test post
 
-<Image src={import('./hero.jpg')} alt='imgtest' width='300' height='100' />
+<MarkdownImage test='../assets/blog/hero.jpg' alt='테스트 이미지.' />
 
 $0 < n_0 < n \le \infty$
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-> LOrem ipsum
+> Lorem ipsum
 
 ## test2
 
