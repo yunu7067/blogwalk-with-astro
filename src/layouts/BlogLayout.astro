@@ -1,0 +1,140 @@
+---
+import {Image} from '@astrojs/image/components';
+import MainLayout from './MainLayout.astro';
+import Author from '$coms/Author.astro';
+import BlogComment from '$coms/BlogComment.astro';
+import BlogViews from '$coms/BlogViews';
+import type {PostInstance} from '$types';
+import config from '$config';
+import type {MarkdownHeading} from 'astro';
+import {getLongDateString} from '$utils';
+import '$styles/article.scss';
+
+const HERO_WIDTH = 3000;
+
+const {frontmatter, ...rest} = Astro.props as PostInstance & {
+  frontmatter: {heroImageMetadata: ImageMetadata};
+};
+const {pathname} = Astro.url;
+
+/*
+	build buf fix
+	https://github.com/withastro/astro/issues/3373 
+ */
+const images = import.meta.glob<ImageMetadata>('../assets/blog/**/*', {import: 'default'});
+const heroImage = frontmatter?.heroImage;
+if (heroImage) {
+  frontmatter.heroImageMetadata = await images[heroImage]();
+}
+
+const headings: MarkdownHeading[] = Astro.props.headings;
+
+const canonicalURL = Astro.url.toString();
+const props = {
+  wide: false,
+  seo: {
+    title: frontmatter.title,
+    description: frontmatter?.description || '',
+    canonical: canonicalURL,
+  },
+  NavigationItems: {
+    blog: {enabled: true, expanded: true},
+    home: {enabled: true, expanded: false},
+    portfolio: {enabled: true, expanded: false},
+    rss: {enabled: false, expanded: false},
+    search: {enabled: false, expanded: true},
+    series: {enabled: false, expanded: false},
+    theme: {enabled: true, expanded: false},
+  },
+};
+---
+
+<MainLayout
+  config={config}
+  seo={props.seo}
+  NavigationItems={props.NavigationItems}
+  wide={props.wide}
+>
+  <main class='w-full'>
+    {/* Hero */}
+    <div class='pt-[88px] flex flex-col lg:h-[max(50vh,550px)] h-[min(50vh,550px)] relative'>
+      <div class='absolute top-0 left-0 w-full h-full -z-10 overflow-hidden'>
+        {
+          frontmatter.heroImageMetadata && (
+            <Image
+              class='w-full h-full object-cover'
+              src={frontmatter.heroImageMetadata.src}
+              alt='Hero Image'
+              width={
+                frontmatter.heroImageMetadata.width > frontmatter.heroImageMetadata.height
+                  ? HERO_WIDTH
+                  : ~~(
+                      (frontmatter.heroImageMetadata.width / frontmatter.heroImageMetadata.height) *
+                      HERO_WIDTH
+                    )
+              }
+              height={
+                frontmatter.heroImageMetadata.width > frontmatter.heroImageMetadata.height
+                  ? ~~(
+                      (frontmatter.heroImageMetadata.height / frontmatter.heroImageMetadata.width) *
+                      HERO_WIDTH
+                    )
+                  : HERO_WIDTH
+              }
+              format={'webp'}
+            />
+          )
+        }
+      </div>
+      <div class='absolute top-0 left-0 w-full h-full -z-10'>
+        <div
+          class='w-full h-full bg-gradient-to-b from-transparent to-[hsla(0deg,0%,100%,1)] dark:to-slate-900 backdrop-filter'
+        >
+        </div>
+      </div>
+      <!-- <div class='absolute top-0 left-0 w-full h-full -z-10'>
+        <div
+          class='w-full h-full bg-gradient-to-b from-transparent to-[hsla(0deg,0%,100%,1)] dark:to-slate-900 backdrop-filter'
+        >
+        </div>
+      </div> -->
+      <div class='max-w-3xl w-full mx-auto px-5 pt-24 pb-24 flex flex-col gap-[10px]'>
+        <span class='md:text-lg text-base text-gray-800 dark:text-gray-300'
+          >{getLongDateString(config.locale, new Date(frontmatter.publishDate))}
+        </span>
+        <h1
+          class='mb-2 md:text-6xl sm:text-5xl text-4xl font-bold text-gray-900 dark:text-gray-100'
+        >
+          {frontmatter.title}
+        </h1>
+        <h2 class='md:text-2xl sm:text-xl text-lg leading-normal text-gray-600 dark:text-gray-300'>
+          {frontmatter.description}
+        </h2>
+      </div>
+    </div>
+    <div class='flex flex-col'>
+      <div class='max-w-3xl w-full mx-auto px-5'>
+        <article id='article-container'>
+          <slot />
+        </article>
+
+        <div class='mt-10'>
+          <BlogViews client:load namespace={config.baseurl} key={decodeURI(pathname)} />
+        </div>
+
+        <Author
+          avatar={config.avatar}
+          name={config.author.name}
+          href='/'
+          description={config.author.comment}
+        />
+
+        {
+          frontmatter.comments !== false && (
+            <BlogComment comments={config.comments} theme={config.theme} />
+          )
+        }
+      </div>
+    </div>
+  </main>
+</MainLayout>

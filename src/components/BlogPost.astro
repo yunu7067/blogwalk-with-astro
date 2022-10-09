@@ -1,18 +1,20 @@
 ---
 import {Image} from '@astrojs/image/components';
-import type {PostMetadata} from '@types';
-import {timeFormatter} from '@utils';
+import type {PostMetadata} from '$types';
+import {timeFormatter} from '$utils';
 import Tags from './Tags';
 import 'src/styles/article.scss';
 import type {MarkdownHeading} from 'astro';
-import RightSidebar from '@coms/RightSidebar/RightSidebar.astro';
+import RightSidebar from '$coms/RightSidebar/RightSidebar.astro';
 
 export interface Props extends PostMetadata {
   locale: string;
   headings: MarkdownHeading[];
+  heroImageMetadata?: ImageMetadata;
 }
 
-const {title, publishDate, locale, description, heroImage, tags, headings} = Astro.props as Props;
+const {title, publishDate, locale, description, heroImageMetadata, tags, headings} =
+  Astro.props as Props;
 ---
 
 <div class='layout'>
@@ -20,9 +22,15 @@ const {title, publishDate, locale, description, heroImage, tags, headings} = Ast
     <div class='max-w-3xl w-full'>
       <header class='pb-8 mb-8 flex flex-col items-center justify-center text-center'>
         {
-          heroImage && (
+          heroImageMetadata && (
             <div class='mt-8 mb-16 rounded-sm shadow-sm overflow-hidden'>
-              <Image src={heroImage} alt='HeroImage' width={768} height={324} format='webp' />
+              <Image
+                src={heroImageMetadata.src}
+                alt='Hero Image'
+                width={768}
+                height={~~((heroImageMetadata.height / heroImageMetadata.width) * 768)}
+                format='webp'
+              />
             </div>
           )
         }

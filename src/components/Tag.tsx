@@ -1,5 +1,3 @@
-import {JSXElement} from 'solid-js';
-
 export interface TagProps {
   tagName: string;
 }

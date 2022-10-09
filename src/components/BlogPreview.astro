@@ -1,0 +1,57 @@
+---
+import {Picture} from '@astrojs/image/components';
+import type {PostInstance} from '$types';
+import {getLongDateString} from '$utils';
+import config from '$config';
+
+export interface Props {
+  posts: (PostInstance & {
+    frontmatter: {heroImageMetadata: ImageMetadata};
+  })[];
+}
+
+const {posts} = Astro.props as Props;
+/*
+	build buf fix
+	https://github.com/withastro/astro/issues/3373 
+ */
+const images = import.meta.glob<ImageMetadata>('../assets/blog/**/*', {import: 'default'});
+for (let i = 0; i < posts.length; i++) {
+  const heroImage = posts[i].frontmatter?.heroImage;
+  if (heroImage) posts[i].frontmatter.heroImageMetadata = await images[heroImage]();
+}
+---
+
+<div class='flex flex-col divide-y'>
+  {
+    posts.map(post => (
+      <section class='py-10'>
+        <article class='flex flex-col gap-5'>
+          <header class='flex flex-col gap-1.5'>
+            <time class='text-gray-500' datetime={post.frontmatter.publishDate}>
+              {getLongDateString(config.locale, new Date(post.frontmatter.publishDate))}
+            </time>
+            <h1 class='text-4xl font-semibold line-clamp-3'>
+              <a href={post.url}>{post.frontmatter.title}</a>
+            </h1>
+            <h2 class='text-xl text-gray-500 line-clamp-2'>{post.frontmatter.description}</h2>
+          </header>
+          {post.frontmatter.heroImage && (
+            <div class='w-full h-56 overflow-hidden flex items-center justify-center bg-gray-100'>
+              <Picture
+                src={post.frontmatter.heroImageMetadata.src}
+                aspectRatio={
+                  post.frontmatter.heroImageMetadata.width /
+                  post.frontmatter.heroImageMetadata.height
+                }
+                alt='Hero'
+                widths={[400, 800, 1200]}
+                formats={['webp']}
+              />
+            </div>
+          )}
+        </article>
+      </section>
+    ))
+  }
+</div>

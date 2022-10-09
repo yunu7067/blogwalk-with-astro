@@ -1,0 +1,13 @@
+---
+export interface Props {
+  wide: boolean;
+}
+
+const props = Astro.props;
+---
+
+<footer class='mt-8 flex items-center justify-center'>
+  <div class={`${props.wide ? 'max-w-4xl' : 'max-w-3xl'} w-full pt-5 pb-10 px-5`}>
+    <span class='text-gray-500 text-sm font-light'>©YUNU7067, Built with Astro</span>
+  </div>
+</footer>

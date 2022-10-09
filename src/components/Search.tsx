@@ -1,8 +1,8 @@
 import {createEffect, createSignal} from 'solid-js';
 import * as FlexSearch from 'flexsearch';
-import {createDebounce} from '@utils';
-import {SearchLine} from '@coms/icons';
-import Tags from '@coms/Tags';
+import {createDebounce} from '$utils';
+import {SearchLine} from '$coms/icons';
+import Tags from '$coms/Tags';
 
 export default function Search({keys}: {keys: string[]}) {
   const [keyword, setKeyword] = createSignal<string>('');
@@ -10,10 +10,13 @@ export default function Search({keys}: {keys: string[]}) {
   // const [searchResult, setSearchResult] = createSignal<
   //   FlexSearch.DocumentSearchResult<{title: string; description: string; tags: string[]}, true, true>
   // >([]);
-  const [searchResult, setSearchResult] =
-    createSignal<
-      FlexSearch.EnrichedDocumentSearchResultSetUnitResultUnit<{title: string; description: string; tags: string[]}>[]
-    >();
+  const [searchResult, setSearchResult] = createSignal<
+    FlexSearch.EnrichedDocumentSearchResultSetUnitResultUnit<{
+      title: string;
+      description: string;
+      tags: string[];
+    }>[]
+  >();
 
   const [trigger, clear] = createDebounce(() => {
     // console.debug({doc: doc()});
@@ -74,7 +77,10 @@ export default function Search({keys}: {keys: string[]}) {
           placeholder='여기에 검색어를 입력하세요.'
           maxLength={30}
         />
-        <label for='input-search' class='absolute p-4 mb-4 top-0 right-0 text-sm dark:text-gray-200'>
+        <label
+          for='input-search'
+          class='absolute p-4 mb-4 top-0 right-0 text-sm dark:text-gray-200'
+        >
           <SearchLine width='20' height='20' />
         </label>
         <p class='mb-5'>(검색 필드: title, description, tags)</p>
@@ -86,7 +92,9 @@ export default function Search({keys}: {keys: string[]}) {
             searchResult().map(({id, doc}) => (
               <div class='p-8 border rounded-md mb-2 dark:border-gray-600'>
                 <a href={id as unknown as string}>
-                  <h1 class='mb-1.5 text-2xl font-bold hover:underline hover:underline-offset-1'>{doc.title}</h1>
+                  <h1 class='mb-1.5 text-2xl font-bold hover:underline hover:underline-offset-1'>
+                    {doc.title}
+                  </h1>
                 </a>
                 <p class='mb-3'>{doc.description}</p>
                 <Tags tags={doc.tags} />
