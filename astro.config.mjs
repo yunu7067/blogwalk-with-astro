@@ -8,11 +8,7 @@ import {remarkMath, remarkReadingTime, rehypeKatex, rehypeFigure} from './plugin
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    ssr: {
-      external: ['http-cache-semantics', 'image-size', 'mime'],
-    },
-  },
+  vite: {},
   site: 'https://yunu7067.example.com', // sitemap
   markdown: {
     // Applied to .md and .mdx files
