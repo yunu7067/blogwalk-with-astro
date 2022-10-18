@@ -4,7 +4,15 @@ import tailwind from '@astrojs/tailwind';
 import image from '@astrojs/image';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
-import {remarkMath, remarkReadingTime, rehypeKatex, rehypeFigure, remarkCodeTitle} from './plugins';
+import {
+  remarkMath,
+  remarkReadingTime,
+  remarkCodeTitle,
+  rehypeKatex,
+  rehypeFigure,
+  rehypeAutolinkHeading,
+} from './plugins';
+import {s} from 'hastscript';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +22,7 @@ export default defineConfig({
     // Applied to .md and .mdx files
     extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime, remarkMath, remarkCodeTitle],
-    rehypePlugins: [rehypeKatex, rehypeFigure],
+    rehypePlugins: [rehypeAutolinkHeading, rehypeKatex, rehypeFigure],
     syntaxHighlight: 'shiki',
     shikiConfig: {
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md#theming-with-css-variables
