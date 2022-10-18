@@ -1,10 +1,9 @@
 ---
-import type {AstroSeoProps} from '$coms/AstroSeo';
-import config from '$config';
-import BlogSearch from 'src/utils/BlogSearch';
+import MainLayout from '$lays/MainLayout.astro';
 import Search from '$coms/Search';
 import {file2slug} from 'src/utils/file2slug';
-import MainLayout from '$lays/MainLayout.astro';
+import BlogSearch from 'src/utils/BlogSearch';
+import config from '$config';
 
 let allPosts = await Astro.glob('./p/**/*.{md,mdx}');
 const posts = allPosts.map(p => {
@@ -58,7 +57,17 @@ const props = {
   wide={props.wide}
 >
   <main class='w-full'>
-    <div class='max-w-3xl w-full mx-auto'>
+    {/* Hero */}
+    <div class='pt-[88px] flex flex-col'>
+      <div class='max-w-3xl w-full mx-auto px-5 pt-8 pb-24'>
+        <span class='text-lg text-gray-600'></span>
+        <h1 class='text-6xl font-bold leading-relaxed'>Find posts.</h1>
+        <h2 class='text-2xl leading-normal text-gray-600'>
+          (Search fields: title, description, tags)
+        </h2>
+      </div>
+    </div>
+    <div class='max-w-3xl w-full mx-auto px-5 py-4'>
       <Search client:load keys={flexSearchIndexKeys} />
     </div>
   </main>

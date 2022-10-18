@@ -12,7 +12,6 @@ import {
   rehypeFigure,
   rehypeAutolinkHeading,
 } from './plugins';
-import {s} from 'hastscript';
 
 // https://astro.build/config
 export default defineConfig({

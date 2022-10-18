@@ -52,7 +52,7 @@ const props = {
     home: {enabled: true, expanded: false},
     portfolio: {enabled: true, expanded: false},
     rss: {enabled: false, expanded: false},
-    search: {enabled: false, expanded: true},
+    search: {enabled: true, expanded: false},
     series: {enabled: false, expanded: false},
     theme: {enabled: true, expanded: false},
   },
@@ -66,25 +66,25 @@ const props = {
   wide={props.wide}
 >
   <main class='w-full'>
-    <div class='max-w-3xl w-full mx-auto'>
-      <main>
-        <h2 class='mt-8 mb-6 text-5xl tracking-tight text-center'>Series</h2>
-        <!-- <small class="block text-base text-center mb-3">{page.start + 1}–{page.end + 1} of {page.total}</small> -->
-        {
-          seriesList.map(series => (
-            <SeriesPreview
-              series={series}
-              count={seriesData[series].count}
-              lastUpdated={seriesData[series].lastUpdated}
-              locale={config.locale.languageCode}
-            />
-          ))
-        }
-      </main>
-
-      <footer>
-        <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
-      </footer>
+    {/* Hero */}
+    <div class='pt-[88px] flex flex-col'>
+      <div class='max-w-3xl w-full mx-auto px-5 pt-8 pb-24'>
+        <span class='text-lg text-gray-600'></span>
+        <h1 class='text-6xl font-bold leading-relaxed'>Series</h1>
+        <h2 class='text-2xl leading-normal text-gray-600'></h2>
+      </div>
+    </div>
+    <div class='max-w-3xl w-full mx-auto px-5 py-4'>
+      {
+        seriesList.map(series => (
+          <SeriesPreview
+            series={series}
+            count={seriesData[series].count}
+            lastUpdated={seriesData[series].lastUpdated}
+            locale={config.locale.languageCode}
+          />
+        ))
+      }
     </div>
   </main>
 </MainLayout>
