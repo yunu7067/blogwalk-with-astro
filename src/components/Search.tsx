@@ -83,7 +83,6 @@ export default function Search({keys}: {keys: string[]}) {
         >
           <SearchLine width='20' height='20' />
         </label>
-        <p class='mb-5'>(검색 필드: title, description, tags)</p>
       </div>
 
       <output>
