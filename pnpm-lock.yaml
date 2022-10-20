@@ -5,14 +5,14 @@ specifiers:
   '@astrojs/mdx': ^0.11.4
   '@astrojs/rss': ^1.0.2
   '@astrojs/sitemap': 1.0.0
-  '@astrojs/solid-js': 1.2.0
+  '@astrojs/solid-js': 1.2.1
   '@astrojs/tailwind': 2.1.0
   '@tailwindcss/line-clamp': 0.4.2
   '@types/eslint': ^8.4.6
   '@types/flexsearch': ^0.7.3
   '@types/node': ^18.8.1
   '@types/prettier': ^2.7.1
-  astro: 1.5.0
+  astro: 1.5.2
   flexsearch: ^0.7.21
   hastscript: ^7.0.2
   mdast-util-to-string: ^3.1.0
@@ -31,14 +31,14 @@ devDependencies:
   '@astrojs/mdx': 0.11.4
   '@astrojs/rss': 1.0.2
   '@astrojs/sitemap': 1.0.0
-  '@astrojs/solid-js': 1.2.0_solid-js@1.5.6
+  '@astrojs/solid-js': 1.2.1_solid-js@1.5.6
   '@astrojs/tailwind': 2.1.0_tailwindcss@3.1.8
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.1.8
   '@types/eslint': 8.4.6
   '@types/flexsearch': 0.7.3
   '@types/node': 18.8.1
   '@types/prettier': 2.7.1
-  astro: 1.5.0_sass@1.55.0
+  astro: 1.5.2_sass@1.55.0
   flexsearch: 0.7.21
   hastscript: 7.0.2
   mdast-util-to-string: 3.1.0
@@ -199,8 +199,8 @@ packages:
       zod: 3.19.1
     dev: true
 
-  /@astrojs/solid-js/1.2.0_solid-js@1.5.6:
-    resolution: {integrity: sha512-1s3vBO+HrrVtNxDO8JjQKLh0WPuYFZEkSei0sq5jFEUYO1MxBWwBRjX9pGU06i7fQxMaABe7E8DtgaJywFN95w==}
+  /@astrojs/solid-js/1.2.1_solid-js@1.5.6:
+    resolution: {integrity: sha512-kTVrSv8sXptLFUHxlRNYQUZUF+1Oi88gsDd6Lut9MMstC9zCdqbTnAy+Z7r7sCmm9J5FgsXA3YSnyQfouup5ug==}
     engines: {node: ^14.18.0 || >=16.12.0}
     peerDependencies:
       solid-js: ^1.4.3
@@ -938,8 +938,8 @@ packages:
     hasBin: true
     dev: true
 
-  /astro/1.5.0_sass@1.55.0:
-    resolution: {integrity: sha512-xwneXjRT4FChouSe/cj6oJVU6Ux7Fd/7rfnh3mPlB9PTbN5UwnfCI5MjR7rTc93i169Jjh93FndrxmGX45sQBw==}
+  /astro/1.5.2_sass@1.55.0:
+    resolution: {integrity: sha512-ZzPwZYo4GgwNBiOA7xumpkbKNVT/k/ZEvEkAL2lj3NAZHnU801wk9qLlugu8ECoLT4k1j9B/SSmhLr+AhLTazw==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
