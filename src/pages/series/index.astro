@@ -3,6 +3,7 @@ import SeriesPreview from '$coms/SeriesPreview';
 import MainLayout from '$lays/MainLayout.astro';
 import type {PostMetadata} from '$types';
 import config from '$config';
+import Hero from '$coms/layout/Hero.astro';
 
 const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
 // 최신 게시글 먼저 탐색해 최근에 글이 추가된 시리즈가 위로 갈 수 있도록 함.
@@ -66,14 +67,8 @@ const props = {
   wide={props.wide}
 >
   <main class='w-full'>
-    {/* Hero */}
-    <div class='pt-[88px] flex flex-col'>
-      <div class='max-w-3xl w-full mx-auto px-5 pt-8 pb-24'>
-        <span class='text-lg text-gray-600'></span>
-        <h1 class='text-6xl font-bold leading-relaxed'>Series</h1>
-        <h2 class='text-2xl leading-normal text-gray-600'></h2>
-      </div>
-    </div>
+    <Hero category={'Section'} title={'Series'} subtitle={''} />
+
     <div class='max-w-3xl w-full mx-auto px-5 py-4'>
       {
         seriesList.map(series => (

@@ -17,18 +17,9 @@
   "rangeStart": 0,
   "requirePragma": false,
   "insertPragma": false,
+  "plugins": ["prettier-plugin-astro"],
   "overrides": [
-    {
-      "files": [".*", "*.json", "*.md", "*.toml", "*.yml"],
-      "options": {
-        "useTabs": false
-      }
-    },
-    {
-      "files": ["**/*.astro"],
-      "options": {
-        "parser": "astro"
-      }
-    }
+    {"files": [".*", "*.json", "*.md", "*.toml", "*.yml"], "options": {"useTabs": false}},
+    {"files": ["**/*.astro"], "options": {"parser": "astro"}}
   ]
 }
