@@ -12,6 +12,7 @@ import {
   rehypeFigure,
   rehypeAutolinkHeading,
 } from './plugins';
+import AutoImport from 'astro-auto-import';
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,5 +30,18 @@ export default defineConfig({
       wrap: true,
     },
   },
-  integrations: [mdx({}), solid(), tailwind(), image({logLevel: 'error'}), sitemap()],
+  integrations: [
+    AutoImport({
+      imports: [
+        {
+          '/src/components/MarkdownImage.astro': [['default', 'Image']],
+        },
+      ],
+    }),
+    mdx({}),
+    solid(),
+    tailwind(),
+    image({logLevel: 'error'}),
+    sitemap(),
+  ],
 });

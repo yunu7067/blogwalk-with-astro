@@ -2,12 +2,12 @@
 import {Image} from '@astrojs/image/components';
 import type {Props as ImageProps} from '@astrojs/image/components/Image.astro';
 
-export type Props = ImageProps & {
+export type Props = Omit<ImageProps, 'src' | 'slot'> & {
   imgSrc: string;
+  caption?: string | undefined;
 };
 
-const {imgSrc, format, ...props} = Astro.props as Props;
-// console.log({test, format, props});
+const {imgSrc, caption, ...props} = Astro.props as Props;
 
 /*
 	build buf fix
@@ -15,6 +15,8 @@ const {imgSrc, format, ...props} = Astro.props as Props;
  */
 const images = import.meta.glob<ImageMetadata>('../assets/blog/**/*', {import: 'default'});
 const imageMeta = await images[imgSrc]();
+
+console.log(images);
 ---
 
 <figure>
@@ -23,7 +25,7 @@ const imageMeta = await images[imgSrc]();
     src={imageMeta.src}
     width={768}
     aspectRatio={imageMeta.width / imageMeta.height}
-    format={format || 'webp'}
+    format={props?.format || 'webp'}
   />
-  {props.alt && props.alt.trim().length > 0 && <figcaption>{props.alt}</figcaption>}
+  <figcaption>{caption || ''}</figcaption>
 </figure>
