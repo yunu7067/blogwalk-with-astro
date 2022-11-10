@@ -1,8 +1,9 @@
 ---
 import {Picture} from '@astrojs/image/components';
 import type {PostInstance} from '$types';
-import {getLongDateString} from '$utils';
+import {classes, getLongDateString} from '$utils';
 import config from '$config';
+import {Clickable, Tag} from '$coms/classes';
 
 export interface Props {
   posts: (PostInstance & {
@@ -22,7 +23,7 @@ for (let i = 0; i < posts.length; i++) {
 }
 ---
 
-<div class='flex flex-col gap-2 divide-y'>
+<div class='flex flex-col divide-y dark:divide-gray-700'>
   {
     posts.map(post => (
       <section class='py-11 flex flex-col'>
@@ -44,17 +45,33 @@ for (let i = 0; i < posts.length; i++) {
             </div>
           </a>
         )}
+
         {/* Title */}
-        <h2 class='mb-2 text-3xl font-bold line-clamp-3'>
+        <h2 class='text-3xl font-bold line-clamp-1'>
           <a href={post.url}>{post.frontmatter.title}</a>
         </h2>
+
+        {/* Published Date */}
+        <div class='mt-2 flex flex-row text-gray-500 text-sm'>
+          <time datetime={post.frontmatter.publishDate}>
+            {getLongDateString(config.locale, new Date(post.frontmatter.publishDate))}
+          </time>
+          <div class='px-2'>·</div>
+          <span>{post.frontmatter.minutesRead}</span>
+        </div>
+
         {/* Description */}
-        <p class='mb-4 text-gray-600 tracking-tight line-clamp-2'>{post.frontmatter.description}</p>
+        {post.frontmatter.description && (
+          <p class='mt-2 text-gray-600 tracking-tight line-clamp-3'>
+            {post.frontmatter.description}
+          </p>
+        )}
+
         {/* Tags */}
         {post.frontmatter.tags && (
-          <ul class='mb-4 flex flex-row gap-1.5 flex-wrap'>
+          <ul class='mt-4 flex flex-row gap-1.5 flex-wrap'>
             {post.frontmatter.tags?.map(tag => (
-              <li class='rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 text-sm leading-none tracking-tight'>
+              <li class={classes(Clickable, Tag)}>
                 <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
                   {tag}
                 </a>
@@ -62,14 +79,6 @@ for (let i = 0; i < posts.length; i++) {
             ))}
           </ul>
         )}
-        {/* Published Date */}
-        <div class='flex flex-row text-gray-500 text-sm'>
-          <time datetime={post.frontmatter.publishDate}>
-            {getLongDateString(config.locale, new Date(post.frontmatter.publishDate))}
-          </time>
-          <div class='px-2'>·</div>
-          <span>{post.frontmatter.minutesRead}</span>
-        </div>
       </section>
     ))
   }

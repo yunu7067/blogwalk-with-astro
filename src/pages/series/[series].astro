@@ -5,6 +5,7 @@ import PostPreview from '$coms/PostPreview.astro';
 import config from '$config';
 import MainLayout from '$lays/MainLayout.astro';
 import Hero from '$coms/layout/Hero.astro';
+import BlogPreview from '$coms/BlogPreview.astro';
 
 interface SeriesProps {
   count: number;
@@ -75,7 +76,7 @@ const props = {
     <Hero category={''} title={props.seo.title} subtitle={`${count} Posts`} />
 
     <div class='max-w-3xl w-full mx-auto px-5 py-4'>
-      {posts.map(post => <PostPreview post={post} />)}
+      <BlogPreview posts={posts} />
     </div>
   </main>
 </MainLayout>
