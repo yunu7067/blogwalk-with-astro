@@ -2,7 +2,7 @@ import {Clickable, MediumButton, SmallButton} from '$coms/classes';
 import {GitHub, Loader5Line, MoonLine, SunLine} from '$coms/icons';
 import type {BlogConfigType} from '$types';
 import {classes} from '$utils';
-import {createEffect, createSignal, Match, Show, Switch} from 'solid-js';
+import {createEffect, createSignal, Match, onMount, Show, Switch} from 'solid-js';
 
 interface ThemeButtonProps {
   class: string;
@@ -12,7 +12,7 @@ export default function ThemeButton(props: ThemeButtonProps) {
   const [isLoading, setLoading] = createSignal(true);
   const [isDarkMode, setDarkMode] = createSignal(false);
 
-  createEffect(() => {
+  onMount(async () => {
     const commentEl = document.getElementsByClassName('giscus-frame')[0] as unknown as {
       src: string;
     };
@@ -37,7 +37,7 @@ export default function ThemeButton(props: ThemeButtonProps) {
   });
 
   const toggleTheme = () => {
-    console.log('change Theme');
+    console.debug('change Theme');
     /* 댓글도 변경해야함 */
     const commentEl = document.getElementsByClassName('giscus-frame')[0] as unknown as {
       src: string;
