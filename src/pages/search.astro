@@ -5,6 +5,7 @@ import {file2slug} from 'src/utils/file2slug';
 import BlogSearch from 'src/utils/BlogSearch';
 import config from '$config';
 import Hero from '$coms/layout/Hero.astro';
+import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
 
 let allPosts = await Astro.glob('./p/**/*.{md,mdx}');
 const posts = allPosts.map(p => {
@@ -59,12 +60,14 @@ const props = {
 >
   <main class='w-full'>
     <Hero
-      category={''}
-      title={'Find posts.'}
-      subtitle={'(Search fields: title, description, tags)'}
+      category={'Blog'}
+      title={'Find posts'}
+      subtitle={'Search fields: title, description, tags'}
     />
 
     <div class='max-w-3xl w-full mx-auto px-5 py-4'>
+      <BlogSubNavigations disabled={{search: true}} />
+
       <Search client:load keys={flexSearchIndexKeys} />
     </div>
   </main>

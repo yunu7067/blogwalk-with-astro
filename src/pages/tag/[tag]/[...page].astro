@@ -1,11 +1,11 @@
 ---
 import type {GetStaticPathsOptions} from 'astro';
-import BlogPostPreview from '$coms/PostPreview.astro';
 import Pagination from '$coms/Pagination.astro';
 import config from '$config';
 import MainLayout from '$lays/MainLayout.astro';
 import BlogPreview from '$coms/BlogPreview.astro';
 import Hero from '$coms/layout/Hero.astro';
+import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
   const allPosts = await Astro.glob('../../p/**/*.{md,mdx}');
@@ -50,9 +50,9 @@ const props = {
     home: {enabled: true, expanded: false},
     portfolio: {enabled: true, expanded: false},
     rss: {enabled: false, expanded: false},
-    search: {enabled: true, expanded: false},
+    search: {enabled: false, expanded: false},
     series: {enabled: false, expanded: false},
-    theme: {enabled: true, expanded: false},
+    theme: {enabled: true, expanded: true},
   },
 };
 ---
@@ -65,12 +65,14 @@ const props = {
 >
   <main class='w-full'>
     <Hero
-      category={''}
+      category={'Blog'}
       title={`Articles tagged #${tag}`}
       subtitle={`${page.start + 1}–${page.end + 1} of ${page.total}`}
     />
 
     <div class='max-w-3xl w-full mx-auto px-5 py-4'>
+      <BlogSubNavigations disabled={{}} />
+
       <BlogPreview posts={page.data} />
 
       <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />

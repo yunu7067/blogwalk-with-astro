@@ -74,6 +74,7 @@ export default function Search({keys}: {keys: string[]}) {
             setKeyword(e.currentTarget.value);
             trigger();
           }}
+          value={keyword()}
           placeholder='여기에 검색어를 입력하세요.'
           maxLength={30}
         />

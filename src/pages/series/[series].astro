@@ -1,11 +1,11 @@
 ---
 import type {GetStaticPathsOptions} from 'astro';
 import type {MarkdownInstance} from 'astro';
-import PostPreview from '$coms/PostPreview.astro';
 import config from '$config';
 import MainLayout from '$lays/MainLayout.astro';
 import Hero from '$coms/layout/Hero.astro';
 import BlogPreview from '$coms/BlogPreview.astro';
+import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
 
 interface SeriesProps {
   count: number;
@@ -24,7 +24,7 @@ const sortedPosts = allPosts.sort(
 export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
   const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
   const seriesData: {[key: string]: SeriesProps} = {};
-  const seriesList = [];
+  const seriesList: any[] = [];
 
   allPosts.map(post => {
     const {series} = post.frontmatter;
@@ -59,9 +59,9 @@ const props = {
     home: {enabled: true, expanded: false},
     portfolio: {enabled: true, expanded: false},
     rss: {enabled: false, expanded: false},
-    search: {enabled: true, expanded: false},
+    search: {enabled: false, expanded: false},
     series: {enabled: false, expanded: false},
-    theme: {enabled: true, expanded: false},
+    theme: {enabled: true, expanded: true},
   },
 };
 ---
@@ -73,9 +73,11 @@ const props = {
   wide={props.wide}
 >
   <main class='w-full'>
-    <Hero category={''} title={props.seo.title} subtitle={`${count} Posts`} />
+    <Hero category={'Blog'} title={props.seo.title} subtitle={`${count} Posts`} />
 
     <div class='max-w-3xl w-full mx-auto px-5 py-4'>
+      <BlogSubNavigations disabled={{series: true}} />
+
       <BlogPreview posts={posts} />
     </div>
   </main>

@@ -4,6 +4,7 @@ import MainLayout from '$lays/MainLayout.astro';
 import type {PostMetadata} from '$types';
 import config from '$config';
 import Hero from '$coms/layout/Hero.astro';
+import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
 
 const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
 // 최신 게시글 먼저 탐색해 최근에 글이 추가된 시리즈가 위로 갈 수 있도록 함.
@@ -53,9 +54,9 @@ const props = {
     home: {enabled: true, expanded: false},
     portfolio: {enabled: true, expanded: false},
     rss: {enabled: false, expanded: false},
-    search: {enabled: true, expanded: false},
+    search: {enabled: false, expanded: false},
     series: {enabled: false, expanded: false},
-    theme: {enabled: true, expanded: false},
+    theme: {enabled: true, expanded: true},
   },
 };
 ---
@@ -67,9 +68,11 @@ const props = {
   wide={props.wide}
 >
   <main class='w-full'>
-    <Hero category={'Section'} title={'Series'} subtitle={''} />
+    <Hero category={'Blog'} title={'Series'} subtitle={'All series'} />
 
     <div class='max-w-3xl w-full mx-auto px-5 py-4'>
+      <BlogSubNavigations disabled={{series: true}} />
+
       {
         seriesList.map(series => (
           <SeriesPreview
