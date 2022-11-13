@@ -32,7 +32,7 @@
     "@types/flexsearch": "^0.7.3",
     "@types/node": "^18.11.9",
     "@types/prettier": "^2.7.1",
-    "astro": "1.6.7",
+    "astro": "1.6.1",
     "astro-auto-import": "^0.2.0",
     "flexsearch": "^0.7.21",
     "hastscript": "^7.0.2",

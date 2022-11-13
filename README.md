@@ -128,6 +128,17 @@ rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
 - Support for RSS
 - Change package manager from `yarn` to `pnpm`.
 
+**1.0.11**
+- .
+
+**1.0.12**
+- .
+
+**1.0.13**
+- downgrade the astro version(1.6.7 -> 1.6.1)
+  - @astrojs/compiler 0.29.x 버전의 문제로 `<body>` 태그가 정상적으로 컴파일되지 않는 버그가 있음. 따라서 Astro 버전을 낮춰 임시로 핫픽스함.
+  - https://github.com/withastro/astro/issues/5379
+
 ## Credits
 
 - [Remix Icon](https://github.com/Remix-Design/RemixIcon) - Apache License 2.0

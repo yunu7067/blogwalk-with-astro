@@ -25,29 +25,30 @@ const blogTheme = () => {
 };
 ---
 
-<html lang={props.config?.locale.languageCode || 'ko'} class={'bg-transparent ' + blogTheme()}>
+<html lang={props.config?.locale.languageCode || 'ko'} class={`bg-transparent ${blogTheme()}`}>
   <Head>
     <AstroSeo {...{...defaultSeo, ...(props?.seo || {})}} />
     <script define:vars={{configTheme: props.config.theme}}>
       (function () {
         /* theme 설정이 'system'인 경우는 prefers-color-scheme 미디어 쿼리를 인식하여 설정한다 */
-        if (configTheme === ' system') {
+        if (configTheme === 'system') {
           const htmlEl = document.getElementsByTagName('html')[0];
-          /* 시스템 테마가 다크이면 */ if (
-            window.matchMedia('(prefers-color-scheme: dark)').matches
-          ) {
+          /* 시스템 테마가 다크이면 */
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             htmlEl.classList.add('dark');
-          } /* 그 외엔 지정 안함 */
-        } /*
-	theme 설정이 'auto' 인 경우는 브라우저 localStorage에 저장된 값이 있는지 확인하고, 있으면 그 값을 없으면 'light' 로 설정한다. */ else if (
-          configTheme === 'auto'
-        ) {
+          }
+          /* 그 외엔 지정 안함 */
+        } else if (configTheme === 'auto') {
+          /* theme 설정이 'auto' 인 경우는 브라우저 localStorage에 저장된 값이 있는지 확인하고, 있으면 그 값을 없으면 'light' 로 설정한다. */
           const theme = window.localStorage.getItem('theme');
           const htmlEl = document.getElementsByTagName('html')[0];
-          theme && htmlEl.classList.add(theme);
-          // console.log({theme});
-        } /*
-	theme 설정이 'light' 혹은 'dark' 인 경우는 astro에서 처리한다. */
+          if (theme) {
+            htmlEl.classList.remove(theme === 'light' ? 'dark' : 'light');
+            htmlEl.classList.add(theme);
+          }
+          // console.debug({theme});
+        }
+        /* theme 설정이 'light' 혹은 'dark' 인 경우는 astro에서 처리한다. */
       })();
     </script>
 
