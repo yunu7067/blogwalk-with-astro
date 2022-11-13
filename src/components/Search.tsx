@@ -1,8 +1,8 @@
-import {createEffect, createSignal} from 'solid-js';
+import {createEffect, createSignal, For, Show} from 'solid-js';
 import * as FlexSearch from 'flexsearch';
-import {createDebounce} from '$utils';
+import {classes, createDebounce} from '$utils';
 import {SearchLine} from '$coms/icons';
-import Tags from '$coms/Tags';
+import {Clickable, Tag} from '$coms/classes';
 
 export default function Search({keys}: {keys: string[]}) {
   const [keyword, setKeyword] = createSignal<string>('');
@@ -34,7 +34,7 @@ export default function Search({keys}: {keys: string[]}) {
     });
     setSearchResult(Array.from(resultMap, ([key, value]) => value));
     // setSearchResult(results as unknown as typeof searchResult);
-    console.debug({results: resultMap});
+    // console.debug({results: resultMap});
   }, 365); // 365 ms 동안 대기
 
   createEffect(() => {
@@ -74,6 +74,7 @@ export default function Search({keys}: {keys: string[]}) {
             setKeyword(e.currentTarget.value);
             trigger();
           }}
+          value={keyword()}
           placeholder='여기에 검색어를 입력하세요.'
           maxLength={30}
         />
@@ -87,18 +88,29 @@ export default function Search({keys}: {keys: string[]}) {
 
       <output>
         <div>
-          {searchResult() &&
-            searchResult().map(({id, doc}) => (
+          <For each={searchResult()}>
+            {({id, doc}) => (
               <div class='p-8 border rounded-md mb-2 dark:border-gray-600'>
                 <a href={id as unknown as string}>
-                  <h1 class='mb-1.5 text-2xl font-bold hover:underline hover:underline-offset-1'>
+                  <h1 class='text-2xl font-bold hover:underline hover:underline-offset-1'>
                     {doc.title}
                   </h1>
                 </a>
-                <p class='mb-3'>{doc.description}</p>
-                <Tags tags={doc.tags} />
+                <p class='mt-1.5 '>{doc.description}</p>
+                <ul class='mt-4 flex flex-row gap-1.5 flex-wrap'>
+                  <For each={doc?.tags}>
+                    {tag => (
+                      <li class={classes(Clickable, Tag)}>
+                        <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
+                          {tag}
+                        </a>
+                      </li>
+                    )}
+                  </For>
+                </ul>
               </div>
-            ))}
+            )}
+          </For>
         </div>
       </output>
     </div>

@@ -1,8 +1,9 @@
 ---
-import {btn} from '$coms/classes';
+import {Clickable, MediumButton, SmallButton} from '$coms/classes';
 import {BookLine, Briefcase, Home, Rss, SearchLine, StackLine} from '$coms/icons';
 import ThemeButton from '$coms/ThemeButton';
 import config from '$config';
+import {classes} from '$utils';
 
 interface ActionItemProps {
   enabled: boolean;
@@ -21,9 +22,10 @@ export interface Props {
 }
 
 const props = Astro.props;
+const btn = classes(MediumButton, Clickable);
 ---
 
-<header class='absolute z-10 left-0 top-0 w-full py-5 flex items-center justify-center'>
+<header class='w-full py-5 flex items-center justify-center'>
   <nav
     class={`${
       props.wide ? 'max-w-4xl' : 'max-w-3xl'
@@ -87,7 +89,7 @@ const props = Astro.props;
       {
         /* Theme */
         props.theme.enabled && config.theme === 'auto' && (
-          <ThemeButton client:load config={config} />
+          <ThemeButton client:load class={btn} config={config} />
         )
       }
       {

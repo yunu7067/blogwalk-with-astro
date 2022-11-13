@@ -5,6 +5,7 @@ import type {PostInstance} from '$types';
 
 import '$styles/mainarticle.scss';
 import BlogPreview from '$coms/BlogPreview.astro';
+import Hero from '$coms/layout/Hero.astro';
 
 const {title, description, avatar, social} = config;
 const canonicalURL = Astro.url.toString();
@@ -32,7 +33,7 @@ const props = {
     rss: {enabled: true, expanded: false},
     search: {enabled: false, expanded: true},
     series: {enabled: false, expanded: true},
-    theme: {enabled: false, expanded: true},
+    theme: {enabled: true, expanded: false},
   },
 };
 ---
@@ -44,21 +45,14 @@ const props = {
   wide={props.wide}
 >
   <main class='w-full'>
-    {/* Hero */}
-    <div class='pt-[88px] flex flex-col'>
-      <div class='max-w-3xl w-full mx-auto px-5 pt-8 pb-24'>
-        <span class='text-lg text-gray-600'></span>
-        <h1 class='text-6xl font-bold leading-relaxed'>{config.author.name}</h1>
-        <h2 class='text-2xl leading-normal text-gray-600'>{about.frontmatter.description}</h2>
-      </div>
-    </div>
+    <Hero category={''} title={config.author.name} subtitle={about.frontmatter.description} />
+
     <div class='flex flex-col'>
       <article
         set:html={about.compiledContent()}
         id='article-content'
         class='max-w-3xl w-full mx-auto px-5 pt-8 pb-32'
-      >
-      </article>
+      />
     </div>
 
     {/* latest posts */}
