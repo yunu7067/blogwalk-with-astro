@@ -34,7 +34,7 @@ export default function Search({keys}: {keys: string[]}) {
     });
     setSearchResult(Array.from(resultMap, ([key, value]) => value));
     // setSearchResult(results as unknown as typeof searchResult);
-    console.debug({results: resultMap});
+    // console.debug({results: resultMap});
   }, 365); // 365 ms 동안 대기
 
   createEffect(() => {

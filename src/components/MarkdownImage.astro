@@ -16,7 +16,7 @@ const {imgSrc, caption, ...props} = Astro.props as Props;
 const images = import.meta.glob<ImageMetadata>('../assets/blog/**/*', {import: 'default'});
 const imageMeta = await images[imgSrc]();
 
-console.log(images);
+// console.log(images);
 ---
 
 <figure>

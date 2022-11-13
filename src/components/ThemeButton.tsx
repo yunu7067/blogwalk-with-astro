@@ -19,7 +19,7 @@ export default function ThemeButton(props: ThemeButtonProps) {
     const theme = window.localStorage.getItem('theme');
     setDarkMode(theme === 'dark' || false);
     setLoading(false);
-    console.debug({theme});
+    // console.debug({theme});
 
     if (theme === 'dark') {
       commentEl &&
@@ -37,7 +37,7 @@ export default function ThemeButton(props: ThemeButtonProps) {
   });
 
   const toggleTheme = () => {
-    console.debug('change Theme');
+    // console.debug('change Theme');
     /* 댓글도 변경해야함 */
     const commentEl = document.getElementsByClassName('giscus-frame')[0] as unknown as {
       src: string;

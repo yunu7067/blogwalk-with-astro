@@ -24,4 +24,5 @@ export {default as Slideshow} from './Slideshow';
 export {default as StackLine} from './StackLine';
 export {default as SunLine} from './SunLine';
 export {default as Twitter} from './Twitter';
+export {default as User3Line} from './User3Line';
 export {default as YouTube} from './YouTube';
