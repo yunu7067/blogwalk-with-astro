@@ -132,12 +132,18 @@ rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
 - .
 
 **1.0.12**
-- .
+- Update page design
+- 
 
 **1.0.13**
 - downgrade the astro version(1.6.7 -> 1.6.1)
   - @astrojs/compiler 0.29.x 버전의 문제로 `<body>` 태그가 정상적으로 컴파일되지 않는 버그가 있음. 따라서 Astro 버전을 낮춰 임시로 핫픽스함.
   - https://github.com/withastro/astro/issues/5379
+
+**1.0.14**
+- upgrade the astro version.
+  - 1.0.13에서 발생한 버그가 수정됨.
+
 
 ## Credits
 
