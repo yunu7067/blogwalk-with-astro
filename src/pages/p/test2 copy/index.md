@@ -3,7 +3,7 @@ layout: '$lays/BlogLayout.astro'
 title: Test Article 2 Lorem ipsum dolor sit amet, 
 description: test Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet
 publishDate: 2022-06-26
-heroImage: '../assets/blog/hero.jpg'
+heroImage: '/src/assets/blog/hero.jpg'
 comments: false
 ---
 
