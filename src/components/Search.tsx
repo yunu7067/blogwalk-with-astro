@@ -1,4 +1,4 @@
-import {createEffect, createSignal, For, Show} from 'solid-js';
+import {createEffect, createSignal, For} from 'solid-js';
 import * as FlexSearch from 'flexsearch';
 import {classes, createDebounce} from '$utils';
 import {SearchLine} from '$coms/icons';
