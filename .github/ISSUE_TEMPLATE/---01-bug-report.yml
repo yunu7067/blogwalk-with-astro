@@ -20,13 +20,6 @@ body:
     validations:
       required: true
   - type: input
-    id: ssr-adapter
-    attributes:
-      label: Are you using an SSR adapter? If so, which one?
-      placeholder: None, or Netlify, Vercel, Cloudflare, etc.
-    validations:
-      required: true
-  - type: input
     id: package-manager
     attributes:
       label: What package manager are you using?
@@ -60,5 +53,5 @@ body:
     attributes:
       label: Participation
       options:
-        - label:  I am willing to submit a pull request for this issue.
+        - label: I am willing to submit a pull request for this issue.
           required: false
