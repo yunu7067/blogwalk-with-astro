@@ -1,24 +1,24 @@
 ---
+import type {MarkdownHeading} from 'astro';
+import type {PostInstance} from '$types';
 import {Image} from '@astrojs/image/components';
 import MainLayout from './MainLayout.astro';
 import {default as BlogAuthor} from '$coms/Author.astro';
 import BlogComment from '$coms/BlogComment.astro';
 import BlogViews from '$coms/BlogViews';
-import type {PostInstance} from '$types';
 import config from '$config';
-import type {MarkdownHeading} from 'astro';
 import {classes, getLongDateString} from '$utils';
-import '$styles/article.scss';
 import {Clickable, Tag} from '$coms/classes';
+import '$styles/article.scss';
+import TableOfContents from '$coms/blog/TableOfContents.astro';
 
 const HERO_WIDTH = 3000;
 
-const {frontmatter, ...rest} = Astro.props as PostInstance & {
+export type Props = PostInstance & {
   frontmatter: {heroImageMetadata: ImageMetadata};
 };
 
-// console.log(frontmatter);
-
+const {frontmatter, ...rest} = Astro.props;
 const {pathname} = Astro.url;
 
 /*
@@ -32,7 +32,7 @@ if (heroImage) {
 }
 
 const headings: MarkdownHeading[] = Astro.props.headings;
-// console.debug({headings});
+console.debug({headings});
 const canonicalURL = Astro.url.toString();
 const props = {
   wide: false,
@@ -137,6 +137,8 @@ const props = {
     }
     <div class='flex flex-col'>
       <div class='max-w-3xl w-full mx-auto px-5'>
+        <TableOfContents headings={headings} />
+
         <article id='article-container'>
           <slot />
         </article>
