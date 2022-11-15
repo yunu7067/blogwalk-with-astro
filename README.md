@@ -143,7 +143,8 @@ rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
 - upgrade the astro version.
   - 1.0.13에서 발생한 버그가 수정됨.
 - Now RSS sort order by pubDate.
-
+- Fix rss meta tag.
+- 
 
 ## Credits
 
