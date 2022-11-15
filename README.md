@@ -133,7 +133,6 @@ rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
 
 **1.0.12**
 - Update page design
-- 
 
 **1.0.13**
 - downgrade the astro version(1.6.7 -> 1.6.1)
