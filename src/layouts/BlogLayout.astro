@@ -8,7 +8,6 @@ import BlogComment from '$coms/blog/Comment.astro';
 import TableOfContents from '$coms/blog/TableOfContents.astro';
 import BlogViews from '$coms/blog/BlogViews';
 import {classes, getLongDateString} from '$utils';
-import {Clickable, Tag} from '$coms/classes';
 import config from '$config';
 import '$styles/article.scss';
 
@@ -32,7 +31,7 @@ if (heroImage) {
 }
 
 const headings: MarkdownHeading[] = Astro.props.headings;
-console.debug({headings});
+// console.debug({headings});
 const canonicalURL = Astro.url.toString();
 const props = {
   wide: false,
@@ -83,7 +82,7 @@ const props = {
         frontmatter.tags && (
           <ul class='mb-4 flex flex-row gap-1.5 flex-wrap'>
             {frontmatter.tags?.map(tag => (
-              <li class={classes(Clickable, Tag)}>
+              <li class='tag clickable dark:clickable-dark'>
                 <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
                   {tag}
                 </a>

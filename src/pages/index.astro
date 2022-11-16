@@ -4,7 +4,8 @@ import MainLayout from '$lays/MainLayout.astro';
 import config from '$config';
 import BlogPreview from '$coms/blog/BlogPreview.astro';
 import Hero from '$coms/layout/Hero.astro';
-import '$styles/mainarticle.scss';
+import '$styles/article.scss';
+// import '$styles/mainarticle.scss';
 
 export interface Props {}
 
@@ -48,9 +49,9 @@ const props = {
 
     <div class='flex flex-col'>
       <article
-        set:html={about.compiledContent()}
-        id='article-content'
+        id='article-container'
         class='max-w-3xl w-full mx-auto px-5 pt-8 pb-32'
+        set:html={about.compiledContent()}
       />
     </div>
 
