@@ -3,7 +3,6 @@ import {Picture} from '@astrojs/image/components';
 import type {PostInstance} from '$types';
 import {classes, getLongDateString} from '$utils';
 import config from '$config';
-import {Clickable, Tag} from '$coms/classes';
 
 export interface Props {
   posts: (PostInstance & {
@@ -77,7 +76,7 @@ for (let i = 0; i < posts.length; i++) {
         {post.frontmatter.tags && (
           <ul class='mt-4 flex flex-row gap-1.5 flex-wrap'>
             {post.frontmatter.tags?.map(tag => (
-              <li class={classes(Clickable, Tag)}>
+              <li class='tag clickable dark:clickable-dark'>
                 <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
                   {tag}
                 </a>

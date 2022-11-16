@@ -1,5 +1,4 @@
 ---
-import {Clickable, MediumButton} from '$coms/classes';
 import {BookLine, Briefcase, Home, Rss, SearchLine, StackLine} from '$coms/icons';
 import ThemeButton from '$coms/ThemeButton';
 import {classes} from '$utils';
@@ -22,7 +21,7 @@ export interface Props {
 }
 
 const props = Astro.props;
-const btn = classes(MediumButton, Clickable);
+const btn = classes('sm:button-base button-sm clickable dark:clickable-dark');
 ---
 
 <header class='w-full py-5 flex items-center justify-center'>
