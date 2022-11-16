@@ -20,7 +20,7 @@ const {posts} = Astro.props;
 	https://github.com/withastro/astro/issues/3373 
  */
 const images = import.meta.glob<ImageMetadata>('/src/assets/blog/**/*', {import: 'default'});
-console.log({images});
+// console.log({images});
 for (let i = 0; i < posts.length; i++) {
   const heroImage = posts[i].frontmatter?.heroImage;
   if (heroImage) posts[i].frontmatter.heroImageMetadata = await images[heroImage]();

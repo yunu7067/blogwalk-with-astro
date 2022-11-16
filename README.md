@@ -146,6 +146,7 @@ rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
 - Fix rss meta tag.
 - Components refactoring.
 - Add TOC to blog post.
+- Update some post design.
 
 ## Credits
 
