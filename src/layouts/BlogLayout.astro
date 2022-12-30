@@ -80,7 +80,13 @@ const props = {
       </div>
 
       {/* Tags */}
-      <Tags tags={frontmatter.tags} />
+      {
+        frontmatter.tags && frontmatter.tags.length > 0 && (
+          <div class='mb-3'>
+            <Tags tags={frontmatter.tags} />
+          </div>
+        )
+      }
 
       <BlogAuthor
         avatar={config.avatar}
