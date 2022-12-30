@@ -1,7 +1,7 @@
 ---
 import MainLayout from '$lays/MainLayout.astro';
+import {getCollection} from 'astro:content';
 import Search from '$coms/Search';
-import {file2slug} from 'src/utils/file2slug';
 import BlogSearch from 'src/utils/BlogSearch';
 import config from '$config';
 import Hero from '$coms/layout/Hero.astro';
@@ -9,17 +9,15 @@ import BlogSubNavigations from '$coms/blog/SubNavigations.astro';
 
 export interface Props {}
 
-let allPosts = await Astro.glob('./p/**/*.{md,mdx}');
-const posts = allPosts.map(p => {
-  return {
-    id: file2slug(p.file, 'p/blog'),
-    title: p.frontmatter.title,
-    description: p.frontmatter?.description || '',
-    tags: p.frontmatter?.tags || [],
-  };
-});
+const allBlogPosts = await getCollection('blog');
+const posts = allBlogPosts.map(p => ({
+  id: `/p/${p.slug}`,
+  title: p.data.title,
+  description: p.data.description,
+  tags: p.data.tags,
+}));
 
-await BlogSearch({posts});
+await BlogSearch({posts}); // Generate search index.
 const flexSearchIndexKeys = [
   'reg',
   'title.cfg',

@@ -1,5 +1,5 @@
 ---
-import type {PostMetadata} from '$types';
+import {getCollection} from 'astro:content';
 import MainLayout from '$lays/MainLayout.astro';
 import Hero from '$coms/layout/Hero.astro';
 import SeriesPreview from '$coms/blog/SeriesPreview.astro';
@@ -8,20 +8,19 @@ import config from '$config';
 
 export interface Props {}
 
-const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
+const allBlogPosts = await getCollection('blog');
 // 최신 게시글 먼저 탐색해 최근에 글이 추가된 시리즈가 위로 갈 수 있도록 함.
-const sortedPosts = allPosts.sort(
-  (a, b) =>
-    new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
+const sortedPosts = allBlogPosts.sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
 );
 
 const seriesData: {
   [key: string]: {count: number; lastUpdated: number};
 } = {};
-const seriesList = [];
+const seriesList: string[] = [];
 
 sortedPosts.map(post => {
-  const {publishDate, series} = post.frontmatter as PostMetadata;
+  const {publishDate, series} = post.data;
   const currentPostPublishDate = new Date(publishDate).getTime();
   if (series) {
     // 이미 데이터가 있으면 seriesData에서 게시글 카운트만 올리고,
@@ -38,7 +37,7 @@ sortedPosts.map(post => {
       seriesList.push(series);
       seriesData[series] = {
         count: 1,
-        lastUpdated: new Date(publishDate).getTime(),
+        lastUpdated: publishDate.getTime(),
       };
     }
   }

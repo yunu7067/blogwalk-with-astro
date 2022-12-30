@@ -1,46 +1,40 @@
 ---
-import type {PostInstance} from '$types';
+import {CollectionEntry} from 'astro:content';
 import {Picture} from '@astrojs/image/components';
 import Tags from '$coms/blog/Tags.astro';
 import {getLongDateString} from '$utils';
 import config from '$config';
 
 export interface Props {
-  posts: (PostInstance & {
-    frontmatter: {
-      heroImageMetadata?: ImageMetadata;
-    };
-  })[];
+  posts: CollectionEntry<'blog'>[];
 }
 
 const {posts} = Astro.props;
-
 /*
 	build buf fix
 	https://github.com/withastro/astro/issues/3373 
  */
-const images = import.meta.glob<ImageMetadata>('/src/assets/blog/**/*', {import: 'default'});
+const images = import.meta.glob<ImageMetadata>('/public/assets/blog/**/*', {import: 'default'});
 // console.log({images});
 for (let i = 0; i < posts.length; i++) {
-  const heroImage = posts[i].frontmatter?.heroImage;
-  if (heroImage) posts[i].frontmatter.heroImageMetadata = await images[heroImage]();
+  const heroImage = posts[i].data?.heroImage;
+  if (heroImage) posts[i].data.heroImageMetadata = await images?.['/public' + heroImage]();
 }
 ---
 
 <div class='flex flex-col divide-y dark:divide-gray-700'>
   {
-    posts.map(post => (
+    posts.map(async post => (
       <section class='py-11 first:pt-4 last:pb-4 flex flex-col'>
         {/* Hero Image */}
-        {post.frontmatter.heroImage && (
-          <a href={post.url}>
+        {post.data.heroImage && (
+          <a href={`/p/${post.slug}`}>
             <div class='mb-4 w-full h-56 overflow-hidden flex items-center justify-center bg-gray-100'>
               <Picture
-                src={post.frontmatter?.heroImageMetadata?.src}
+                src={post.data?.heroImageMetadata?.src}
                 aspectRatio={
-                  post.frontmatter?.heroImageMetadata
-                    ? post.frontmatter?.heroImageMetadata.width /
-                      post.frontmatter?.heroImageMetadata.height
+                  post.data?.heroImageMetadata
+                    ? post.data?.heroImageMetadata.width / post.data?.heroImageMetadata.height
                     : 16 / 9
                 }
                 alt='Hero'
@@ -54,27 +48,29 @@ for (let i = 0; i < posts.length; i++) {
 
         {/* Title */}
         <h2 class='text-3xl font-bold line-clamp-1'>
-          <a href={post.url}>{post.frontmatter.title}</a>
+          <a href={`/p/${post.slug}`}>{post.data.title}</a>
         </h2>
 
         {/* Published Date */}
         <div class='mt-2 flex flex-row text-gray-500 text-sm'>
-          <time datetime={post.frontmatter.publishDate}>
-            {getLongDateString(config.locale, new Date(post.frontmatter.publishDate))}
+          <time datetime={post.data.publishDate.toISOString()}>
+            {getLongDateString(config.locale, new Date(post.data.publishDate))}
           </time>
           <div class='px-2'>·</div>
-          <span>{post.frontmatter.minutesRead}</span>
+          <span>{(await post.render()).injectedFrontmatter.minutesRead}</span>
         </div>
 
         {/* Description */}
-        {post.frontmatter.description && (
-          <p class='mt-2 text-gray-600 tracking-tight line-clamp-3'>
-            {post.frontmatter.description}
-          </p>
+        {post.data.description && (
+          <p class='mt-2 text-gray-600 tracking-tight line-clamp-3'>{post.data.description}</p>
         )}
 
         {/* Tags */}
-        <Tags tags={post.frontmatter.tags} />
+        {post.data.tags.length > 0 && (
+          <div class='mt-4'>
+            <Tags tags={post.data.tags} />
+          </div>
+        )}
       </section>
     ))
   }

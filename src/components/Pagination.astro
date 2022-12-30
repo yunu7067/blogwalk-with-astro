@@ -2,8 +2,8 @@
 import {ArrowLeftCircleLine, ArrowRightCircleLine} from './icons';
 
 export interface Props {
-  prevUrl: string;
-  nextUrl: string;
+  prevUrl: string | undefined;
+  nextUrl: string | undefined;
 }
 
 const {prevUrl, nextUrl} = Astro.props;

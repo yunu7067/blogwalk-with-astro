@@ -18,6 +18,9 @@ import AutoImport from 'astro-auto-import';
 export default defineConfig({
   vite: {},
   site: 'https://yunu7067.example.com', // sitemap
+  experimental: {
+    contentCollections: true,
+  },
   markdown: {
     // Applied to .md and .mdx files
     extendDefaultPlugins: true,

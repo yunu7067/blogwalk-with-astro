@@ -25,10 +25,10 @@ const {pathname} = Astro.url;
 	build buf fix
 	https://github.com/withastro/astro/issues/3373 
  */
-const images = import.meta.glob<ImageMetadata>('/src/assets/blog/**/*', {import: 'default'});
+const images = import.meta.glob<ImageMetadata>('/public/assets/blog/**/*', {import: 'default'});
 const heroImage = frontmatter?.heroImage;
 if (heroImage) {
-  frontmatter.heroImageMetadata = await images[heroImage]();
+  frontmatter.heroImageMetadata = await images?.['/public' + heroImage]();
 }
 
 const headings: MarkdownHeading[] = Astro.props.headings;
@@ -80,7 +80,13 @@ const props = {
       </div>
 
       {/* Tags */}
-      <Tags tags={frontmatter.tags} />
+      {
+        frontmatter.tags && frontmatter.tags.length > 0 && (
+          <div class='mb-3'>
+            <Tags tags={frontmatter.tags} />
+          </div>
+        )
+      }
 
       <BlogAuthor
         avatar={config.avatar}

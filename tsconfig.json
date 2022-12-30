@@ -1,5 +1,5 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     // Solid specific settings
     "jsx": "preserve",
@@ -13,6 +13,7 @@
     "resolveJsonModule": true,
     // Enable stricter transpilation for better output.
     "isolatedModules": true,
+    "strictNullChecks": true,
     // Add type definitions for our Vite runtime.
     "types": [
       // Replace `astro/client` with `@astrojs/image/client`
@@ -20,12 +21,24 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "$coms/*": ["src/components/*"],
-      "$lays/*": ["src/layouts/*"],
-      "$styles/*": ["src/styles/*"],
-      "$types": ["src/types/index.ts"],
-      "$utils": ["src/utils/index.ts"],
-      "$config": ["src/blog.config.js"]
+      "$coms/*": [
+        "src/components/*"
+      ],
+      "$lays/*": [
+        "src/layouts/*"
+      ],
+      "$styles/*": [
+        "src/styles/*"
+      ],
+      "$types": [
+        "src/types/index.ts"
+      ],
+      "$utils": [
+        "src/utils/index.ts"
+      ],
+      "$config": [
+        "src/blog.config.js"
+      ]
     }
   },
 }
