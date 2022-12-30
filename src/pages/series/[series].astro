@@ -1,52 +1,47 @@
 ---
+import {CollectionEntry, getCollection} from 'astro:content';
 import type {GetStaticPathsOptions} from 'astro';
-import type {MarkdownInstance} from 'astro';
 import config from '$config';
 import MainLayout from '$lays/MainLayout.astro';
 import Hero from '$coms/layout/Hero.astro';
 import BlogPreview from '$coms/blog/BlogPreview.astro';
 import BlogSubNavigations from '$coms/blog/SubNavigations.astro';
 
-interface Props {
-  count: number;
-  posts: MarkdownInstance<Record<string, unknown>>[];
-}
-
-const {series} = Astro.params;
-const {count, posts} = Astro.props;
-
-const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
-const sortedPosts = allPosts.sort(
-  (a, b) =>
-    new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
-);
-
 export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
-  const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
+  const allBlogPosts = await getCollection('blog');
   const seriesData: {[key: string]: Props} = {};
   const seriesList: any[] = [];
 
-  allPosts.map(post => {
-    const {series} = post.frontmatter;
-    if (series) {
-      if (seriesData[series]) {
-        seriesData[series].count = seriesData[series].count + 1;
-        seriesData[series].posts.push(post);
-      } else {
-        seriesList.push(series);
-        seriesData[series] = {
-          count: 1,
-          posts: [post],
-        };
+  allBlogPosts
+    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+    .map(post => {
+      const {series} = post.data;
+      if (series) {
+        if (seriesData[series]) {
+          seriesData[series].count = seriesData[series].count + 1;
+          seriesData[series].posts.push(post);
+        } else {
+          seriesList.push(series);
+          seriesData[series] = {
+            count: 1,
+            posts: [post],
+          };
+        }
       }
-    }
-  });
+    });
 
   return seriesList.map(series => {
     return {params: {series: series}, props: seriesData[series]};
   });
 }
 
+interface Props {
+  count: number;
+  posts: CollectionEntry<'blog'>[];
+}
+
+const {series} = Astro.params;
+const {count, posts} = Astro.props;
 const canonicalURL = Astro.url.toString();
 const props = {
   wide: false,

@@ -27,8 +27,8 @@ let heroSize: {
 };
 const imageSrc = props.heroImage;
 if (imageSrc) {
-  const images = import.meta.glob<ImageMetadata>('/src/assets/blog/**/*', {import: 'default'});
-  heroImageMetadata = await images[imageSrc]();
+  const images = import.meta.glob<ImageMetadata>('/public/assets/blog/**/*', {import: 'default'});
+  heroImageMetadata = await images['/public' + imageSrc]();
   heroSize = calcImageSize(heroImageMetadata, HERO_WIDTH);
 } else {
   heroSize = {width: 0, height: 0};

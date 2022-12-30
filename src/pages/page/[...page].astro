@@ -1,5 +1,6 @@
 ---
-import type {GetStaticPathsOptions} from 'astro';
+import type {GetStaticPathsOptions, Page} from 'astro';
+import {CollectionEntry, getCollection} from 'astro:content';
 import Pagination from '$coms/Pagination.astro';
 import config from '$config';
 import MainLayout from '$lays/MainLayout.astro';
@@ -7,21 +8,21 @@ import BlogPreview from '$coms/blog/BlogPreview.astro';
 import Hero from '$coms/layout/Hero.astro';
 import BlogSubNavigations from '$coms/blog/SubNavigations.astro';
 
-export interface Props {}
-
 export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
-  const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
-  const sortedPosts = allPosts.sort(
-    (a, b) =>
-      new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
+  const allBlogPosts = await getCollection('blog');
+  const sortedBlogPosts = allBlogPosts.sort(
+    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
   );
   // Return a paginated collection of paths for all posts
-  return paginate(sortedPosts, {pageSize: 7});
+  return paginate(sortedBlogPosts, {pageSize: 7});
+}
+
+export interface Props {
+  page: Page<CollectionEntry<'blog'>>;
 }
 
 const {page} = Astro.props;
 const canonicalURL = Astro.url.toString();
-
 const props = {
   wide: false,
   seo: {

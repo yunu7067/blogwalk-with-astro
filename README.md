@@ -80,15 +80,15 @@ cd ./astro-blog
 git pull
 ```
 
-서브모듈 폴더로 들어가 `git pull` 명령어를 이용해 최신 커밋을 받아옵니다. 그리고 `./src/pages`와 `./blog.config.js`파일 (그리고 그 이외에 개인이 수정한 파일들)을 제외한 나머지 파일을 프로젝트 폴더의 최상단에 덮어쓰기해줍니다.
+서브모듈 폴더로 들어가 `git pull` 명령어를 이용해 최신 커밋을 받아옵니다. 그리고 `./src/pages`와 `./src/blog.config.js`파일 (그리고 그 이외에 개인이 수정한 파일들)을 제외한 나머지 파일을 프로젝트 폴더의 최상단에 덮어쓰기해줍니다.
 
 ### About Page
 
-about 페이지는 `/src/pages/about.mdx`에 작성합니다.
+about 페이지는 `/src/content/special/about.md`를 수정하여 변경할 수 있습니다.
 
-### 게시글 작성
+### How to create a new blog post
 
-새로운 게시글은 `/src/pages/p/`에 `./[slug].md` 혹은 `./[slug]/index.md` 파일명으로 작성한 후 서버를 재시작시켜줍니다.
+`/src/content/` 폴더에 새로운 `[slug].md|mdx` 마크다운 또는 MDX 문서를 생성해 줍니다. 
 
 #### Frontmatter
 
@@ -147,6 +147,12 @@ rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
 - Components refactoring.
 - Add TOC to blog post.
 - Update some post design.
+
+**1.1.0**
+- Update the astro version.
+- Apply [Content Collections](https://docs.astro.build/en/guides/content-collections/). (Content Collections are Experimental.)
+- Refactoring some code.
+- Fix some css bug.
 
 ## Credits
 

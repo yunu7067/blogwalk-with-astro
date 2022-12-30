@@ -1,5 +1,5 @@
 ---
-import type {PostInstance} from '$types';
+import {getCollection, getEntry} from 'astro:content';
 import MainLayout from '$lays/MainLayout.astro';
 import config from '$config';
 import BlogPreview from '$coms/blog/BlogPreview.astro';
@@ -11,14 +11,15 @@ export interface Props {}
 
 const {title, description, avatar, social} = config;
 const canonicalURL = Astro.url.toString();
-const allPosts = await Astro.glob<PostInstance>('./p/**/*.{md,mdx}');
-const firstPage = allPosts
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
-  )
+// About Page
+const about = await getEntry('special', 'about.md');
+const AboutContent = (await about.render()).Content;
+// Latest 3 Blog Articles
+const allBlogPosts = await getCollection('blog');
+const latestBlogPosts = allBlogPosts
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
   .slice(0, 3);
-const about = (await Astro.glob('/content/about.md'))[0];
+
 const props = {
   wide: false,
   seo: {
@@ -45,14 +46,12 @@ const props = {
   wide={props.wide}
 >
   <main class='w-full'>
-    <Hero category={''} title={config.author.name} subtitle={about.frontmatter.description} />
+    <Hero category={''} title={config.author.name} subtitle={about.data.description} />
 
     <div class='flex flex-col'>
-      <article
-        id='article-container'
-        class='max-w-3xl w-full mx-auto px-5 pt-8 pb-32'
-        set:html={about.compiledContent()}
-      />
+      <article id='article-container' class='max-w-3xl w-full mx-auto px-5 pt-8 pb-32'>
+        <AboutContent />
+      </article>
     </div>
 
     {/* latest posts */}
@@ -60,7 +59,7 @@ const props = {
       <div>
         <h3>Last 3 Articles</h3>
 
-        <BlogPreview posts={firstPage} />
+        <BlogPreview posts={latestBlogPosts} />
       </div>
     </div>
   </main>

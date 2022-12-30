@@ -15,7 +15,7 @@ const blogConfig = {
   },
   avatar: {
     enabled: true,
-    src: '/images/avatar.jpeg',
+    src: '/assets/avatar.jpeg',
   },
   social: [
     {
